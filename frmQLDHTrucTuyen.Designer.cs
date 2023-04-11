@@ -78,6 +78,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(882, 342);
             this.panel3.TabIndex = 65;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // button1
             // 
@@ -180,12 +181,12 @@
             this.SoLuong,
             this.DonGia,
             this.ThanhTien});
-            this.dataGridView1.Location = new System.Drawing.Point(17, 11);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 43;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(465, 212);
+            this.dataGridView1.Size = new System.Drawing.Size(465, 211);
             this.dataGridView1.TabIndex = 128;
             // 
             // STT
@@ -331,7 +332,8 @@
             this.MaximizeBox = false;
             this.Name = "frmQLDHTrucTuyen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form3";
+            this.Text = "Form của nhân viên";
+            this.Load += new System.EventHandler(this.frmQLDHTrucTuyen_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

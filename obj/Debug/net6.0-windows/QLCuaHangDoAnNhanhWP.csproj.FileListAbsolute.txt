@@ -27,3 +27,4 @@ E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\bin\Debug\net6.0-windows\runtimes\unix
 E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\obj\Debug\net6.0-windows\QLCuaHangDoAnNhanhWP.csproj.CopyComplete
 E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\obj\Debug\net6.0-windows\QLCuaHangDoAnNhanhWP.Form1.resources
+E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\obj\Debug\net6.0-windows\QLCuaHangDoAnNhanhWP.frmMonAn.resources

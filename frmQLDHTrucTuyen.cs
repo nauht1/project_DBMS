@@ -25,15 +25,6 @@ namespace QLCuaHangDoAnNhanhWP
         {
             using (SqlConnection conn = new SqlConnection(sqlStringConnection))
             {
-                //Lấy mã đơn
-                //SqlCommand cmd = new SqlCommand("sp_TuDongTangMaSo", conn);
-                //cmd.CommandType = CommandType.StoredProcedure;
-
-                //cmd.Parameters.Add("@tableName", SqlDbType.VarChar, 30).Value = "DonHang";
-                //cmd.Parameters.Add("@idColumn", SqlDbType.VarChar, 30).Value = "MaDonHang";
-                //SqlParameter newIDParam = cmd.Parameters.Add("@newID", SqlDbType.VarChar, 10);
-                //newIDParam.Direction = ParameterDirection.Output;
-                //cmd.ExecuteNonQuery();
                 conn.Open();
                 string maKhachhang = LayMaTuDong("KhachHang", "MaKhachHang");
                 SqlCommand cmd1 = new SqlCommand("sp_ThemKhachHang", conn);
@@ -62,6 +53,13 @@ namespace QLCuaHangDoAnNhanhWP
                 cmd3.Parameters.Add("@maNhanVienGiao", SqlDbType.VarChar, 10).Value = "NV005";
                 cmd3.Parameters.Add("@trangThaiDonHang", SqlDbType.NVarChar, 30).Value = "Đang giao hàng";
 
+                //SqlCommand cmd4 = new SqlCommand("sp_ThemChiTietDonHang", conn);
+                //cmd4.CommandType = CommandType.StoredProcedure;
+
+                //cmd4.Parameters.Add("@maDonHang", SqlDbType.VarChar, 10).Value = maDonHang;
+                //cmd4.Parameters.Add("@maMonAn", SqlDbType.VarChar, 10).Value =
+
+
 
                 cmd3.ExecuteNonQuery();
                 MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -89,6 +87,16 @@ namespace QLCuaHangDoAnNhanhWP
                 conn.Close();
             }
             return ID;
+        }
+
+        private void frmQLDHTrucTuyen_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
