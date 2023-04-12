@@ -38,6 +38,7 @@ namespace QLCuaHangDoAnNhanhWP
                     monAn.MoTa = reader["MoTa"].ToString();
                     monAn.DonGia = (float)reader["DonGia"];
                     monAn.SoLuongDuTru = (int)reader["SoLuongDuTru"];
+                    monAn.HinhAnh = reader["HinhAnh"].ToString();
                     danhSachMonAn.Add(monAn);
                 }
                 reader.Close();
@@ -45,60 +46,94 @@ namespace QLCuaHangDoAnNhanhWP
             int index = 0;
             foreach (MonAn monAn in danhSachMonAn)
             {
-                PictureBox pb = new PictureBox();
+                PictureBox pbMonAn = new PictureBox();
                 Label lb_tenMonAn = new Label();
                 Label lb_moTaMonAn = new Label();
                 Label lb_soLuongDuTruBan = new Label();
                 Label lb_donGia = new Label();
+                Label lb_donGiaMoi = new Label();
                 Panel pn = new Panel();
+                Button btnThemGioHang = new Button();
+                Button btnDatHang = new Button();
+
                 pn.BorderStyle = BorderStyle.FixedSingle;
                 pn.Width = 250;
-                pn.Height = 320;
+                pn.Height = 340;
 
-                pb.Image = Image.FromFile(monAn.HinhAnh);
-
-                pb.Location = new Point(10, 10);
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                pb.Width = 180;
-                pb.Height = 100;
+                pbMonAn.Image = Image.FromFile(monAn.HinhAnh);
+                pbMonAn.Location = new Point(10, 10);
+                pbMonAn.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbMonAn.Width = 230;
+                pbMonAn.Height = 120;
 
                 lb_tenMonAn.Text = monAn.TenMonAn;
                 lb_moTaMonAn.Text = monAn.MoTa;
                 lb_soLuongDuTruBan.Text = "Còn lại: " + monAn.SoLuongDuTru.ToString();
                 lb_donGia.Text = monAn.DonGia.ToString() + " VND";
+                lb_donGiaMoi.Text = "Giá mới (để tạm)";
 
-                lb_tenMonAn.Location = new Point(10,120);
+                lb_tenMonAn.Location = new Point(10, 140);
                 lb_tenMonAn.AutoSize = true;
+                lb_tenMonAn.Font = new Font(lb_tenMonAn.Font, FontStyle.Bold);
 
+                lb_moTaMonAn.Location = new Point(10, 160);
+                lb_moTaMonAn.AutoSize = true;
                 lb_moTaMonAn.Font = new Font(lb_moTaMonAn.Font, FontStyle.Italic);
-                lb_moTaMonAn.Location = new Point(10, 140);
-                lb_tenMonAn.AutoSize = false;
-                lb_moTaMonAn.Size = new Size(230, 100);
+                lb_moTaMonAn.MaximumSize = new Size(240, 100);
 
-                lb_soLuongDuTruBan.Location = new Point(10, 240);
+                lb_soLuongDuTruBan.Location = new Point(10, 260);
                 lb_soLuongDuTruBan.AutoSize = true;
 
-                lb_donGia.Location = new Point(10, 260);
+                lb_donGia.Location = new Point(10, 280);
                 lb_donGia.AutoSize = true;
                 lb_donGia.Font = new Font(lb_donGia.Font, FontStyle.Strikeout);
+
+                lb_donGiaMoi.Location = new Point(10, 300);
+                lb_donGiaMoi.AutoSize = true;
+                lb_donGiaMoi.Font = new Font(lb_donGiaMoi.Font, FontStyle.Bold);
+
+                btnThemGioHang.Text = "Thêm vào giỏ";
+                btnThemGioHang.Size = new Size(100, 30);
+                btnThemGioHang.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+                btnThemGioHang.Location = new Point(pn.Width - btnThemGioHang.Width - 5, pn.Height - btnThemGioHang.Height*2 - 5);
+                btnThemGioHang.BackColor = Color.OrangeRed;
+                btnThemGioHang.Click += BtnThemGioHang_Click;
+
+                btnDatHang.Text = "Đặt hàng";
+                btnDatHang.Size = new Size(100, 30);
+                btnDatHang.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+                btnDatHang.Location = new Point(pn.Width - btnDatHang.Width - 5, pn.Height - btnDatHang.Height - 5);
+                btnDatHang.Click += BtnDatHang_Click;
+
                 pn.Controls.Add(lb_tenMonAn);
                 pn.Controls.Add(lb_moTaMonAn);
                 pn.Controls.Add(lb_soLuongDuTruBan);
                 pn.Controls.Add(lb_donGia);
+                pn.Controls.Add(lb_donGiaMoi);
+                pn.Controls.Add(pbMonAn);
+                pn.Controls.Add(btnThemGioHang);
+                pn.Controls.Add(btnDatHang);
+                flpMonAn.Controls.Add(pn);
 
-                flowLayoutPanel1.Controls.Add(pn);
                 index++;
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void BtnDatHang_Click(object? sender, EventArgs e)
+        {
+            Form frm = new frmDHTrucTuyen();
+            frm.ShowDialog();
+        }
+
+        private void BtnThemGioHang_Click(object? sender, EventArgs e)
         {
 
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void btnGioHang_Click(object sender, EventArgs e)
         {
-
+            Form frm = new frmGioHang();
+            frm.ShowDialog();
         }
     }
 }

@@ -30,7 +30,8 @@
         {
             this.label9 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpMonAn = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnGioHang = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label9
@@ -38,27 +39,40 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.Navy;
-            this.label9.Location = new System.Drawing.Point(12, 9);
+            this.label9.Location = new System.Drawing.Point(12, 13);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(145, 21);
             this.label9.TabIndex = 4;
             this.label9.Text = "Danh Sách Món Ăn";
             // 
-            // flowLayoutPanel1
+            // flpMonAn
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 33);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1050, 525);
-            this.flowLayoutPanel1.TabIndex = 5;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            this.flpMonAn.AutoScroll = true;
+            this.flpMonAn.Location = new System.Drawing.Point(12, 46);
+            this.flpMonAn.Name = "flpMonAn";
+            this.flpMonAn.Size = new System.Drawing.Size(1050, 525);
+            this.flpMonAn.TabIndex = 5;
+            // 
+            // btnGioHang
+            // 
+            this.btnGioHang.BackColor = System.Drawing.Color.Transparent;
+            this.btnGioHang.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGioHang.Font = new System.Drawing.Font("Segoe UI", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.btnGioHang.Location = new System.Drawing.Point(945, 6);
+            this.btnGioHang.Name = "btnGioHang";
+            this.btnGioHang.Size = new System.Drawing.Size(83, 34);
+            this.btnGioHang.TabIndex = 6;
+            this.btnGioHang.Text = "Giỏ hàng";
+            this.btnGioHang.UseVisualStyleBackColor = false;
+            this.btnGioHang.Click += new System.EventHandler(this.btnGioHang_Click);
             // 
             // frmMonAn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 570);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(1074, 583);
+            this.Controls.Add(this.btnGioHang);
+            this.Controls.Add(this.flpMonAn);
             this.Controls.Add(this.label9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -74,6 +88,7 @@
         #endregion
         private Label label9;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flpMonAn;
+        private Button btnGioHang;
     }
 }
