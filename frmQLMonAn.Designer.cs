@@ -35,14 +35,14 @@
             this.txtSoLuongDuTru = new System.Windows.Forms.TextBox();
             this.txtMoTa = new System.Windows.Forms.TextBox();
             this.btnUpload = new System.Windows.Forms.Button();
-            this.pic_crop = new System.Windows.Forms.PictureBox();
+            this.pbMonAn = new System.Windows.Forms.PictureBox();
             this.lb_Ethnic = new System.Windows.Forms.Label();
             this.lb_Gender = new System.Windows.Forms.Label();
             this.lb_PoB = new System.Windows.Forms.Label();
             this.txtTenMon = new System.Windows.Forms.TextBox();
             this.lb_Fullname = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_crop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMonAn)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -55,7 +55,7 @@
             this.panel3.Controls.Add(this.txtSoLuongDuTru);
             this.panel3.Controls.Add(this.txtMoTa);
             this.panel3.Controls.Add(this.btnUpload);
-            this.panel3.Controls.Add(this.pic_crop);
+            this.panel3.Controls.Add(this.pbMonAn);
             this.panel3.Controls.Add(this.lb_Ethnic);
             this.panel3.Controls.Add(this.lb_Gender);
             this.panel3.Controls.Add(this.lb_PoB);
@@ -134,17 +134,18 @@
             this.btnUpload.TabIndex = 53;
             this.btnUpload.Text = "TẢI ẢNH LÊN";
             this.btnUpload.UseVisualStyleBackColor = false;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
-            // pic_crop
+            // pbMonAn
             // 
-            this.pic_crop.BackColor = System.Drawing.Color.Snow;
-            this.pic_crop.Location = new System.Drawing.Point(453, 16);
-            this.pic_crop.Margin = new System.Windows.Forms.Padding(2);
-            this.pic_crop.Name = "pic_crop";
-            this.pic_crop.Size = new System.Drawing.Size(243, 193);
-            this.pic_crop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pic_crop.TabIndex = 52;
-            this.pic_crop.TabStop = false;
+            this.pbMonAn.BackColor = System.Drawing.Color.Snow;
+            this.pbMonAn.Location = new System.Drawing.Point(453, 16);
+            this.pbMonAn.Margin = new System.Windows.Forms.Padding(2);
+            this.pbMonAn.Name = "pbMonAn";
+            this.pbMonAn.Size = new System.Drawing.Size(243, 193);
+            this.pbMonAn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMonAn.TabIndex = 52;
+            this.pbMonAn.TabStop = false;
             // 
             // lb_Ethnic
             // 
@@ -217,7 +218,7 @@
             this.Load += new System.EventHandler(this.frmQLMonAn_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_crop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMonAn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,7 +232,7 @@
         private TextBox txtSoLuongDuTru;
         private TextBox txtMoTa;
         private Button btnUpload;
-        private PictureBox pic_crop;
+        private PictureBox pbMonAn;
         private Label lb_Ethnic;
         private Label lb_Gender;
         private Label lb_PoB;

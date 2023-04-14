@@ -17,6 +17,16 @@ namespace QLCuaHangDoAnNhanhWP
                 "Initial Catalog = QLCuaHangDoAnNhanh; " +
                 "User ID = sa; Password = 281003";
         List<MonAn> danhSachMonAn = new List<MonAn>();
+        PictureBox pbMonAn = null;
+        Label lb_tenMonAn = null;
+        Label lb_moTaMonAn = null;
+        Label lb_soLuongDuTruBan = null;
+        Label lb_donGia = null;
+        Label lb_donGiaMoi = null;
+        Panel pn = null;
+        Button btnThemGioHang = null;
+        Button btnDatHang = null;
+        MonAn monAn = null;
         public frmMonAn()
         {
             InitializeComponent();
@@ -29,7 +39,7 @@ namespace QLCuaHangDoAnNhanhWP
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM view_DanhSachMonAnCon", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                while (reader.Read())           
                 {
                     MonAn monAn = new MonAn();
                     monAn.MaMonAn = reader["MaMonAn"].ToString();
@@ -55,7 +65,6 @@ namespace QLCuaHangDoAnNhanhWP
                 Panel pn = new Panel();
                 Button btnThemGioHang = new Button();
                 Button btnDatHang = new Button();
-
                 pn.BorderStyle = BorderStyle.FixedSingle;
                 pn.Width = 250;
                 pn.Height = 340;
@@ -127,7 +136,22 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void BtnThemGioHang_Click(object? sender, EventArgs e)
         {
+            //string tenMon = lb_tenMonAn.Text;
+            //Image HinhAnh = pbMonAn.Image;
+            //float donGia = float.Parse(lb_donGia.Text);
+            //int soLuong = 1;
+            //float thanhTien = donGia * soLuong;
 
+            //DataGridViewRow row = new DataGridViewRow();
+            //row.Cells.Add(new DataGridViewTextBoxCell { Value = lb_tenMonAn.Text });
+            //row.Cells.Add(new DataGridViewImageCell { Value = pbMonAn.Image });
+            //row.Cells.Add(new DataGridViewTextBoxCell { Value = lb_donGia.Text });
+            //row.Cells.Add(new DataGridViewTextBoxCell { Value = 1 });
+            //row.Cells.Add(new DataGridViewTextBoxCell { Value = lb_donGia.Text });
+
+            //frmGioHang gioHang = new frmGioHang();
+            //DataGridView dgv = gioHang.dgvGioHang;
+            //dgv.Rows.Add(row);
         }
 
         private void btnGioHang_Click(object sender, EventArgs e)

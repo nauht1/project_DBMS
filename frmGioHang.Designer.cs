@@ -36,25 +36,12 @@
             this.btnDatHang = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGioHang)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvGioHang
             // 
             this.dgvGioHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGioHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
-            this.TenMon,
-            this.HinhAnh,
-            this.DonGia,
-            this.SoLuong,
-            this.ThanhTien});
             this.dgvGioHang.Location = new System.Drawing.Point(23, 43);
             this.dgvGioHang.Name = "dgvGioHang";
             this.dgvGioHang.RowHeadersWidth = 43;
@@ -130,48 +117,6 @@
             this.textBox1.Size = new System.Drawing.Size(125, 25);
             this.textBox1.TabIndex = 4;
             // 
-            // STT
-            // 
-            this.STT.HeaderText = "STT";
-            this.STT.Name = "STT";
-            this.STT.Width = 40;
-            // 
-            // TenMon
-            // 
-            this.TenMon.DataPropertyName = "TenMonAn";
-            this.TenMon.HeaderText = "Tên món";
-            this.TenMon.Name = "TenMon";
-            this.TenMon.Width = 120;
-            // 
-            // HinhAnh
-            // 
-            this.HinhAnh.DataPropertyName = "HinhAnh";
-            this.HinhAnh.FillWeight = 300F;
-            this.HinhAnh.HeaderText = "Hinh Ảnh";
-            this.HinhAnh.Name = "HinhAnh";
-            this.HinhAnh.Width = 150;
-            // 
-            // DonGia
-            // 
-            this.DonGia.DataPropertyName = "DonGia";
-            this.DonGia.HeaderText = "Đơn Giá";
-            this.DonGia.Name = "DonGia";
-            this.DonGia.Width = 105;
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.HeaderText = "Số Lượng";
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SoLuong.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SoLuong.Width = 105;
-            // 
-            // ThanhTien
-            // 
-            this.ThanhTien.HeaderText = "Thành Tiền";
-            this.ThanhTien.Name = "ThanhTien";
-            this.ThanhTien.Width = 105;
-            // 
             // frmGioHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -197,8 +142,6 @@
         }
 
         #endregion
-
-        private DataGridView dgvGioHang;
         private Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button btnXoa;
@@ -206,11 +149,6 @@
         private Button btnDatHang;
         private Label label2;
         private TextBox textBox1;
-        private DataGridViewTextBoxColumn STT;
-        private DataGridViewTextBoxColumn TenMon;
-        private DataGridViewImageColumn HinhAnh;
-        private DataGridViewTextBoxColumn DonGia;
-        private DataGridViewTextBoxColumn SoLuong;
-        private DataGridViewTextBoxColumn ThanhTien;
+        public DataGridView dgvGioHang;
     }
 }

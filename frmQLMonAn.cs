@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Linq.Expressions;
 
 namespace QLCuaHangDoAnNhanhWP
 {
@@ -18,6 +19,7 @@ namespace QLCuaHangDoAnNhanhWP
                 "Initial Catalog = QLCuaHangDoAnNhanh; " +
                 "User ID = sa; Password = 281003";
         SqlConnection conn = null;
+        string hinhAnh = "";
         public frmQLMonAn()
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
 
         }
-        public void ThemMonAn(string maNguoiTao, string tenMonAn, string moTa, int donGia, int soLuongDuTru)
+        public void ThemMonAn(string maNguoiTao, string tenMonAn, string moTa, int donGia, int soLuongDuTru, string hinhAnh)
         {
             try
             {
@@ -35,17 +37,15 @@ namespace QLCuaHangDoAnNhanhWP
                 if (conn.State == ConnectionState.Open)
                     conn.Close();
                 conn.Open();
-                string sqlString = "sp_ThemMonAn";
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = sqlString;
+                SqlCommand cmd = new SqlCommand("sp_ThemMonAn", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = conn;
 
-                cmd.Parameters.Add("@MaNguoiTao", SqlDbType.VarChar).Value = maNguoiTao;
-                cmd.Parameters.Add("@TenMonAn", SqlDbType.NVarChar).Value = tenMonAn;
-                cmd.Parameters.Add("@MoTa", SqlDbType.NVarChar).Value = moTa;
-                cmd.Parameters.Add("@DonGia", SqlDbType.Int).Value = donGia;
-                cmd.Parameters.Add("@SoLuongDuTru", SqlDbType.Int).Value = soLuongDuTru;
+                cmd.Parameters.Add("@maNguoiTao", SqlDbType.VarChar).Value = maNguoiTao;
+                cmd.Parameters.Add("@tenMonAn", SqlDbType.NVarChar).Value = tenMonAn;
+                cmd.Parameters.Add("@moTa", SqlDbType.NVarChar).Value = moTa;
+                cmd.Parameters.Add("@donGia", SqlDbType.Int).Value = donGia;
+                cmd.Parameters.Add("@soLuongDuTru", SqlDbType.Int).Value = soLuongDuTru;
+                cmd.Parameters.Add("@hinhAnh", SqlDbType.VarChar).Value = hinhAnh;
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
@@ -70,12 +70,32 @@ namespace QLCuaHangDoAnNhanhWP
                 string moTa = txtMoTa.Text;
                 int donGia = Convert.ToInt32(txtDonGia.Text);
                 int soLuongDuTru = Convert.ToInt32(txtSoLuongDuTru.Text);
-                ThemMonAn(maNguoiTao, tenMonAn, moTa, donGia, soLuongDuTru);
+                
+                ThemMonAn(maNguoiTao, tenMonAn, moTa, donGia, soLuongDuTru, hinhAnh);
             }
             catch (Exception)
             {
                 MessageBox.Show("Có lỗi xảy ra !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Image Files (*.jpg;*.jpeg;*.gif;*.bmp)|*.jpg;*.jpeg;*.gif;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    hinhAnh = openFileDialog.FileName;
+                    pbMonAn.Image = Image.FromFile(hinhAnh);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Thêm ảnh thành công");
+            }
+            
         }
     }
 }
