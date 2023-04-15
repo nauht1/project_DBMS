@@ -28,15 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvGioHangTrucTiep = new System.Windows.Forms.DataGridView();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -47,6 +42,7 @@
             this.btnDatHang = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvMonAn = new System.Windows.Forms.DataGridView();
+            this.Chon = new System.Windows.Forms.DataGridViewButtonColumn();
             this.MaMonAn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMonAn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
@@ -104,13 +100,6 @@
             // dgvGioHangTrucTiep
             // 
             this.dgvGioHangTrucTiep.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGioHangTrucTiep.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
-            this.TenMon,
-            this.dataGridViewImageColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.ThanhTien});
             this.dgvGioHangTrucTiep.Location = new System.Drawing.Point(17, 52);
             this.dgvGioHangTrucTiep.Name = "dgvGioHangTrucTiep";
             this.dgvGioHangTrucTiep.ReadOnly = true;
@@ -118,52 +107,6 @@
             this.dgvGioHangTrucTiep.RowTemplate.Height = 27;
             this.dgvGioHangTrucTiep.Size = new System.Drawing.Size(645, 259);
             this.dgvGioHangTrucTiep.TabIndex = 137;
-            // 
-            // STT
-            // 
-            this.STT.HeaderText = "STT";
-            this.STT.Name = "STT";
-            this.STT.ReadOnly = true;
-            this.STT.Width = 40;
-            // 
-            // TenMon
-            // 
-            this.TenMon.DataPropertyName = "TenMonAn";
-            this.TenMon.HeaderText = "Tên Món";
-            this.TenMon.Name = "TenMon";
-            this.TenMon.ReadOnly = true;
-            this.TenMon.Width = 120;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.DataPropertyName = "HinhAnh";
-            this.dataGridViewImageColumn1.FillWeight = 300F;
-            this.dataGridViewImageColumn1.HeaderText = "Hình Ảnh";
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Số lượng";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "DonGia";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Đơn Giá";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 105;
-            // 
-            // ThanhTien
-            // 
-            this.ThanhTien.HeaderText = "Thành Tiền";
-            this.ThanhTien.Name = "ThanhTien";
-            this.ThanhTien.ReadOnly = true;
-            this.ThanhTien.Width = 105;
             // 
             // textBox1
             // 
@@ -237,6 +180,7 @@
             this.btnHuy.TabIndex = 130;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnDatHang
             // 
@@ -266,6 +210,7 @@
             // 
             this.dgvMonAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMonAn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Chon,
             this.MaMonAn,
             this.TenMonAn,
             this.HinhAnh,
@@ -281,6 +226,19 @@
             this.dgvMonAn.TabIndex = 128;
             this.dgvMonAn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMonAn_CellContentClick);
             this.dgvMonAn.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMonAn_CellFormatting);
+            // 
+            // Chon
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
+            this.Chon.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Chon.Frozen = true;
+            this.Chon.HeaderText = "Chọn";
+            this.Chon.Name = "Chon";
+            this.Chon.ReadOnly = true;
+            this.Chon.Text = "Chọn";
+            this.Chon.Width = 40;
             // 
             // MaMonAn
             // 
@@ -306,7 +264,7 @@
             this.HinhAnh.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
             this.HinhAnh.Name = "HinhAnh";
             this.HinhAnh.ReadOnly = true;
-            this.HinhAnh.Width = 150;
+            this.HinhAnh.Width = 120;
             // 
             // ConLai
             // 
@@ -400,7 +358,7 @@
             // 
             this.txtDiaChi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiaChi.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDiaChi.Location = new System.Drawing.Point(118, 97);
+            this.txtDiaChi.Location = new System.Drawing.Point(117, 97);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
@@ -465,12 +423,7 @@
         private TextBox textBox1;
         private Label label1;
         private DataGridView dgvGioHangTrucTiep;
-        private DataGridViewTextBoxColumn STT;
-        private DataGridViewTextBoxColumn TenMon;
-        private DataGridViewImageColumn dataGridViewImageColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn ThanhTien;
+        private DataGridViewButtonColumn Chon;
         private DataGridViewTextBoxColumn MaMonAn;
         private DataGridViewTextBoxColumn TenMonAn;
         private DataGridViewImageColumn HinhAnh;
