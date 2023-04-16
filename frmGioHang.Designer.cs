@@ -36,12 +36,23 @@
             this.btnDatHang = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGioHang)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvGioHang
             // 
             this.dgvGioHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGioHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
             this.dgvGioHang.Location = new System.Drawing.Point(23, 43);
             this.dgvGioHang.Name = "dgvGioHang";
             this.dgvGioHang.RowHeadersWidth = 43;
@@ -117,6 +128,36 @@
             this.textBox1.Size = new System.Drawing.Size(125, 25);
             this.textBox1.TabIndex = 4;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Tên Món";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 105;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Hình Ảnh";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 105;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Số Lượng";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 105;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Đơn giá";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 105;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Thành Tiền";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 105;
+            // 
             // frmGioHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -150,5 +191,10 @@
         private Label label2;
         private TextBox textBox1;
         public DataGridView dgvGioHang;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
     }
 }

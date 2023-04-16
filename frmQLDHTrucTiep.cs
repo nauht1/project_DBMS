@@ -46,6 +46,7 @@ namespace QLCuaHangDoAnNhanhWP
                 {
                     DataTable dt = new DataTable();
                     dt.Columns.Add("STT");
+                    dt.Columns.Add("MaMonAnGH");
                     dt.Columns.Add("TenMonAnGH");
                     dt.Columns.Add("DonGiaGH");
                     dt.Columns.Add("SoLuongGH");
@@ -56,10 +57,10 @@ namespace QLCuaHangDoAnNhanhWP
                 if (rowIndex == -1)
                 {
                     DataRow newRow = ((DataTable)dgvGioHangTrucTiep.DataSource).NewRow();
+                    newRow["MaMonAnGH"] = row.Cells["MaMonAn"].Value;
                     newRow["TenMonAnGH"] = row.Cells["TenMonAn"].Value;
                     newRow["DonGiaGH"] = row.Cells["DonGia"].Value;
                     newRow["SoLuongGH"] = 1; // Giá trị mặc định là 1
-
                     // Tính toán ThanhTien
                     decimal donGia = Convert.ToDecimal(row.Cells["DonGia"].Value);
                     decimal thanhTien = donGia * 1;
@@ -91,9 +92,12 @@ namespace QLCuaHangDoAnNhanhWP
                 dgvGioHangTrucTiep.Columns["DonGiaGH"].ReadOnly = true;
                 dgvGioHangTrucTiep.Columns["SoLuongGH"].ReadOnly = false;
                 dgvGioHangTrucTiep.Columns["ThanhTien"].ReadOnly = true;
-                dgvGioHangTrucTiep.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
+                dgvGioHangTrucTiep.Columns["MaMonAnGH"].Visible = false;
 
                 dgvGioHangTrucTiep.CellEndEdit += DgvGioHangTrucTiep_CellEndEdit;
+                tinhTongTien(dgvGioHangTrucTiep);
+                dgvGioHangTrucTiep.AllowUserToAddRows = false;
             }
         }
 
@@ -101,11 +105,26 @@ namespace QLCuaHangDoAnNhanhWP
         {
             if (dgvGioHangTrucTiep.Columns[e.ColumnIndex].Name == "SoLuongGH")
             {
-                DataGridViewRow row = dgvGioHangTrucTiep.Rows[e.RowIndex];
-                int soLuong = Convert.ToInt32(row.Cells["SoLuongGH"].Value);
-                decimal donGia = Convert.ToDecimal(row.Cells["DonGiaGH"].Value);
-                decimal thanhTien = donGia * soLuong;
-                row.Cells["ThanhTien"].Value = thanhTien;
+                DataGridViewRow row1 = dgvGioHangTrucTiep.Rows[e.RowIndex];
+                int soLuongMoi = Convert.ToInt32(row1.Cells["SoLuongGH"].Value);
+                string tenMonAn = dgvGioHangTrucTiep.Rows[e.RowIndex].Cells["TenMonAnGH"].Value.ToString();
+                DataGridViewRow row2 = dgvMonAn.Rows
+                    .Cast<DataGridViewRow>()
+                    .Where(r => r.Cells["TenMonAn"].Value.ToString().Equals(tenMonAn))
+                    .First();
+                int soLuongHienTai = Convert.ToInt32(row2.Cells["ConLai"].Value);
+                if (soLuongMoi > soLuongHienTai)
+                {
+                    MessageBox.Show("Số lượng vượt quá số lượng hiện có của món ăn!");
+                    dgvGioHangTrucTiep.Rows[e.RowIndex].Cells["SoLuongGH"].Value = 1;
+                }
+                else
+                {
+                    decimal donGia = Convert.ToDecimal(row1.Cells["DonGiaGH"].Value);
+                    decimal thanhTien = donGia * soLuongMoi;
+                    row1.Cells["ThanhTien"].Value = thanhTien;
+                }
+                tinhTongTien(dgvGioHangTrucTiep);
             }
         }
 
@@ -142,15 +161,11 @@ namespace QLCuaHangDoAnNhanhWP
                 dgvMonAn.DataSource = dtvMonAn;
                 dgvMonAn.Columns["MaNguoiTao"].Visible = false;
                 dgvMonAn.AutoResizeColumn(7);
+                dgvMonAn.AllowUserToAddRows = false;
             }
             catch
             {
                 MessageBox.Show("Error!");
-               
-            }
-            finally
-            {
-                conn.Close();
             }
         }
 
@@ -171,6 +186,122 @@ namespace QLCuaHangDoAnNhanhWP
         {
             this.Close();
         }
+        public void tinhTongTien(DataGridView dgvGioHangTrucTiep)
+        {
+            decimal tongTien = 0;
+            foreach (DataGridViewRow row in dgvGioHangTrucTiep.Rows)
+            {
+                decimal thanhTien = Convert.ToDecimal(row.Cells["ThanhTien"].Value);
+                tongTien += thanhTien;
+            }
+            txtTongTien.Text = tongTien.ToString();
+            txtTongTien.Font = new Font(txtTongTien.Font, FontStyle.Bold);
+        }
 
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn = new SqlConnection(sqlStringConnection);
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_TimKiemTheoTenMonAn", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@tenMonAn", SqlDbType.NVarChar).Value = txtTenMon.Text;
+                SqlDataAdapter daMonAn = new SqlDataAdapter(cmd);
+                DataTable dtMonAn = new DataTable();
+                daMonAn.Fill(dtMonAn);
+                dgvMonAn.DataSource = dtMonAn;
+                dgvMonAn.Columns["MoTa"].DisplayIndex = 7;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error!");
+            }
+        }
+
+        private void btnXacNhan_Click(object sender, EventArgs e)
+        {
+            conn = new SqlConnection(sqlStringConnection);
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
+            conn.Open();
+            string maKhachHang = LayMaTuDong("KhachHang", "MaKhachHang");
+            SqlCommand cmd1 = new SqlCommand("sp_ThemKhachHang", conn);
+            cmd1.CommandType = CommandType.StoredProcedure;
+            cmd1.Parameters.Add("@maKhachHang", SqlDbType.VarChar, 10).Value = maKhachHang;
+            cmd1.Parameters.Add("@hoTen", SqlDbType.NVarChar, 50).Value = txtHoTen.Text;
+            cmd1.Parameters.Add("@diaChi", SqlDbType.NVarChar, 200).Value = txtDiaChi.Text;
+            cmd1.Parameters.Add("@soDienThoai", SqlDbType.VarChar, 11).Value = txtSoDienThoai.Text;
+            cmd1.ExecuteNonQuery();
+
+            string maDonHang = LayMaTuDong("DonHang", "MaDonHang");
+            SqlCommand cmd2 = new SqlCommand("sp_ThemDonHang", conn);
+            cmd2.CommandType = CommandType.StoredProcedure;
+            cmd2.Parameters.Add("@maDonHang", SqlDbType.VarChar, 10).Value = maDonHang;
+            cmd2.Parameters.Add("@maKhachHang", SqlDbType.VarChar, 30).Value = maKhachHang;
+            cmd2.Parameters.Add("@ngayTaoDon", SqlDbType.Date).Value = DateTime.Now.Date.ToString("yyyy-MM-dd");
+            cmd2.Parameters.Add("maNhanVienBan", SqlDbType.VarChar).Value = "NV008";
+            cmd2.Parameters.Add("@hinhThucThanhToan", SqlDbType.NVarChar, 30).Value = cboThanhToan.SelectedItem.ToString();
+            cmd2.Parameters.Add("@tongTien", SqlDbType.Int).Value = Convert.ToInt32(txtTongTien.Text);
+            cmd2.ExecuteNonQuery();
+
+            SqlCommand cmd3 = new SqlCommand("sp_ThemDonHangTrucTiep", conn);
+            cmd3.CommandType = CommandType.StoredProcedure;
+            cmd3.Parameters.Add("@maDonHang", SqlDbType.VarChar, 10).Value = maDonHang;
+            cmd3.Parameters.Add("@ghiChu", SqlDbType.NVarChar, 200).Value = txtGhiChu.Text;
+            cmd3.ExecuteNonQuery();
+
+            foreach (DataGridViewRow row in dgvGioHangTrucTiep.Rows)
+            {
+                string maMonAn = row.Cells["MaMonAnGH"].Value.ToString();
+                int soLuongMua = Convert.ToInt32(row.Cells["SoLuongGH"].Value);
+                float thanhTien = float.Parse((string)(row.Cells["ThanhTien"].Value));
+
+                SqlCommand cmd4 = new SqlCommand("sp_ThemChiTietDonHang", conn);
+                cmd4.CommandType = CommandType.StoredProcedure;
+                cmd4.Parameters.Add("@maDonHang", SqlDbType.VarChar, 10).Value = maDonHang;
+                cmd4.Parameters.Add("@maMonAn", SqlDbType.VarChar, 10).Value = maMonAn;
+                cmd4.Parameters.Add("@soLuongMua", SqlDbType.Int).Value = soLuongMua;
+                cmd4.Parameters.Add("@thanhTien", SqlDbType.Real).Value = thanhTien;
+                cmd4.ExecuteNonQuery();
+            }
+            MessageBox.Show("Tạo đơn thành công!");
+        }
+        public string LayMaTuDong(string tableName, string idColumn)
+        {
+            string newID = "";
+            try
+            {
+                conn = new SqlConnection(sqlStringConnection);
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_TuDongTangMaSo", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@tableName", SqlDbType.VarChar, 30).Value = tableName;
+                cmd.Parameters.Add("@idColumn", SqlDbType.VarChar, 30).Value = idColumn;
+                SqlParameter outputID = cmd.Parameters.Add("@newID", SqlDbType.VarChar, 10);
+                outputID.Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                newID = outputID.Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Có lỗi!");
+            }
+            return newID;
+        }
+
+        private void txtTenMon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                btnTim_Click(sender, e);
+                e.Handled = true;
+            }
+        }
     }
 }

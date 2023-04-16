@@ -17,6 +17,7 @@ namespace QLCuaHangDoAnNhanhWP
                 "Initial Catalog = QLCuaHangDoAnNhanh; " +
                 "User ID = sa; Password = 281003";
         List<MonAn> danhSachMonAn = new List<MonAn>();
+        List<MonAn> gioHang = new List<MonAn>();
         PictureBox pbMonAn = null;
         Label lb_tenMonAn = null;
         Label lb_moTaMonAn = null;
@@ -106,6 +107,7 @@ namespace QLCuaHangDoAnNhanhWP
                 btnThemGioHang.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
                 btnThemGioHang.Location = new Point(pn.Width - btnThemGioHang.Width - 5, pn.Height - btnThemGioHang.Height*2 - 5);
                 btnThemGioHang.BackColor = Color.OrangeRed;
+                btnThemGioHang.TabIndex = index;
                 btnThemGioHang.Click += BtnThemGioHang_Click;
 
                 btnDatHang.Text = "Đặt hàng";
@@ -136,6 +138,14 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void BtnThemGioHang_Click(object? sender, EventArgs e)
         {
+            Button btn = sender as Button;
+            var index = Convert.ToInt32(btn.TabIndex);
+
+            MonAn monAn = new MonAn();
+            monAn = danhSachMonAn[index];
+            MessageBox.Show(monAn.TenMonAn);
+            gioHang.Add(monAn);
+
             //string tenMon = lb_tenMonAn.Text;
             //Image HinhAnh = pbMonAn.Image;
             //float donGia = float.Parse(lb_donGia.Text);
@@ -149,15 +159,32 @@ namespace QLCuaHangDoAnNhanhWP
             //row.Cells.Add(new DataGridViewTextBoxCell { Value = 1 });
             //row.Cells.Add(new DataGridViewTextBoxCell { Value = lb_donGia.Text });
 
-            //frmGioHang gioHang = new frmGioHang();
-            //DataGridView dgv = gioHang.dgvGioHang;
+            //frmGioHang frmGioHang = new frmGioHang();
+            //DataGridView dgv = frmGioHang.dgvGioHang;
             //dgv.Rows.Add(row);
+
         }
 
         private void btnGioHang_Click(object sender, EventArgs e)
         {
-            Form frm = new frmGioHang();
-            frm.ShowDialog();
+            frmGioHang frmGioHang = new frmGioHang();
+            DataGridView dgv_gioHang = frmGioHang.dgvGioHang;
+
+            //dgv_gioHang.DataSource = gioHang.ToList();
+
+            foreach (var monAn in gioHang)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.TenMonAn });
+                row.Cells.Add(new DataGridViewImageCell { Value = Image.FromFile(monAn.HinhAnh) });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.DonGia });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = 1 });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.DonGia });
+
+                dgv_gioHang.Rows.Add(row);
+            }
+
+            frmGioHang.Show();
         }
     }
 }

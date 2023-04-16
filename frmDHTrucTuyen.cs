@@ -17,5 +17,9 @@ namespace QLCuaHangDoAnNhanhWP
             InitializeComponent();
         }
 
+        private void frmDHTrucTuyen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

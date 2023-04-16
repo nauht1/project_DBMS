@@ -71,7 +71,7 @@ namespace QLCuaHangDoAnNhanhWP
         }
         public string LayMaTuDong(string tableName, string idColumn)
         {
-            string ID = "";
+            string newID = "";
             using (SqlConnection conn = new SqlConnection(sqlStringConnection))
             {
                 conn.Open();
@@ -80,13 +80,13 @@ namespace QLCuaHangDoAnNhanhWP
 
                 cmd.Parameters.Add("@tableName", SqlDbType.VarChar, 30).Value = tableName;
                 cmd.Parameters.Add("@idColumn", SqlDbType.VarChar, 30).Value = idColumn;
-                SqlParameter newIDParam = cmd.Parameters.Add("@newID", SqlDbType.VarChar, 10);
-                newIDParam.Direction = ParameterDirection.Output;
+                SqlParameter outputID = cmd.Parameters.Add("@newID", SqlDbType.VarChar, 10);
+                outputID.Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
-                ID = newIDParam.Value.ToString();
+                newID = outputID.Value.ToString();
                 conn.Close();
             }
-            return ID;
+            return newID;
         }
 
         private void frmQLDHTrucTuyen_Load(object sender, EventArgs e)
