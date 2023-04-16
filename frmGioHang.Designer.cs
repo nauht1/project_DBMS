@@ -29,18 +29,17 @@
         private void InitializeComponent()
         {
             this.dgvGioHang = new System.Windows.Forms.DataGridView();
+            this.TenMonAn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.SoLuongMua = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.btnReload = new System.Windows.Forms.Button();
             this.btnDatHang = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTongTien = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGioHang)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,17 +47,50 @@
             // 
             this.dgvGioHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGioHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
+            this.TenMonAn,
+            this.HinhAnh,
+            this.SoLuongMua,
+            this.DonGia,
+            this.ThanhTien});
             this.dgvGioHang.Location = new System.Drawing.Point(23, 43);
             this.dgvGioHang.Name = "dgvGioHang";
             this.dgvGioHang.RowHeadersWidth = 43;
-            this.dgvGioHang.RowTemplate.Height = 27;
+            this.dgvGioHang.RowTemplate.Height = 120;
             this.dgvGioHang.Size = new System.Drawing.Size(670, 335);
             this.dgvGioHang.TabIndex = 0;
+            // 
+            // TenMonAn
+            // 
+            this.TenMonAn.HeaderText = "Tên Món";
+            this.TenMonAn.Name = "TenMonAn";
+            this.TenMonAn.Width = 105;
+            // 
+            // HinhAnh
+            // 
+            this.HinhAnh.FillWeight = 300F;
+            this.HinhAnh.HeaderText = "Hình Ảnh";
+            this.HinhAnh.Name = "HinhAnh";
+            this.HinhAnh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.HinhAnh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.HinhAnh.Width = 120;
+            // 
+            // SoLuongMua
+            // 
+            this.SoLuongMua.HeaderText = "Số Lượng";
+            this.SoLuongMua.Name = "SoLuongMua";
+            this.SoLuongMua.Width = 105;
+            // 
+            // DonGia
+            // 
+            this.DonGia.HeaderText = "Đơn giá";
+            this.DonGia.Name = "DonGia";
+            this.DonGia.Width = 105;
+            // 
+            // ThanhTien
+            // 
+            this.ThanhTien.HeaderText = "Thành Tiền";
+            this.ThanhTien.Name = "ThanhTien";
+            this.ThanhTien.Width = 105;
             // 
             // label1
             // 
@@ -82,18 +114,6 @@
             this.btnXoa.TabIndex = 2;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
-            // 
-            // btnReload
-            // 
-            this.btnReload.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnReload.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReload.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReload.Location = new System.Drawing.Point(23, 432);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(79, 36);
-            this.btnReload.TabIndex = 2;
-            this.btnReload.Text = "Reload";
-            this.btnReload.UseVisualStyleBackColor = false;
             // 
             // btnDatHang
             // 
@@ -119,53 +139,22 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Tổng tiền";
             // 
-            // textBox1
+            // txtTongTien
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(566, 392);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 25);
-            this.textBox1.TabIndex = 4;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Tên Món";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 105;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Hình Ảnh";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 105;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Số Lượng";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 105;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Đơn giá";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 105;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Thành Tiền";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 105;
+            this.txtTongTien.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTongTien.Enabled = false;
+            this.txtTongTien.Location = new System.Drawing.Point(566, 392);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Size = new System.Drawing.Size(125, 25);
+            this.txtTongTien.TabIndex = 4;
             // 
             // frmGioHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 481);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTongTien);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnDatHang);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.label1);
@@ -186,15 +175,14 @@
         private Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button btnXoa;
-        private Button btnReload;
         private Button btnDatHang;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox txtTongTien;
         public DataGridView dgvGioHang;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn TenMonAn;
+        private DataGridViewImageColumn HinhAnh;
+        private DataGridViewTextBoxColumn SoLuongMua;
+        private DataGridViewTextBoxColumn DonGia;
+        private DataGridViewTextBoxColumn ThanhTien;
     }
 }

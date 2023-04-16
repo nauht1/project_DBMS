@@ -23,17 +23,35 @@ namespace QLCuaHangDoAnNhanhWP
         private void btnDatHang_Click(object sender, EventArgs e)
         {
             this.Close();
-            Form frm = new frmDHTrucTuyen();
+            Form frm = new frmQLDHTrucTuyen();
             frm.ShowDialog();
         }
 
         private void frmGioHang_Load(object sender, EventArgs e)
         {
-            LoadData();
+            dgvGioHang.Columns["TenMonAn"].ReadOnly = true;
+            dgvGioHang.Columns["DonGia"].ReadOnly = true;
+            dgvGioHang.Columns["SoLuongMua"].ReadOnly = false;
+            dgvGioHang.Columns["ThanhTien"].ReadOnly = true;
+            dgvGioHang.CellEndEdit += DgvGioHang_CellEndEdit;
+            tinhTongTien(dgvGioHang);
         }
-        public void LoadData()
-        {
 
+        private void DgvGioHang_CellEndEdit(object? sender, DataGridViewCellEventArgs e)
+        {
         }
+
+        public void tinhTongTien(DataGridView dgvGioHang)
+        {
+            decimal tongTien = 0;
+            foreach (DataGridViewRow row in dgvGioHang.Rows)
+            {
+                decimal thanhTien = Convert.ToDecimal(row.Cells["ThanhTien"].Value);
+                tongTien += thanhTien;
+            }
+            txtTongTien.Text = tongTien.ToString();
+            txtTongTien.Font = new Font(txtTongTien.Font, FontStyle.Bold);
+        }
+
     }
 }

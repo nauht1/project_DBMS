@@ -53,7 +53,7 @@ namespace QLCuaHangDoAnNhanhWP
                     dt.Columns.Add("ThanhTien");
                     dgvGioHangTrucTiep.DataSource = dt;
                 }
-
+                //Món ăn chưa tồn tại
                 if (rowIndex == -1)
                 {
                     DataRow newRow = ((DataTable)dgvGioHangTrucTiep.DataSource).NewRow();
@@ -68,7 +68,7 @@ namespace QLCuaHangDoAnNhanhWP
                     // Thêm dòng mới vào DataTable của DataGridView `dgvGioHangTrucTiep`
                     ((DataTable)dgvGioHangTrucTiep.DataSource).Rows.Add(newRow);
                 }
-                else
+                else //Món ăn đã tồn tại, chỉ cập nhật lại số lượng và tính thành tiền
                 {
                     DataGridViewRow r = dgvGioHangTrucTiep.Rows[rowIndex];
                     int soLuong = Convert.ToInt32(r.Cells["SoLuongGH"].Value);
