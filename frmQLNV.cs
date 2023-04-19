@@ -16,8 +16,6 @@ namespace QLCuaHangDoAnNhanhWP
     {
         SqlDataAdapter daNhanVien = null;
         DataTable dtNhanVien = null;
-        SqlDataAdapter daChucVu = null;
-        DataTable dtChucVu = null;
         bool them;
         public frmQLNV()
         {
@@ -40,20 +38,15 @@ namespace QLCuaHangDoAnNhanhWP
                     dtNhanVien.Clear();
                     daNhanVien.Fill(dtNhanVien);
 
-                    daChucVu = new SqlDataAdapter("Select * from view_DanhSachChucVuCuaNhanVien", conn);
-                    dtChucVu = new DataTable();
-                    dtChucVu.Clear();
-                    daChucVu.Fill(dtChucVu);
-
-                    cboChucVu.DataSource = dtChucVu;
-                    cboChucVu.DisplayMember = "TenQuyen";
-                    cboChucVu.ValueMember = "MaQuyen";
-
                     dgvNhanVien.DataSource = dtNhanVien;
                     dgvNhanVien.AllowUserToAddRows = false;
+                    dgvNhanVien.AutoResizeColumn(1);
                     dgvNhanVien.AutoResizeColumn(3);
                     dgvNhanVien.AutoResizeColumn(4);
                     dgvNhanVien_CellClick(null, null);
+
+                    this.btnLuu.Enabled = false;
+                    this.btnHuy.Enabled = false;
                 }
             }
             catch
@@ -140,7 +133,7 @@ namespace QLCuaHangDoAnNhanhWP
             if (them)
             {
                 ThemNhanVien();
-                //LoadData();
+                LoadData();
                 MessageBox.Show("Đã thêm xong!");
             }
             else
@@ -149,6 +142,10 @@ namespace QLCuaHangDoAnNhanhWP
                 LoadData();
                 MessageBox.Show("Cập nhật thành công!");
             }
+            this.btnThoat.Enabled = true;
+            this.btnThem.Enabled = true;
+            this.btnSua.Enabled = true;
+            this.btnXoa.Enabled = true;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -215,32 +212,21 @@ namespace QLCuaHangDoAnNhanhWP
                     DateTime date = DateTime.ParseExact(txtNgaySinh.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture);
                     string ngaySinh = date.ToString("yyyy-MM-dd");
 
-                    //string maNhanVien = GeneralMethod.LayMaTuDong("NhanVien", "MaNhanVien");
-                    //SqlCommand cmd = new SqlCommand("sp_ThemNhanVien", conn);
-                    //cmd.CommandType = CommandType.StoredProcedure;
-                    //cmd.Parameters.Add("@maNhanVien", SqlDbType.VarChar).Value = maNhanVien;
-                    //cmd.Parameters.Add("@hoTen", SqlDbType.NVarChar).Value = txtHoTen.Text;
-                    //cmd.Parameters.Add("@ngaySinh", SqlDbType.DateTime).Value = ngaySinh;
-                    //cmd.Parameters.Add("@gioiTinh", SqlDbType.NVarChar).Value = cboGioiTinh.SelectedItem.ToString();
-                    //cmd.Parameters.Add("@chucVu", SqlDbType.NVarChar).Value = cboChucVu.SelectedIndex + 1.ToString();
-                    //cmd.Parameters.Add("@soDienThoai", SqlDbType.VarChar).Value = txtSoDienThoai.Text;
-                    //cmd.ExecuteNonQuery();
-
                     string maNhanVien = GeneralMethod.LayMaTuDong("NhanVien", "MaNhanVien");
                     SqlCommand cmd = new SqlCommand("sp_ThemNhanVien", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@maNhanVien", SqlDbType.VarChar).Value = maNhanVien;
-                    cmd.Parameters.Add("@hoTen", SqlDbType.NVarChar).Value = "Nguyễn Thị Thanh Thúy";
-                    cmd.Parameters.Add("@ngaySinh", SqlDbType.DateTime).Value = "19-04-2001";
-                    cmd.Parameters.Add("@gioiTinh", SqlDbType.NVarChar).Value = "Nữ";
-                    cmd.Parameters.Add("@chucVu", SqlDbType.NVarChar).Value = "Nhân viên bán hàng";
-                    cmd.Parameters.Add("@soDienThoai", SqlDbType.VarChar).Value = "0923221231";
+                    cmd.Parameters.Add("@hoTen", SqlDbType.NVarChar).Value = txtHoTen.Text;
+                    cmd.Parameters.Add("@ngaySinh", SqlDbType.DateTime).Value = ngaySinh;
+                    cmd.Parameters.Add("@gioiTinh", SqlDbType.NVarChar).Value = cboGioiTinh.SelectedItem.ToString();
+                    cmd.Parameters.Add("@chucVu", SqlDbType.NVarChar).Value = cboChucVu.SelectedItem.ToString();
+                    cmd.Parameters.Add("@soDienThoai", SqlDbType.VarChar).Value = txtSoDienThoai.Text;
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                MessageBox.Show(ex.StackTrace);
+                MessageBox.Show(ex.Message);
             }
         }
         public void CapNhatNhanVien()
@@ -257,8 +243,8 @@ namespace QLCuaHangDoAnNhanhWP
                     cmd.Parameters.Add("@maNhanVien", SqlDbType.VarChar).Value = txtMaNV.Text;
                     cmd.Parameters.Add("@hoTen", SqlDbType.NVarChar).Value = txtHoTen.Text;
                     cmd.Parameters.Add("@ngaySinh", SqlDbType.DateTime).Value = ngaySinh;
-                    cmd.Parameters.Add("@gioiTinh", SqlDbType.NVarChar).Value = cboGioiTinh.SelectedValue.ToString();
-                    cmd.Parameters.Add("@chucVu", SqlDbType.NVarChar).Value = cboChucVu.SelectedValue.ToString();
+                    cmd.Parameters.Add("@gioiTinh", SqlDbType.NVarChar).Value = cboGioiTinh.SelectedItem.ToString();
+                    cmd.Parameters.Add("@chucVu", SqlDbType.NVarChar).Value = cboChucVu.SelectedItem.ToString();
                     cmd.Parameters.Add("@soDienThoai", SqlDbType.VarChar).Value = txtSoDienThoai.Text;
                     cmd.ExecuteNonQuery();
                 }

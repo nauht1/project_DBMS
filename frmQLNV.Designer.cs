@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboGioiTinh = new System.Windows.Forms.ComboBox();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
-            this.txtNgaySinh = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
@@ -51,6 +50,7 @@
             this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtNgaySinh = new System.Windows.Forms.TextBox();
             this.cboChucVu = new System.Windows.Forms.ComboBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -89,14 +89,6 @@
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(197, 25);
             this.txtSoDienThoai.TabIndex = 3;
-            // 
-            // txtNgaySinh
-            // 
-            this.txtNgaySinh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNgaySinh.Location = new System.Drawing.Point(102, 111);
-            this.txtNgaySinh.Name = "txtNgaySinh";
-            this.txtNgaySinh.Size = new System.Drawing.Size(193, 25);
-            this.txtNgaySinh.TabIndex = 3;
             // 
             // label7
             // 
@@ -280,10 +272,10 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtNgaySinh);
             this.panel1.Controls.Add(this.cboChucVu);
             this.panel1.Controls.Add(this.cboGioiTinh);
             this.panel1.Controls.Add(this.txtSoDienThoai);
-            this.panel1.Controls.Add(this.txtNgaySinh);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtHoTen);
@@ -305,9 +297,21 @@
             this.panel1.Size = new System.Drawing.Size(746, 539);
             this.panel1.TabIndex = 2;
             // 
+            // txtNgaySinh
+            // 
+            this.txtNgaySinh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNgaySinh.Location = new System.Drawing.Point(102, 110);
+            this.txtNgaySinh.Name = "txtNgaySinh";
+            this.txtNgaySinh.Size = new System.Drawing.Size(193, 25);
+            this.txtNgaySinh.TabIndex = 6;
+            // 
             // cboChucVu
             // 
             this.cboChucVu.FormattingEnabled = true;
+            this.cboChucVu.Items.AddRange(new object[] {
+            "Quản lý",
+            "Nhân viên bán hàng",
+            "Nhân viên giao hàng"});
             this.cboChucVu.Location = new System.Drawing.Point(500, 64);
             this.cboChucVu.Name = "cboChucVu";
             this.cboChucVu.Size = new System.Drawing.Size(198, 25);
@@ -381,7 +385,6 @@
         private Label label1;
         private ComboBox cboGioiTinh;
         private TextBox txtSoDienThoai;
-        private TextBox txtNgaySinh;
         private Label label7;
         private Label label4;
         private TextBox txtHoTen;
@@ -406,5 +409,6 @@
         private DataGridViewTextBoxColumn GioiTinh;
         private DataGridViewTextBoxColumn ChucVu;
         private DataGridViewTextBoxColumn SoDienThoai;
+        private TextBox txtNgaySinh;
     }
 }
