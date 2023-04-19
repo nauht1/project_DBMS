@@ -37,13 +37,7 @@
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgvQLDonTrucTuyen = new System.Windows.Forms.DataGridView();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvMonAn = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.btnDatHang = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
@@ -51,8 +45,14 @@
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtThanhToan = new System.Windows.Forms.TextBox();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvQLDonTrucTuyen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMonAn)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,9 +63,9 @@
             this.label8.ForeColor = System.Drawing.Color.Navy;
             this.label8.Location = new System.Drawing.Point(12, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(131, 23);
+            this.label8.Size = new System.Drawing.Size(170, 23);
             this.label8.TabIndex = 66;
-            this.label8.Text = "Đơn trực tuyến";
+            this.label8.Text = "Đặt hàng trực tuyến";
             // 
             // panel1
             // 
@@ -76,7 +76,6 @@
             this.panel1.Controls.Add(this.txtDienThoai);
             this.panel1.Controls.Add(this.txtDiaChi);
             this.panel1.Controls.Add(this.txtHoTen);
-            this.panel1.Enabled = false;
             this.panel1.Location = new System.Drawing.Point(658, 24);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(371, 200);
@@ -153,70 +152,24 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Thông tin khách hàng";
             // 
-            // dgvQLDonTrucTuyen
+            // dgvMonAn
             // 
-            this.dgvQLDonTrucTuyen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvQLDonTrucTuyen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvMonAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMonAn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
             this.TenMon,
             this.HinhAnh,
             this.SoLuong,
             this.DonGia,
             this.ThanhTien});
-            this.dgvQLDonTrucTuyen.Enabled = false;
-            this.dgvQLDonTrucTuyen.Location = new System.Drawing.Point(17, 12);
-            this.dgvQLDonTrucTuyen.Name = "dgvQLDonTrucTuyen";
-            this.dgvQLDonTrucTuyen.ReadOnly = true;
-            this.dgvQLDonTrucTuyen.RowHeadersWidth = 43;
-            this.dgvQLDonTrucTuyen.RowTemplate.Height = 27;
-            this.dgvQLDonTrucTuyen.Size = new System.Drawing.Size(617, 429);
-            this.dgvQLDonTrucTuyen.TabIndex = 128;
-            // 
-            // STT
-            // 
-            this.STT.HeaderText = "STT";
-            this.STT.Name = "STT";
-            this.STT.ReadOnly = true;
-            this.STT.Width = 40;
-            // 
-            // TenMon
-            // 
-            this.TenMon.DataPropertyName = "TenMonAn";
-            this.TenMon.HeaderText = "Tên Món";
-            this.TenMon.Name = "TenMon";
-            this.TenMon.ReadOnly = true;
-            this.TenMon.Width = 120;
-            // 
-            // HinhAnh
-            // 
-            this.HinhAnh.DataPropertyName = "HinhAnh";
-            this.HinhAnh.FillWeight = 300F;
-            this.HinhAnh.HeaderText = "Hình Ảnh";
-            this.HinhAnh.Name = "HinhAnh";
-            this.HinhAnh.ReadOnly = true;
-            this.HinhAnh.Width = 150;
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.HeaderText = "Số Lượng";
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.ReadOnly = true;
-            this.SoLuong.Width = 50;
-            // 
-            // DonGia
-            // 
-            this.DonGia.DataPropertyName = "DonGia";
-            this.DonGia.HeaderText = "Đơn Giá";
-            this.DonGia.Name = "DonGia";
-            this.DonGia.ReadOnly = true;
-            this.DonGia.Width = 105;
-            // 
-            // ThanhTien
-            // 
-            this.ThanhTien.HeaderText = "Thành Tiền";
-            this.ThanhTien.Name = "ThanhTien";
-            this.ThanhTien.ReadOnly = true;
-            this.ThanhTien.Width = 105;
+            this.dgvMonAn.Enabled = false;
+            this.dgvMonAn.Location = new System.Drawing.Point(17, 12);
+            this.dgvMonAn.Name = "dgvMonAn";
+            this.dgvMonAn.ReadOnly = true;
+            this.dgvMonAn.RowHeadersWidth = 43;
+            this.dgvMonAn.RowTemplate.Height = 27;
+            this.dgvMonAn.Size = new System.Drawing.Size(617, 429);
+            this.dgvMonAn.TabIndex = 128;
             // 
             // label6
             // 
@@ -239,7 +192,7 @@
             this.btnDatHang.Name = "btnDatHang";
             this.btnDatHang.Size = new System.Drawing.Size(115, 43);
             this.btnDatHang.TabIndex = 129;
-            this.btnDatHang.Text = "Xác nhận";
+            this.btnDatHang.Text = "Đặt hàng";
             this.btnDatHang.UseVisualStyleBackColor = false;
             // 
             // btnHuy
@@ -255,6 +208,7 @@
             this.btnHuy.TabIndex = 130;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // label5
             // 
@@ -269,7 +223,6 @@
             // txtTongTien
             // 
             this.txtTongTien.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTongTien.Enabled = false;
             this.txtTongTien.Location = new System.Drawing.Point(836, 295);
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.Size = new System.Drawing.Size(166, 25);
@@ -285,7 +238,7 @@
             this.panel3.Controls.Add(this.btnHuy);
             this.panel3.Controls.Add(this.btnDatHang);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.dgvQLDonTrucTuyen);
+            this.panel3.Controls.Add(this.dgvMonAn);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Location = new System.Drawing.Point(24, 23);
@@ -297,13 +250,55 @@
             // txtThanhToan
             // 
             this.txtThanhToan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtThanhToan.Enabled = false;
             this.txtThanhToan.Location = new System.Drawing.Point(836, 262);
             this.txtThanhToan.Name = "txtThanhToan";
             this.txtThanhToan.Size = new System.Drawing.Size(166, 25);
             this.txtThanhToan.TabIndex = 131;
             // 
-            // frmQLDHTrucTuyen
+            // STT
+            // 
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.ReadOnly = true;
+            this.STT.Width = 40;
+            // 
+            // TenMon
+            // 
+            this.TenMon.HeaderText = "Tên Món";
+            this.TenMon.Name = "TenMon";
+            this.TenMon.ReadOnly = true;
+            this.TenMon.Width = 120;
+            // 
+            // HinhAnh
+            // 
+            this.HinhAnh.FillWeight = 300F;
+            this.HinhAnh.HeaderText = "Hình Ảnh";
+            this.HinhAnh.Name = "HinhAnh";
+            this.HinhAnh.ReadOnly = true;
+            this.HinhAnh.Width = 150;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.HeaderText = "Số Lượng";
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.ReadOnly = true;
+            this.SoLuong.Width = 50;
+            // 
+            // DonGia
+            // 
+            this.DonGia.HeaderText = "Đơn Giá";
+            this.DonGia.Name = "DonGia";
+            this.DonGia.ReadOnly = true;
+            this.DonGia.Width = 105;
+            // 
+            // ThanhTien
+            // 
+            this.ThanhTien.HeaderText = "Thành Tiền";
+            this.ThanhTien.Name = "ThanhTien";
+            this.ThanhTien.ReadOnly = true;
+            this.ThanhTien.Width = 105;
+            // 
+            // frmDHTrucTuyen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -313,13 +308,13 @@
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "frmQLDHTrucTuyen";
+            this.Name = "frmDHTrucTuyen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý đặt hàng trực tuyến";
             this.Load += new System.EventHandler(this.frmQLDHTrucTuyen_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvQLDonTrucTuyen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMonAn)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -337,7 +332,6 @@
         private TextBox txtDiaChi;
         private TextBox txtHoTen;
         private Label label2;
-        private DataGridView dgvQLDonTrucTuyen;
         private Label label6;
         private Button btnDatHang;
         private Button btnHuy;
@@ -345,6 +339,7 @@
         private TextBox txtTongTien;
         private Panel panel3;
         private TextBox txtThanhToan;
+        public DataGridView dgvMonAn;
         private DataGridViewTextBoxColumn STT;
         private DataGridViewTextBoxColumn TenMon;
         private DataGridViewImageColumn HinhAnh;

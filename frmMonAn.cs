@@ -136,10 +136,13 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void BtnDatHang_Click(object? sender, EventArgs e)
         {
-            Form frm = new frmQLDHTrucTuyen();
-            frm.ShowDialog();
+            Form frmDHTrucTuyen = new frmDHTrucTuyen();
+            frmDHTrucTuyen.ShowDialog();
         }
+        public void LoadMonAnLenDGV(DataGridView dgv_MonAn)
+        {
 
+        }
         private void BtnThemGioHang_Click(object? sender, EventArgs e)
         {
             Button btn = sender as Button;

@@ -23,7 +23,7 @@ namespace QLCuaHangDoAnNhanhWP
         private void btnDatHang_Click(object sender, EventArgs e)
         {
             this.Close();
-            Form frm = new frmQLDHTrucTuyen();
+            Form frm = new frmDHTrucTuyen();
             frm.ShowDialog();
         }
 

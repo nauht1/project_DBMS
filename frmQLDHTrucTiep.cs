@@ -163,9 +163,9 @@ namespace QLCuaHangDoAnNhanhWP
                 dgvMonAn.AutoResizeColumn(7);
                 dgvMonAn.AllowUserToAddRows = false;
             }
-            catch
+            catch (SqlException ex)
             {
-                MessageBox.Show("Error!");
+                MessageBox.Show("Error");
             }
         }
 
@@ -227,6 +227,9 @@ namespace QLCuaHangDoAnNhanhWP
             if (conn.State == ConnectionState.Open)
                 conn.Close();
             conn.Open();
+
+
+
             string maKhachHang = LayMaTuDong("KhachHang", "MaKhachHang");
             SqlCommand cmd1 = new SqlCommand("sp_ThemKhachHang", conn);
             cmd1.CommandType = CommandType.StoredProcedure;
@@ -257,14 +260,12 @@ namespace QLCuaHangDoAnNhanhWP
             {
                 string maMonAn = row.Cells["MaMonAnGH"].Value.ToString();
                 int soLuongMua = Convert.ToInt32(row.Cells["SoLuongGH"].Value);
-                float thanhTien = float.Parse((string)(row.Cells["ThanhTien"].Value));
 
                 SqlCommand cmd4 = new SqlCommand("sp_ThemChiTietDonHang", conn);
                 cmd4.CommandType = CommandType.StoredProcedure;
                 cmd4.Parameters.Add("@maDonHang", SqlDbType.VarChar, 10).Value = maDonHang;
                 cmd4.Parameters.Add("@maMonAn", SqlDbType.VarChar, 10).Value = maMonAn;
                 cmd4.Parameters.Add("@soLuongMua", SqlDbType.Int).Value = soLuongMua;
-                cmd4.Parameters.Add("@thanhTien", SqlDbType.Real).Value = thanhTien;
                 cmd4.ExecuteNonQuery();
             }
             MessageBox.Show("Tạo đơn thành công!");
@@ -287,6 +288,7 @@ namespace QLCuaHangDoAnNhanhWP
                 outputID.Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
                 newID = outputID.Value.ToString();
+
             }
             catch
             {

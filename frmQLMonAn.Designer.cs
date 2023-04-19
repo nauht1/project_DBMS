@@ -215,6 +215,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "frmQLMonAn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý món ăn";
             this.Load += new System.EventHandler(this.frmQLMonAn_Load);
             this.panel3.ResumeLayout(false);

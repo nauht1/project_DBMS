@@ -30,15 +30,16 @@
         {
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnChon = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.cboThanhToan = new System.Windows.Forms.ComboBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnHuy = new System.Windows.Forms.Button();
-            this.btnDatHang = new System.Windows.Forms.Button();
+            this.btnXacNhan = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvMonAn = new System.Windows.Forms.DataGridView();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
@@ -54,7 +55,7 @@
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMonAn)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,23 +66,24 @@
             this.label8.ForeColor = System.Drawing.Color.Navy;
             this.label8.Location = new System.Drawing.Point(12, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 23);
+            this.label8.Size = new System.Drawing.Size(195, 23);
             this.label8.TabIndex = 68;
-            this.label8.Text = "Đặt hàng";
+            this.label8.Text = "Quản lý đơn trực tuyến";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.btnChon);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.cboThanhToan);
             this.panel3.Controls.Add(this.txtTongTien);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.btnHuy);
-            this.panel3.Controls.Add(this.btnDatHang);
+            this.panel3.Controls.Add(this.btnXacNhan);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.dgvMonAn);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Location = new System.Drawing.Point(25, 23);
@@ -90,23 +92,32 @@
             this.panel3.Size = new System.Drawing.Size(1053, 460);
             this.panel3.TabIndex = 67;
             // 
-            // button1
+            // textBox1
             // 
-            this.button1.Location = new System.Drawing.Point(730, 338);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 24);
-            this.button1.TabIndex = 134;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(783, 326);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(193, 25);
+            this.textBox1.TabIndex = 135;
+            // 
+            // btnChon
+            // 
+            this.btnChon.Location = new System.Drawing.Point(977, 326);
+            this.btnChon.Name = "btnChon";
+            this.btnChon.Size = new System.Drawing.Size(31, 25);
+            this.btnChon.TabIndex = 134;
+            this.btnChon.Text = "...";
+            this.btnChon.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(664, 342);
+            this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(664, 326);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 17);
+            this.label7.Size = new System.Drawing.Size(113, 21);
             this.label7.TabIndex = 133;
-            this.label7.Text = "label7";
+            this.label7.Text = "Nhân viên giao";
             // 
             // cboThanhToan
             // 
@@ -149,19 +160,19 @@
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
             // 
-            // btnDatHang
+            // btnXacNhan
             // 
-            this.btnDatHang.BackColor = System.Drawing.Color.YellowGreen;
-            this.btnDatHang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnDatHang.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDatHang.Font = new System.Drawing.Font("Consolas", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnDatHang.Location = new System.Drawing.Point(920, 398);
-            this.btnDatHang.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDatHang.Name = "btnDatHang";
-            this.btnDatHang.Size = new System.Drawing.Size(115, 43);
-            this.btnDatHang.TabIndex = 129;
-            this.btnDatHang.Text = "Đặt hàng";
-            this.btnDatHang.UseVisualStyleBackColor = false;
+            this.btnXacNhan.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnXacNhan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnXacNhan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnXacNhan.Font = new System.Drawing.Font("Consolas", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.btnXacNhan.Location = new System.Drawing.Point(920, 398);
+            this.btnXacNhan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnXacNhan.Name = "btnXacNhan";
+            this.btnXacNhan.Size = new System.Drawing.Size(115, 43);
+            this.btnXacNhan.TabIndex = 129;
+            this.btnXacNhan.Text = "Xác nhận";
+            this.btnXacNhan.UseVisualStyleBackColor = false;
             // 
             // label6
             // 
@@ -173,23 +184,23 @@
             this.label6.TabIndex = 124;
             this.label6.Text = "Hình thức thanh toán";
             // 
-            // dataGridView1
+            // dgvMonAn
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvMonAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMonAn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
             this.TenMon,
             this.HinhAnh,
             this.SoLuong,
             this.DonGia,
             this.ThanhTien});
-            this.dataGridView1.Location = new System.Drawing.Point(17, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 43;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(617, 429);
-            this.dataGridView1.TabIndex = 128;
+            this.dgvMonAn.Location = new System.Drawing.Point(17, 12);
+            this.dgvMonAn.Name = "dgvMonAn";
+            this.dgvMonAn.ReadOnly = true;
+            this.dgvMonAn.RowHeadersWidth = 43;
+            this.dgvMonAn.RowTemplate.Height = 27;
+            this.dgvMonAn.Size = new System.Drawing.Size(617, 429);
+            this.dgvMonAn.TabIndex = 128;
             // 
             // STT
             // 
@@ -322,7 +333,7 @@
             this.txtHoTen.Size = new System.Drawing.Size(228, 28);
             this.txtHoTen.TabIndex = 84;
             // 
-            // frmDHTrucTuyen
+            // frmQLDHTrucTuyen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -331,13 +342,13 @@
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "frmDHTrucTuyen";
+            this.Name = "frmQLDHTrucTuyen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form đặt hàng trực tuyến";
             this.Load += new System.EventHandler(this.frmDHTrucTuyen_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMonAn)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -352,9 +363,9 @@
         private TextBox txtTongTien;
         private Label label5;
         private Button btnHuy;
-        private Button btnDatHang;
+        private Button btnXacNhan;
         private Label label6;
-        private DataGridView dataGridView1;
+        private DataGridView dgvMonAn;
         private Label label2;
         private Panel panel1;
         private Label label4;
@@ -370,7 +381,8 @@
         private DataGridViewTextBoxColumn SoLuong;
         private DataGridViewTextBoxColumn DonGia;
         private DataGridViewTextBoxColumn ThanhTien;
-        private Button button1;
+        private Button btnChon;
         private Label label7;
+        private TextBox textBox1;
     }
 }
