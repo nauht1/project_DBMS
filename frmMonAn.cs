@@ -13,9 +13,6 @@ namespace QLCuaHangDoAnNhanhWP
 {
     public partial class frmMonAn : Form
     {
-        string sqlStringConnection = "Data Source = DESKTOP-ACER\\NAUHTSQLSERVER; " +
-                "Initial Catalog = QLCuaHangDoAnNhanh; " +
-                "User ID = sa; Password = 281003";
         List<MonAn> danhSachMonAn = new List<MonAn>();
         public List<MonAn> DanhSachMonAn
         {
@@ -39,7 +36,7 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void frmMonAn_Load(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(sqlStringConnection))
+            using (SqlConnection conn = ClassConnection.Connection)
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM view_DanhSachMonAnCon", conn);

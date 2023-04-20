@@ -12,9 +12,6 @@ namespace QLCuaHangDoAnNhanhWP
 {
     public partial class frmGioHang : Form
     {
-        string sqlStringConnection = "Data Source = DESKTOP-ACER\\NAUHTSQLSERVER; " +
-                "Initial Catalog = QLCuaHangDoAnNhanh; " +
-                "User ID = sa; Password = 281003";
         public frmGioHang()
         {
             InitializeComponent();

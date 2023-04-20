@@ -13,9 +13,6 @@ namespace QLCuaHangDoAnNhanhWP
 {
     public partial class frmDHTrucTuyen : Form
     {
-        string sqlStringConnection = "Data Source = DESKTOP-ACER\\NAUHTSQLSERVER; " +
-                "Initial Catalog = QLCuaHangDoAnNhanh; " +
-                "User ID = sa; Password = 281003";
         public frmDHTrucTuyen()
         {
             InitializeComponent();
@@ -23,7 +20,7 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(sqlStringConnection))
+            using (SqlConnection conn = ClassConnection.Connection)
             {
                 conn.Open();
                 string maKhachhang = LayMaTuDong("KhachHang", "MaKhachHang");
@@ -72,7 +69,7 @@ namespace QLCuaHangDoAnNhanhWP
         public string LayMaTuDong(string tableName, string idColumn)
         {
             string newID = "";
-            using (SqlConnection conn = new SqlConnection(sqlStringConnection))
+            using (SqlConnection conn = ClassConnection.Connection)
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("sp_TuDongTangMaSo", conn);
