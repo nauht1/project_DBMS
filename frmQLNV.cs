@@ -60,8 +60,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             // Thứ tự dòng hiện hành 
             int r = dgvNhanVien.CurrentCell.RowIndex;
-            this.txtMaNV.Text =
-            dgvNhanVien.Rows[r].Cells[0].Value.ToString();
+            this.txtMaNV.Text = dgvNhanVien.Rows[r].Cells[0].Value.ToString();
             this.txtHoTen.Text = dgvNhanVien.Rows[r].Cells[1].Value.ToString();
             this.txtNgaySinh.Text = Convert.ToDateTime(dgvNhanVien.Rows[r].Cells[2].Value).ToString("dd-MM-yyyy");
             string gioiTinh = dgvNhanVien.Rows[r].Cells["GioiTinh"].Value.ToString();

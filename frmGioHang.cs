@@ -12,6 +12,7 @@ namespace QLCuaHangDoAnNhanhWP
 {
     public partial class frmGioHang : Form
     {
+        private int rowIndex;
         public frmGioHang()
         {
             InitializeComponent();
@@ -30,25 +31,50 @@ namespace QLCuaHangDoAnNhanhWP
             dgvGioHang.Columns["DonGia"].ReadOnly = true;
             dgvGioHang.Columns["SoLuongMua"].ReadOnly = false;
             dgvGioHang.Columns["ThanhTien"].ReadOnly = true;
-            dgvGioHang.CellEndEdit += DgvGioHang_CellEndEdit;
+            dgvGioHang.CellEndEdit += new DataGridViewCellEventHandler(dgvGioHang_CellEndEdit);
             tinhTongTien(dgvGioHang);
         }
-
-        private void DgvGioHang_CellEndEdit(object? sender, DataGridViewCellEventArgs e)
-        {
-        }
-
         public void tinhTongTien(DataGridView dgvGioHang)
         {
-            decimal tongTien = 0;
+            float tongTien = 0;
             foreach (DataGridViewRow row in dgvGioHang.Rows)
             {
-                decimal thanhTien = Convert.ToDecimal(row.Cells["ThanhTien"].Value);
+                float thanhTien = float.Parse(row.Cells["ThanhTien"].Value.ToString());
                 tongTien += thanhTien;
             }
             txtTongTien.Text = tongTien.ToString();
             txtTongTien.Font = new Font(txtTongTien.Font, FontStyle.Bold);
         }
 
+        private void dgvGioHang_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvGioHang.Columns[e.ColumnIndex].Name == "SoLuongMua")
+            {
+                int soLuong = Convert.ToInt32(dgvGioHang.Rows[e.RowIndex].Cells["SoLuongMua"].Value);
+                float donGia = float.Parse(dgvGioHang.Rows[e.RowIndex].Cells["DonGia"].Value.ToString());
+                float thanhTien = soLuong * donGia;
+                dgvGioHang.Rows[e.RowIndex].Cells["ThanhTien"].Value = thanhTien;
+            }
+            tinhTongTien(dgvGioHang);
+        }
+
+        private void dgvGioHang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            // Thứ tự dòng hiện hành 
+            int r = dgvGioHang.CurrentCell.RowIndex;
+            rowIndex = e.RowIndex;
+            btnXoa.Enabled = true;
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+
+            if (rowIndex >= 0)
+            {
+                DataGridViewRow row = dgvGioHang.Rows[rowIndex];
+                dgvGioHang.Rows.Remove(row);
+            }
+        }
     }
 }

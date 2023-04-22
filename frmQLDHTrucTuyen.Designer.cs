@@ -30,8 +30,8 @@
         {
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnChon = new System.Windows.Forms.Button();
+            this.txtNhanVien = new System.Windows.Forms.TextBox();
+            this.btnChonNV = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.cboThanhToan = new System.Windows.Forms.ComboBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
@@ -74,8 +74,8 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.btnChon);
+            this.panel3.Controls.Add(this.txtNhanVien);
+            this.panel3.Controls.Add(this.btnChonNV);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.cboThanhToan);
             this.panel3.Controls.Add(this.txtTongTien);
@@ -92,22 +92,22 @@
             this.panel3.Size = new System.Drawing.Size(1053, 460);
             this.panel3.TabIndex = 67;
             // 
-            // textBox1
+            // txtNhanVien
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(783, 326);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 25);
-            this.textBox1.TabIndex = 135;
+            this.txtNhanVien.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNhanVien.Location = new System.Drawing.Point(783, 326);
+            this.txtNhanVien.Name = "txtNhanVien";
+            this.txtNhanVien.Size = new System.Drawing.Size(193, 25);
+            this.txtNhanVien.TabIndex = 135;
             // 
-            // btnChon
+            // btnChonNV
             // 
-            this.btnChon.Location = new System.Drawing.Point(977, 326);
-            this.btnChon.Name = "btnChon";
-            this.btnChon.Size = new System.Drawing.Size(31, 25);
-            this.btnChon.TabIndex = 134;
-            this.btnChon.Text = "...";
-            this.btnChon.UseVisualStyleBackColor = true;
+            this.btnChonNV.Location = new System.Drawing.Point(977, 326);
+            this.btnChonNV.Name = "btnChonNV";
+            this.btnChonNV.Size = new System.Drawing.Size(31, 25);
+            this.btnChonNV.TabIndex = 134;
+            this.btnChonNV.Text = "...";
+            this.btnChonNV.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -381,8 +381,8 @@
         private DataGridViewTextBoxColumn SoLuong;
         private DataGridViewTextBoxColumn DonGia;
         private DataGridViewTextBoxColumn ThanhTien;
-        private Button btnChon;
+        private Button btnChonNV;
         private Label label7;
-        private TextBox textBox1;
+        private TextBox txtNhanVien;
     }
 }

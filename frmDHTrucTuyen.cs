@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -88,17 +89,42 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void frmQLDHTrucTuyen_Load(object sender, EventArgs e)
         {
+            dgvMonAn.Columns["STT"].ReadOnly = true;
+            dgvMonAn.Columns["TenMon"].ReadOnly = true;
+            dgvMonAn.Columns["SoLuong"].ReadOnly = false;
+            dgvMonAn.Columns["DonGia"].ReadOnly = true;
 
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
+            dgvMonAn.CellEndEdit += new DataGridViewCellEventHandler(dgvMonAn_CellEndEdit);
+            tinhTongTien(dgvMonAn);
 
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvMonAn_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvMonAn.Columns[e.ColumnIndex].Name == "SoLuong")
+            {
+                int soLuong = Convert.ToInt32(dgvMonAn.Rows[e.RowIndex].Cells["SoLuong"].Value);
+                float donGia = float.Parse(dgvMonAn.Rows[e.RowIndex].Cells["DonGia"].Value.ToString());
+                float thanhTien = soLuong * donGia;
+                dgvMonAn.Rows[e.RowIndex].Cells["ThanhTien"].Value = thanhTien;
+            }
+            tinhTongTien(dgvMonAn);
+        }
+        public void tinhTongTien(DataGridView dgvMonAn)
+        {
+            float tongTien = 0;
+            foreach (DataGridViewRow row in dgvMonAn.Rows)
+            {
+                float thanhTien = float.Parse(row.Cells["ThanhTien"].Value.ToString());
+                tongTien += thanhTien;
+            }
+            txtTongTien.Text = tongTien.ToString();
+            txtTongTien.Font = new Font(txtTongTien.Font, FontStyle.Bold);
         }
     }
 }

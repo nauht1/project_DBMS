@@ -55,9 +55,11 @@
             this.dgvGioHang.Location = new System.Drawing.Point(23, 43);
             this.dgvGioHang.Name = "dgvGioHang";
             this.dgvGioHang.RowHeadersWidth = 43;
-            this.dgvGioHang.RowTemplate.Height = 120;
+            this.dgvGioHang.RowTemplate.Height = 50;
             this.dgvGioHang.Size = new System.Drawing.Size(670, 335);
             this.dgvGioHang.TabIndex = 0;
+            this.dgvGioHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGioHang_CellClick);
+            this.dgvGioHang.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGioHang_CellEndEdit);
             // 
             // TenMonAn
             // 
@@ -106,6 +108,7 @@
             // btnXoa
             // 
             this.btnXoa.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnXoa.Enabled = false;
             this.btnXoa.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnXoa.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnXoa.Location = new System.Drawing.Point(514, 432);
@@ -114,6 +117,7 @@
             this.btnXoa.TabIndex = 2;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnDatHang
             // 

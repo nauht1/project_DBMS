@@ -272,5 +272,11 @@ namespace QLCuaHangDoAnNhanhWP
                 return false;
             }
         }
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            Form frmCTMA = new frmChiTietMonAn();
+            frmCTMA.ShowDialog();
+        }
     }
 }

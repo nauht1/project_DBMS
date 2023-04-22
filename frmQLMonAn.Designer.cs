@@ -61,6 +61,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnShowAll = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonAn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMonAn)).BeginInit();
@@ -70,6 +71,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnShowAll);
             this.panel3.Controls.Add(this.txtMaMon);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.btnReload);
@@ -92,7 +94,7 @@
             this.panel3.Location = new System.Drawing.Point(11, 11);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(760, 558);
+            this.panel3.Size = new System.Drawing.Size(760, 564);
             this.panel3.TabIndex = 65;
             // 
             // txtMaMon
@@ -116,7 +118,7 @@
             // btnReload
             // 
             this.btnReload.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnReload.Location = new System.Drawing.Point(14, 503);
+            this.btnReload.Location = new System.Drawing.Point(12, 508);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(79, 39);
             this.btnReload.TabIndex = 125;
@@ -128,7 +130,7 @@
             // 
             this.btnXoa.BackColor = System.Drawing.Color.LightYellow;
             this.btnXoa.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnXoa.Location = new System.Drawing.Point(127, 504);
+            this.btnXoa.Location = new System.Drawing.Point(125, 509);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(87, 42);
             this.btnXoa.TabIndex = 125;
@@ -140,7 +142,7 @@
             // 
             this.btnLuu.BackColor = System.Drawing.Color.YellowGreen;
             this.btnLuu.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnLuu.Location = new System.Drawing.Point(521, 504);
+            this.btnLuu.Location = new System.Drawing.Point(519, 509);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(86, 42);
             this.btnLuu.TabIndex = 125;
@@ -152,7 +154,7 @@
             // 
             this.btnSua.BackColor = System.Drawing.Color.LightYellow;
             this.btnSua.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnSua.Location = new System.Drawing.Point(252, 504);
+            this.btnSua.Location = new System.Drawing.Point(250, 509);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(88, 42);
             this.btnSua.TabIndex = 125;
@@ -171,7 +173,7 @@
             this.SoLuongDuTru,
             this.DonGia,
             this.MoTa});
-            this.dgvMonAn.Location = new System.Drawing.Point(14, 221);
+            this.dgvMonAn.Location = new System.Drawing.Point(14, 194);
             this.dgvMonAn.Name = "dgvMonAn";
             this.dgvMonAn.ReadOnly = true;
             this.dgvMonAn.RowHeadersWidth = 43;
@@ -241,7 +243,7 @@
             // txtDonGia
             // 
             this.txtDonGia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDonGia.Location = new System.Drawing.Point(398, 55);
+            this.txtDonGia.Location = new System.Drawing.Point(397, 38);
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.Size = new System.Drawing.Size(135, 25);
             this.txtDonGia.TabIndex = 123;
@@ -252,7 +254,7 @@
             this.btnHuy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnHuy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHuy.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnHuy.Location = new System.Drawing.Point(649, 503);
+            this.btnHuy.Location = new System.Drawing.Point(647, 508);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(2);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(93, 43);
@@ -267,7 +269,7 @@
             this.btnTaoMon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnTaoMon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTaoMon.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnTaoMon.Location = new System.Drawing.Point(388, 504);
+            this.btnTaoMon.Location = new System.Drawing.Point(386, 509);
             this.btnTaoMon.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaoMon.Name = "btnTaoMon";
             this.btnTaoMon.Size = new System.Drawing.Size(92, 42);
@@ -279,7 +281,7 @@
             // txtSoLuongDuTru
             // 
             this.txtSoLuongDuTru.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSoLuongDuTru.Location = new System.Drawing.Point(398, 147);
+            this.txtSoLuongDuTru.Location = new System.Drawing.Point(397, 130);
             this.txtSoLuongDuTru.Name = "txtSoLuongDuTru";
             this.txtSoLuongDuTru.Size = new System.Drawing.Size(64, 25);
             this.txtSoLuongDuTru.TabIndex = 123;
@@ -290,7 +292,7 @@
             this.txtMoTa.Location = new System.Drawing.Point(97, 101);
             this.txtMoTa.Multiline = true;
             this.txtMoTa.Name = "txtMoTa";
-            this.txtMoTa.Size = new System.Drawing.Size(276, 87);
+            this.txtMoTa.Size = new System.Drawing.Size(276, 81);
             this.txtMoTa.TabIndex = 123;
             // 
             // btnUpload
@@ -299,7 +301,7 @@
             this.btnUpload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnUpload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpload.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnUpload.Location = new System.Drawing.Point(571, 149);
+            this.btnUpload.Location = new System.Drawing.Point(571, 143);
             this.btnUpload.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(171, 39);
@@ -324,7 +326,7 @@
             this.lb_Ethnic.AutoSize = true;
             this.lb_Ethnic.BackColor = System.Drawing.Color.Transparent;
             this.lb_Ethnic.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lb_Ethnic.Location = new System.Drawing.Point(396, 118);
+            this.lb_Ethnic.Location = new System.Drawing.Point(395, 101);
             this.lb_Ethnic.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_Ethnic.Name = "lb_Ethnic";
             this.lb_Ethnic.Size = new System.Drawing.Size(120, 21);
@@ -336,7 +338,7 @@
             this.lb_Gender.AutoSize = true;
             this.lb_Gender.BackColor = System.Drawing.Color.Transparent;
             this.lb_Gender.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lb_Gender.Location = new System.Drawing.Point(398, 31);
+            this.lb_Gender.Location = new System.Drawing.Point(397, 14);
             this.lb_Gender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_Gender.Name = "lb_Gender";
             this.lb_Gender.Size = new System.Drawing.Size(64, 21);
@@ -417,11 +419,22 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 105;
             // 
+            // btnShowAll
+            // 
+            this.btnShowAll.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnShowAll.Location = new System.Drawing.Point(14, 470);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(79, 32);
+            this.btnShowAll.TabIndex = 128;
+            this.btnShowAll.Text = "Show all";
+            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
+            // 
             // frmQLMonAn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 578);
+            this.ClientSize = new System.Drawing.Size(782, 586);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -472,5 +485,6 @@
         private DataGridViewTextBoxColumn MoTa;
         private TextBox txtMaMon;
         private Label label1;
+        private Button btnShowAll;
     }
 }
