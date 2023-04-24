@@ -192,11 +192,6 @@ namespace QLCuaHangDoAnNhanhWP
             traloi = MessageBox.Show("Có chắc muốn xóa khỏi giỏ?", "Trả lòi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (traloi ==  DialogResult.Yes)
             {
-                //if (rowIndex >= 0)
-                //{
-                //    DataGridViewRow row = dgvGioNguyenLieu.Rows[rowIndex];
-                //    dgvGioNguyenLieu.Rows.Remove(row);
-                //}
                 if (dgvGioNguyenLieu.SelectedCells.Count > 0)
                 {
                     int selectedRowIndex = dgvGioNguyenLieu.SelectedCells[0].OwningRow.Index;

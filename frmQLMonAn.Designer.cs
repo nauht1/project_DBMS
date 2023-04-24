@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnShowAll = new System.Windows.Forms.Button();
             this.txtMaMon = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnReload = new System.Windows.Forms.Button();
@@ -61,7 +62,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnShowAll = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonAn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMonAn)).BeginInit();
@@ -71,6 +72,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.btnShowAll);
             this.panel3.Controls.Add(this.txtMaMon);
             this.panel3.Controls.Add(this.label1);
@@ -97,6 +99,17 @@
             this.panel3.Size = new System.Drawing.Size(760, 564);
             this.panel3.TabIndex = 65;
             // 
+            // btnShowAll
+            // 
+            this.btnShowAll.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnShowAll.Location = new System.Drawing.Point(14, 470);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(94, 36);
+            this.btnShowAll.TabIndex = 128;
+            this.btnShowAll.Text = "Show all";
+            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
+            // 
             // txtMaMon
             // 
             this.txtMaMon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -120,7 +133,7 @@
             this.btnReload.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.btnReload.Location = new System.Drawing.Point(12, 508);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(79, 39);
+            this.btnReload.Size = new System.Drawing.Size(96, 39);
             this.btnReload.TabIndex = 125;
             this.btnReload.Text = "Reload";
             this.btnReload.UseVisualStyleBackColor = true;
@@ -132,7 +145,7 @@
             this.btnXoa.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.btnXoa.Location = new System.Drawing.Point(125, 509);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(87, 42);
+            this.btnXoa.Size = new System.Drawing.Size(107, 42);
             this.btnXoa.TabIndex = 125;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
@@ -142,9 +155,9 @@
             // 
             this.btnLuu.BackColor = System.Drawing.Color.YellowGreen;
             this.btnLuu.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnLuu.Location = new System.Drawing.Point(519, 509);
+            this.btnLuu.Location = new System.Drawing.Point(513, 509);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(86, 42);
+            this.btnLuu.Size = new System.Drawing.Size(102, 42);
             this.btnLuu.TabIndex = 125;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = false;
@@ -154,9 +167,9 @@
             // 
             this.btnSua.BackColor = System.Drawing.Color.LightYellow;
             this.btnSua.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnSua.Location = new System.Drawing.Point(250, 509);
+            this.btnSua.Location = new System.Drawing.Point(252, 509);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(88, 42);
+            this.btnSua.Size = new System.Drawing.Size(106, 42);
             this.btnSua.TabIndex = 125;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
@@ -254,10 +267,10 @@
             this.btnHuy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnHuy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHuy.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnHuy.Location = new System.Drawing.Point(647, 508);
+            this.btnHuy.Location = new System.Drawing.Point(637, 508);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(2);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(93, 43);
+            this.btnHuy.Size = new System.Drawing.Size(103, 43);
             this.btnHuy.TabIndex = 65;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
@@ -272,7 +285,7 @@
             this.btnTaoMon.Location = new System.Drawing.Point(386, 509);
             this.btnTaoMon.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaoMon.Name = "btnTaoMon";
-            this.btnTaoMon.Size = new System.Drawing.Size(92, 42);
+            this.btnTaoMon.Size = new System.Drawing.Size(103, 42);
             this.btnTaoMon.TabIndex = 66;
             this.btnTaoMon.Text = "Thêm";
             this.btnTaoMon.UseVisualStyleBackColor = false;
@@ -419,16 +432,16 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 105;
             // 
-            // btnShowAll
+            // button1
             // 
-            this.btnShowAll.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnShowAll.Location = new System.Drawing.Point(14, 470);
-            this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(79, 32);
-            this.btnShowAll.TabIndex = 128;
-            this.btnShowAll.Text = "Show all";
-            this.btnShowAll.UseVisualStyleBackColor = true;
-            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
+            this.button1.BackColor = System.Drawing.Color.Gold;
+            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(125, 470);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 36);
+            this.button1.TabIndex = 129;
+            this.button1.Text = "Khuyến mãi";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // frmQLMonAn
             // 
@@ -486,5 +499,6 @@
         private TextBox txtMaMon;
         private Label label1;
         private Button btnShowAll;
+        private Button button1;
     }
 }

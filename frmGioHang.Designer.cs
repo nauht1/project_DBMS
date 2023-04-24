@@ -179,7 +179,6 @@
         private Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button btnXoa;
-        private Button btnDatHang;
         private Label label2;
         private TextBox txtTongTien;
         public DataGridView dgvGioHang;
@@ -188,5 +187,6 @@
         private DataGridViewTextBoxColumn SoLuongMua;
         private DataGridViewTextBoxColumn DonGia;
         private DataGridViewTextBoxColumn ThanhTien;
+        public Button btnDatHang;
     }
 }

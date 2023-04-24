@@ -259,6 +259,7 @@
             this.dgvMonAn.Size = new System.Drawing.Size(629, 417);
             this.dgvMonAn.TabIndex = 132;
             this.dgvMonAn.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMonAn_CellEndEdit);
+            this.dgvMonAn.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvMonAn_RowsAdded);
             // 
             // STT
             // 

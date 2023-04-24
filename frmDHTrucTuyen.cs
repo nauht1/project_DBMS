@@ -26,11 +26,42 @@ namespace QLCuaHangDoAnNhanhWP
             dgvMonAn.Columns["SoLuong"].ReadOnly = false;
             dgvMonAn.Columns["DonGia"].ReadOnly = true;
 
-            dgvMonAn.Columns["MaMon"].Visible = false;
+            dgvMonAn.Columns["MaMon"].Visible = true;
+            LoadGioHang();
             dgvMonAn.CellEndEdit += new DataGridViewCellEventHandler(dgvMonAn_CellEndEdit);
             tinhTongTien(dgvMonAn);
         }
+        public void LoadGioHang()
+        {
+            //List<MonAn> temp = new List<MonAn>();
+            //foreach (MonAn monAn in frmMonAn.gioHang)
+            //{
+            //    monAn.SoLuongDuTru = 1;
+            //    if (temp.Find(ma => ma.MaMonAn == monAn.MaMonAn) != null)
+            //    {
+            //        int sl = temp.Find(ma => ma.MaMonAn == monAn.MaMonAn).SoLuongDuTru;
+            //        sl += 1;
+            //        temp.Find(ma => ma.MaMonAn == monAn.MaMonAn).SoLuongDuTru = sl;
+            //    }
+            //    else
+            //    {
+            //        temp.Add(monAn);
+            //    }
+            //}
 
+            foreach (MonAn monAn in frmMonAn.gioHang)
+            {
+                MessageBox.Show(monAn.SoLuongDuTru.ToString());
+                DataGridViewRow row = new DataGridViewRow();
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = 1 });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.MaMonAn });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.TenMonAn });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.SoLuongDuTru });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.DonGia });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.DonGia * 1 });
+                dgvMonAn.Rows.Add(row);
+            }
+        }
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -113,6 +144,15 @@ namespace QLCuaHangDoAnNhanhWP
                 return false;
             }
             
+        }
+
+        private void dgvMonAn_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = e.RowIndex; i < e.RowIndex + e.RowCount; i++)
+            {
+                DataGridViewRow row = dgvMonAn.Rows[i];
+                row.Cells["STT"].Value = i + 1;
+            }
         }
     }
 }

@@ -20,9 +20,9 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void btnDatHang_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form frm = new frmDHTrucTuyen();
+            frmDHTrucTuyen frm = new frmDHTrucTuyen();
             frm.ShowDialog();
+
         }
 
         private void frmGioHang_Load(object sender, EventArgs e)
@@ -60,7 +60,6 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void dgvGioHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             // Thứ tự dòng hiện hành 
             int r = dgvGioHang.CurrentCell.RowIndex;
             rowIndex = e.RowIndex;
@@ -69,12 +68,14 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-
-            if (rowIndex >= 0)
+            if (dgvGioHang.SelectedCells.Count > 0)
             {
-                DataGridViewRow row = dgvGioHang.Rows[rowIndex];
-                dgvGioHang.Rows.Remove(row);
+                int selectedRowIndex = dgvGioHang.SelectedCells[0].OwningRow.Index;
+                dgvGioHang.Rows.RemoveAt(selectedRowIndex); // xóa dòng chứa cell được chọn
+                MonAn monAn = frmMonAn.gioHang[selectedRowIndex];
+                frmMonAn.gioHang.Remove(monAn);
             }
+            tinhTongTien(dgvGioHang);
         }
     }
 }

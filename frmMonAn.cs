@@ -13,13 +13,12 @@ namespace QLCuaHangDoAnNhanhWP
 {
     public partial class frmMonAn : Form
     {
-        
+        public static List<MonAn> gioHang = new List<MonAn>();
         List<MonAn> danhSachMonAn = new List<MonAn>();
         public List<MonAn> DanhSachMonAn
         {
             get { return danhSachMonAn; }   
         }
-        List<MonAn> gioHang = new List<MonAn>();
         PictureBox pbMonAn = null;
         Label lb_tenMonAn = null;
         Label lb_moTaMonAn = null;
@@ -56,7 +55,7 @@ namespace QLCuaHangDoAnNhanhWP
                 }
                 reader.Close();
             }
-            int index = 0; int dIndex = 0;
+            int index = 0;
             foreach (MonAn monAn in danhSachMonAn)
             {
                 PictureBox pbMonAn = new PictureBox();
@@ -135,27 +134,13 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void BtnDatHang_Click(object? sender, EventArgs e)
         {
-            frmDHTrucTuyen frm = new frmDHTrucTuyen();
-            LoadMonAnLenDGV(frm.dgvMonAn, sender);
-            frm.ShowDialog();
-        }
-        public void LoadMonAnLenDGV(DataGridView dgv_MonAn, object sender)
-        {
             Button btn = sender as Button;
             var index = Convert.ToInt32(btn.TabIndex);
             MonAn monAn = new MonAn();
             monAn = danhSachMonAn[index];
-
-            DataGridViewRow row = new DataGridViewRow();
-            row.Cells.Add(new DataGridViewTextBoxCell { Value = 1 });
-            row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.MaMonAn });
-            row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.TenMonAn });
-            //row.Cells.Add(new DataGridViewImageCell { Value = Image.FromFile(monAn.HinhAnh) });
-            row.Cells.Add(new DataGridViewTextBoxCell { Value = 1 });
-            row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.DonGia });
-            row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.DonGia * 1 });
-            dgv_MonAn.Rows.Add(row);
-
+            gioHang.Add(monAn);
+            frmDHTrucTuyen frm = new frmDHTrucTuyen();
+            frm.ShowDialog();
         }
         private void BtnThemGioHang_Click(object? sender, EventArgs e)
         {
@@ -164,7 +149,16 @@ namespace QLCuaHangDoAnNhanhWP
 
             MonAn monAn = new MonAn();
             monAn = danhSachMonAn[index];
-
+            //monAn.SoLuongDuTru = 1;
+            //if (frmMonAn.gioHang.Find(ma => ma.MaMonAn == monAn.MaMonAn) != null)
+            //{
+            //    frmMonAn.gioHang.Find(ma => ma.MaMonAn == monAn.MaMonAn).SoLuongDuTru++;
+            //    MessageBox.Show(frmMonAn.gioHang.Find(ma => ma.MaMonAn == monAn.MaMonAn).SoLuongDuTru.ToString());
+            //}
+            //else
+            //{
+            //    gioHang.Add(monAn);
+            //}
             gioHang.Add(monAn);
             MessageBox.Show("Thêm vào giỏ hàng thành công!");
 

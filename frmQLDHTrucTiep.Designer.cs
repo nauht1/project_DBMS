@@ -257,7 +257,7 @@
             this.ConLai,
             this.DonGia,
             this.MoTa});
-            this.dgvMonAn.Location = new System.Drawing.Point(17, 290);
+            this.dgvMonAn.Location = new System.Drawing.Point(17, 314);
             this.dgvMonAn.Name = "dgvMonAn";
             this.dgvMonAn.ReadOnly = true;
             this.dgvMonAn.RowHeadersWidth = 43;
