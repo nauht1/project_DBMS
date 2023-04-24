@@ -32,6 +32,7 @@ namespace QLCuaHangDoAnNhanhWP
         private void btnTaoMon_Click(object sender, EventArgs e)
         {
             them = true;
+            btnTaoMon.Enabled = false;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnReload.Enabled = false;

@@ -105,6 +105,11 @@ namespace QLCuaHangDoAnNhanhWP
                 {
                     MessageBox.Show("Đã tạo phiếu nhập thành công!!");
                     LoadData();
+                    dgvGioNguyenLieu.Rows.Clear();
+                    txtTenNL.Clear();
+                    txtSoLuong.Clear();
+                    txtDonGia.Clear();
+                    txtTongTien.Clear();
                 }
             }
         }
@@ -124,41 +129,33 @@ namespace QLCuaHangDoAnNhanhWP
                     cmd1.Parameters.Add("@maNguoiQuanLy", SqlDbType.VarChar).Value = "NV001";
                     cmd1.Parameters.Add("@tongTienNhapHang", SqlDbType.Real).Value = txtTongTien.Text;
                     cmd1.ExecuteNonQuery();
+                    //Nếu không lỗi thì thực hiện tiếp code bên dưới, có lỗi -> nhảy vào exception. Vì khi lỗi transaction 
+                    //sẽ rollback tự động bằng set xact_abort on nên nó sẽ ném ra ngoại lệ sqlexception!
+                    //Khi thủ tục bên dưới lỗi , rollback sẽ thực thi và HỦY BỎ TẤT CẢ các transaction ngay cả thủ tục bên
+                    //bên trên luôn, vì nó nằm chung phạm try catch - trích "chatgpt"
+                    foreach (DataGridViewRow row in dgvGioNguyenLieu.Rows)
+                    {
+                        string maNguyenLieu = GeneralMethod.LayMaTuDong("KhoNguyenLieu", "MaNguyenLieu");
+                        string tenNguyenLieu = row.Cells["TenNguyenLieu"].Value.ToString();
+                        int soLuong = Int32.Parse(row.Cells["SoLuong"].Value.ToString());
+                        float donGia = float.Parse(row.Cells["DonGia"].Value.ToString());
+
+
+                        SqlCommand cmd2 = new SqlCommand("sp_TaoCacThongTinCuaPhieuNhap", conn);
+                        cmd2.CommandType = CommandType.StoredProcedure;
+                        cmd2.Parameters.Add("@maNguyenLieu", SqlDbType.VarChar).Value = maNguyenLieu;
+                        cmd2.Parameters.Add("@maNguoiQuanLy", SqlDbType.VarChar).Value = "NV001";
+                        cmd2.Parameters.Add("@tenNguyenLieu", SqlDbType.NVarChar).Value = tenNguyenLieu;
+                        cmd2.Parameters.Add("@soLuong", SqlDbType.Int).Value = soLuong;
+                        cmd2.Parameters.Add("@maPhieuNhap", SqlDbType.VarChar).Value = maPhieuNhap;
+                        cmd2.Parameters.Add("@ngayNhap", SqlDbType.Date).Value = DateTime.Now.Date;
+                        cmd2.Parameters.Add("@tongTienNhapHang", SqlDbType.Real).Value = txtTongTien.Text;
+                        cmd2.Parameters.Add("@donGia", SqlDbType.Real).Value = donGia;
+                        cmd2.ExecuteNonQuery();
+                    }
+                    return true;
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            try
-            {
-                SqlConnection conn = ClassConnection.Connection;
-                if (conn.State != ConnectionState.Open)
-                    conn.Open();
-
-                foreach (DataGridViewRow row in dgvGioNguyenLieu.Rows)
-                {
-                    string maNguyenLieu = GeneralMethod.LayMaTuDong("KhoNguyenLieu", "MaNguyenLieu");
-                    string tenNguyenLieu = row.Cells["TenNguyenLieu"].Value.ToString();
-                    int soLuong = Int32.Parse(row.Cells["SoLuong"].Value.ToString());
-                    float donGia = float.Parse(row.Cells["DonGia"].Value.ToString());
-
-
-                    SqlCommand cmd2 = new SqlCommand("sp_TaoCacThongTinCuaPhieuNhap", conn);
-                    cmd2.CommandType = CommandType.StoredProcedure;
-                    cmd2.Parameters.Add("@maNguyenLieu", SqlDbType.VarChar).Value = maNguyenLieu;
-                    cmd2.Parameters.Add("@maNguoiQuanLy", SqlDbType.VarChar).Value = "NV001";
-                    cmd2.Parameters.Add("@tenNguyenLieu", SqlDbType.NVarChar).Value = tenNguyenLieu;
-                    cmd2.Parameters.Add("@soLuong", SqlDbType.Int).Value = soLuong;
-                    cmd2.Parameters.Add("@maPhieuNhap", SqlDbType.VarChar).Value = maPhieuNhap;
-                    cmd2.Parameters.Add("@ngayNhap", SqlDbType.Date).Value = DateTime.Now.Date;
-                    cmd2.Parameters.Add("@tongTienNhapHang", SqlDbType.Real).Value = txtTongTien.Text;
-                    cmd2.Parameters.Add("@donGia", SqlDbType.Real).Value = donGia;
-                    cmd2.ExecuteNonQuery();
-                }
-                return true;
-            }  
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
@@ -191,12 +188,25 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (rowIndex >= 0)
+            DialogResult traloi;
+            traloi = MessageBox.Show("Có chắc muốn xóa khỏi giỏ?", "Trả lòi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (traloi ==  DialogResult.Yes)
             {
-                DataGridViewRow row = dgvGioNguyenLieu.Rows[rowIndex];
-                dgvGioNguyenLieu.Rows.Remove(row);
+                //if (rowIndex >= 0)
+                //{
+                //    DataGridViewRow row = dgvGioNguyenLieu.Rows[rowIndex];
+                //    dgvGioNguyenLieu.Rows.Remove(row);
+                //}
+                if (dgvGioNguyenLieu.SelectedCells.Count > 0)
+                {
+                    int selectedRowIndex = dgvGioNguyenLieu.SelectedCells[0].OwningRow.Index;
+                    dgvGioNguyenLieu.Rows.RemoveAt(selectedRowIndex); // xóa dòng chứa cell được chọn
+                }
+                TinhTongTien();
+                txtTenNL.ResetText();
+                txtSoLuong.ResetText();
+                txtDonGia.ResetText();
             }
-            TinhTongTien();
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)

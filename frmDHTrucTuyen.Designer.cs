@@ -43,9 +43,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboThanhToan = new System.Windows.Forms.ComboBox();
             this.dgvMonAn = new System.Windows.Forms.DataGridView();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -174,6 +175,7 @@
             this.btnDatHang.TabIndex = 129;
             this.btnDatHang.Text = "Đặt hàng";
             this.btnDatHang.UseVisualStyleBackColor = false;
+            this.btnDatHang.Click += new System.EventHandler(this.btnDatHang_Click);
             // 
             // btnHuy
             // 
@@ -213,7 +215,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.cboThanhToan);
             this.panel3.Controls.Add(this.dgvMonAn);
             this.panel3.Controls.Add(this.txtTongTien);
             this.panel3.Controls.Add(this.label5);
@@ -228,16 +230,16 @@
             this.panel3.Size = new System.Drawing.Size(1048, 460);
             this.panel3.TabIndex = 69;
             // 
-            // comboBox1
+            // cboThanhToan
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cboThanhToan.FormattingEnabled = true;
+            this.cboThanhToan.Items.AddRange(new object[] {
             "CK",
             "TM"});
-            this.comboBox1.Location = new System.Drawing.Point(856, 256);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(123, 25);
-            this.comboBox1.TabIndex = 133;
+            this.cboThanhToan.Location = new System.Drawing.Point(856, 256);
+            this.cboThanhToan.Name = "cboThanhToan";
+            this.cboThanhToan.Size = new System.Drawing.Size(123, 25);
+            this.cboThanhToan.TabIndex = 133;
             // 
             // dgvMonAn
             // 
@@ -245,6 +247,7 @@
             this.dgvMonAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMonAn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
+            this.MaMon,
             this.TenMon,
             this.SoLuong,
             this.DonGia,
@@ -262,6 +265,12 @@
             this.STT.HeaderText = "STT";
             this.STT.Name = "STT";
             this.STT.Width = 40;
+            // 
+            // MaMon
+            // 
+            this.MaMon.HeaderText = "Mã Món";
+            this.MaMon.Name = "MaMon";
+            this.MaMon.Width = 105;
             // 
             // TenMon
             // 
@@ -328,11 +337,12 @@
         private TextBox txtTongTien;
         private Panel panel3;
         public DataGridView dgvMonAn;
+        private ComboBox cboThanhToan;
         private DataGridViewTextBoxColumn STT;
+        private DataGridViewTextBoxColumn MaMon;
         private DataGridViewTextBoxColumn TenMon;
         private DataGridViewTextBoxColumn SoLuong;
         private DataGridViewTextBoxColumn DonGia;
         private DataGridViewTextBoxColumn ThanhTien;
-        private ComboBox comboBox1;
     }
 }

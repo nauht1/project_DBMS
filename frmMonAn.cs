@@ -148,6 +148,7 @@ namespace QLCuaHangDoAnNhanhWP
 
             DataGridViewRow row = new DataGridViewRow();
             row.Cells.Add(new DataGridViewTextBoxCell { Value = 1 });
+            row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.MaMonAn });
             row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.TenMonAn });
             //row.Cells.Add(new DataGridViewImageCell { Value = Image.FromFile(monAn.HinhAnh) });
             row.Cells.Add(new DataGridViewTextBoxCell { Value = 1 });

@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dgvGioHangTrucTiep = new System.Windows.Forms.DataGridView();
@@ -80,6 +81,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnXoa);
             this.panel3.Controls.Add(this.txtGhiChu);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.dgvGioHangTrucTiep);
@@ -100,6 +102,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1096, 594);
             this.panel3.TabIndex = 71;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnXoa.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.btnXoa.Location = new System.Drawing.Point(576, 270);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(86, 38);
+            this.btnXoa.TabIndex = 140;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // txtGhiChu
             // 
@@ -128,7 +142,7 @@
             this.dgvGioHangTrucTiep.ReadOnly = true;
             this.dgvGioHangTrucTiep.RowHeadersWidth = 43;
             this.dgvGioHangTrucTiep.RowTemplate.Height = 27;
-            this.dgvGioHangTrucTiep.Size = new System.Drawing.Size(645, 259);
+            this.dgvGioHangTrucTiep.Size = new System.Drawing.Size(645, 212);
             this.dgvGioHangTrucTiep.TabIndex = 137;
             // 
             // txtTenMon
@@ -243,7 +257,7 @@
             this.ConLai,
             this.DonGia,
             this.MoTa});
-            this.dgvMonAn.Location = new System.Drawing.Point(17, 319);
+            this.dgvMonAn.Location = new System.Drawing.Point(17, 290);
             this.dgvMonAn.Name = "dgvMonAn";
             this.dgvMonAn.ReadOnly = true;
             this.dgvMonAn.RowHeadersWidth = 43;
@@ -458,5 +472,6 @@
         private DataGridViewTextBoxColumn MoTa;
         private TextBox txtGhiChu;
         private Label label9;
+        private Button btnXoa;
     }
 }

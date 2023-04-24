@@ -37,3 +37,6 @@ E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\obj\Debug\net6.0-windows\QLCuaHangDoAn
 E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\obj\Debug\net6.0-windows\QLCuaHangDoAnNhanhWP.frmNhapNguyenLieu.resources
 E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\obj\Debug\net6.0-windows\QLCuaHangDoAnNhanhWP.frmXemCTPN.resources
 E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\obj\Debug\net6.0-windows\QLCuaHangDoAnNhanhWP.frmXemPN.resources
+E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\obj\Debug\net6.0-windows\QLCuaHangDoAnNhanhWP.frmCTDH.resources
+E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\obj\Debug\net6.0-windows\QLCuaHangDoAnNhanhWP.frmNhanVienGiao.resources
+E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\obj\Debug\net6.0-windows\QLCuaHangDoAnNhanhWP.frmMain.resources

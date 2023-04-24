@@ -14,79 +14,11 @@ namespace QLCuaHangDoAnNhanhWP
 {
     public partial class frmDHTrucTuyen : Form
     {
+        DataTable dt = null;
         public frmDHTrucTuyen()
         {
             InitializeComponent();
         }
-
-        private void btnXacNhan_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection conn = ClassConnection.Connection)
-            {
-                conn.Open();
-                string maKhachhang = LayMaTuDong("KhachHang", "MaKhachHang");
-                SqlCommand cmd1 = new SqlCommand("sp_ThemKhachHang", conn);
-                cmd1.CommandType = CommandType.StoredProcedure;
-                cmd1.Parameters.Add("@maKhachHang", SqlDbType.VarChar, 10).Value = maKhachhang;
-                cmd1.Parameters.Add("@hoTen", SqlDbType.NVarChar, 50).Value = "Nguyễn Văn B";
-                cmd1.Parameters.Add("@diaChi", SqlDbType.NVarChar, 200).Value = "10 Võ Văn Ngân";
-                cmd1.Parameters.Add("@soDienThoai", SqlDbType.VarChar, 11).Value = "0837367212";
-                cmd1.ExecuteNonQuery();
-
-                string maDonHang = LayMaTuDong("DonHang", "MaDonHang");
-                SqlCommand cmd2 = new SqlCommand("sp_ThemDonHang", conn);
-                cmd2.CommandType = CommandType.StoredProcedure;
-                cmd2.Parameters.Add("@maDonHang", SqlDbType.VarChar,10).Value = maDonHang;
-                cmd2.Parameters.Add("@maKhachHang", SqlDbType.VarChar, 30).Value = maKhachhang;
-                cmd2.Parameters.Add("@ngayTaoDon", SqlDbType.Date).Value = "2022-03-17";
-                cmd2.Parameters.Add("maNhanVienBan", SqlDbType.VarChar).Value = "NV003";
-                cmd2.Parameters.Add("@hinhThucThanhToan", SqlDbType.NVarChar, 30).Value = "TM";
-                cmd2.Parameters.Add("@tongTien", SqlDbType.Int).Value = 400000;
-                cmd2.ExecuteNonQuery();
-
-                SqlCommand cmd3 = new SqlCommand("sp_ThemDonHangTrucTuyen", conn);
-                cmd3.CommandType = CommandType.StoredProcedure;
-
-                cmd3.Parameters.Add("@maDonHang", SqlDbType.VarChar, 10).Value = maDonHang;
-                cmd3.Parameters.Add("@maNhanVienGiao", SqlDbType.VarChar, 10).Value = "NV005";
-                cmd3.Parameters.Add("@trangThaiDonHang", SqlDbType.NVarChar, 30).Value = "Đang giao hàng";
-
-                //SqlCommand cmd4 = new SqlCommand("sp_ThemChiTietDonHang", conn);
-                //cmd4.CommandType = CommandType.StoredProcedure;
-
-                //cmd4.Parameters.Add("@maDonHang", SqlDbType.VarChar, 10).Value = maDonHang;
-                //cmd4.Parameters.Add("@maMonAn", SqlDbType.VarChar, 10).Value =
-
-
-
-                cmd3.ExecuteNonQuery();
-                MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-                conn.Close();
-
-                // Tiếp tục xử lý newID ở đây
-            }
-        }
-        public string LayMaTuDong(string tableName, string idColumn)
-        {
-            string newID = "";
-            using (SqlConnection conn = ClassConnection.Connection)
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("sp_TuDongTangMaSo", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.Add("@tableName", SqlDbType.VarChar, 30).Value = tableName;
-                cmd.Parameters.Add("@idColumn", SqlDbType.VarChar, 30).Value = idColumn;
-                SqlParameter outputID = cmd.Parameters.Add("@newID", SqlDbType.VarChar, 10);
-                outputID.Direction = ParameterDirection.Output;
-                cmd.ExecuteNonQuery();
-                newID = outputID.Value.ToString();
-                conn.Close();
-            }
-            return newID;
-        }
-
         private void frmQLDHTrucTuyen_Load(object sender, EventArgs e)
         {
             dgvMonAn.Columns["STT"].ReadOnly = true;
@@ -94,9 +26,9 @@ namespace QLCuaHangDoAnNhanhWP
             dgvMonAn.Columns["SoLuong"].ReadOnly = false;
             dgvMonAn.Columns["DonGia"].ReadOnly = true;
 
+            dgvMonAn.Columns["MaMon"].Visible = false;
             dgvMonAn.CellEndEdit += new DataGridViewCellEventHandler(dgvMonAn_CellEndEdit);
             tinhTongTien(dgvMonAn);
-
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -125,6 +57,62 @@ namespace QLCuaHangDoAnNhanhWP
             }
             txtTongTien.Text = tongTien.ToString();
             txtTongTien.Font = new Font(txtTongTien.Font, FontStyle.Bold);
+        }
+
+        private void btnDatHang_Click(object sender, EventArgs e)
+        {
+            bool check;
+            check = DatHangTrucTuyen();
+            if (check)
+            {
+                MessageBox.Show("Đã đặt hàng thành công!");
+            }
+        }
+        public bool DatHangTrucTuyen()
+        {
+            string maKhachHang = GeneralMethod.LayMaTuDong("KhachHang", "MaKhachhang");
+            string maDonHang = GeneralMethod.LayMaTuDong("DonHang", "MaDonHang");
+            try
+            {
+                using (SqlConnection conn = ClassConnection.Connection)
+                {
+                    //mã nv để tạm, sẽ dùng hàm cập nhật để chọn nhân viên
+                    conn.Open();
+                    SqlCommand cmd1 = new SqlCommand("sp_TaoDonHangTrucTuyen", conn);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add("@maKhachHang", SqlDbType.VarChar).Value = maKhachHang;
+                    cmd1.Parameters.Add("@hoTen", SqlDbType.NVarChar).Value = txtHoTen.Text;
+                    cmd1.Parameters.Add("@diaChi", SqlDbType.NVarChar).Value = txtDiaChi.Text;
+                    cmd1.Parameters.Add("@soDienThoai", SqlDbType.VarChar).Value = txtDienThoai.Text;
+                    cmd1.Parameters.Add("@maDonHang", SqlDbType.VarChar).Value = maDonHang;
+                    cmd1.Parameters.Add("@ngayTaoDon", SqlDbType.Date).Value = DateTime.Now.Date.ToString();
+                    cmd1.Parameters.Add("maNhanVienBan", SqlDbType.VarChar).Value = "NV008";
+                    cmd1.Parameters.Add("@hinhThucThanhToan", SqlDbType.NVarChar).Value = cboThanhToan.SelectedItem.ToString();
+                    cmd1.Parameters.Add("@tongTien", SqlDbType.Int).Value = Convert.ToInt32(txtTongTien.Text);
+                    cmd1.Parameters.Add("maNhanVienGiao", SqlDbType.VarChar).Value = "NV001"; 
+                    cmd1.ExecuteNonQuery();
+
+                    foreach (DataGridViewRow row in dgvMonAn.Rows)
+                    {
+                        string maMonAn = row.Cells["MaMon"].Value.ToString();
+                        int soLuongMua = Convert.ToInt32(row.Cells["SoLuong"].Value);
+
+                        SqlCommand cmd2 = new SqlCommand("sp_ThemChiTietDonHang", conn);
+                        cmd2.CommandType = CommandType.StoredProcedure;
+                        cmd2.Parameters.Add("@maDonHang", SqlDbType.VarChar, 10).Value = maDonHang;
+                        cmd2.Parameters.Add("@maMonAn", SqlDbType.VarChar, 10).Value = maMonAn;
+                        cmd2.Parameters.Add("@soLuongMua", SqlDbType.Int).Value = soLuongMua;
+                        cmd2.ExecuteNonQuery();
+                    }
+                    return true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            
         }
     }
 }
