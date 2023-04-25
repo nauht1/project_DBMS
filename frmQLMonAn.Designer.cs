@@ -62,7 +62,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonAn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMonAn)).BeginInit();
@@ -72,7 +71,6 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.btnShowAll);
             this.panel3.Controls.Add(this.txtMaMon);
             this.panel3.Controls.Add(this.label1);
@@ -432,17 +430,6 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 105;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Gold;
-            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(125, 470);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 36);
-            this.button1.TabIndex = 129;
-            this.button1.Text = "Khuyến mãi";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // frmQLMonAn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -499,6 +486,5 @@
         private TextBox txtMaMon;
         private Label label1;
         private Button btnShowAll;
-        private Button button1;
     }
 }

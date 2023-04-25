@@ -81,7 +81,7 @@ namespace QLCuaHangDoAnNhanhWP
                 lb_moTaMonAn.Text = monAn.MoTa;
                 lb_soLuongDuTruBan.Text = "Còn lại: " + monAn.SoLuongDuTru.ToString();
                 lb_donGia.Text = monAn.DonGia.ToString() + " VND";
-                lb_donGiaMoi.Text = "Giá mới (để tạm)";
+                //lb_donGiaMoi.Text = "Giá mới (để tạm)";
 
                 lb_tenMonAn.Location = new Point(10, 140);
                 lb_tenMonAn.AutoSize = true;
@@ -97,7 +97,7 @@ namespace QLCuaHangDoAnNhanhWP
 
                 lb_donGia.Location = new Point(10, 280);
                 lb_donGia.AutoSize = true;
-                lb_donGia.Font = new Font(lb_donGia.Font, FontStyle.Strikeout);
+                lb_donGia.Font = new Font(lb_donGia.Font, FontStyle.Bold);
 
                 lb_donGiaMoi.Location = new Point(10, 300);
                 lb_donGiaMoi.AutoSize = true;
@@ -138,6 +138,7 @@ namespace QLCuaHangDoAnNhanhWP
             var index = Convert.ToInt32(btn.TabIndex);
             MonAn monAn = new MonAn();
             monAn = danhSachMonAn[index];
+            monAn.SoLuongDuTru = 1;
             gioHang.Add(monAn);
             frmDHTrucTuyen frm = new frmDHTrucTuyen();
             frm.ShowDialog();
@@ -149,47 +150,30 @@ namespace QLCuaHangDoAnNhanhWP
 
             MonAn monAn = new MonAn();
             monAn = danhSachMonAn[index];
-            //monAn.SoLuongDuTru = 1;
-            //if (frmMonAn.gioHang.Find(ma => ma.MaMonAn == monAn.MaMonAn) != null)
-            //{
-            //    frmMonAn.gioHang.Find(ma => ma.MaMonAn == monAn.MaMonAn).SoLuongDuTru++;
-            //    MessageBox.Show(frmMonAn.gioHang.Find(ma => ma.MaMonAn == monAn.MaMonAn).SoLuongDuTru.ToString());
-            //}
-            //else
-            //{
-            //    gioHang.Add(monAn);
-            //}
-            gioHang.Add(monAn);
+            if (gioHang.Find(ma => ma.MaMonAn == monAn.MaMonAn) != null)
+            {
+                gioHang.Find(ma => ma.MaMonAn == monAn.MaMonAn).SoLuongDuTru += 1;
+            }
+            else
+            {
+                monAn.SoLuongDuTru = 1;
+                gioHang.Add(monAn);
+            }
             MessageBox.Show("Thêm vào giỏ hàng thành công!");
-
         }
 
         private void btnGioHang_Click(object sender, EventArgs e)
         {
             frmGioHang frmGioHang = new frmGioHang();
             DataGridView dgv_gioHang = frmGioHang.dgvGioHang;
-
-            Dictionary<MonAn, int> gioHangDict = new Dictionary<MonAn, int>();
-            //Lặp qua danh sách giỏ hàng và đếm số lượng món ăn
-            foreach (var monAn in gioHang)
-            {
-                if (gioHangDict.ContainsKey(monAn))
-                {
-                    gioHangDict[monAn]++;
-                }
-                else
-                {
-                    gioHangDict.Add(monAn, 1);
-                }
-            }
-            foreach (var item in gioHangDict)
+            foreach (var item in gioHang)
             {
                 DataGridViewRow row = new DataGridViewRow();
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Key.TenMonAn });
-                row.Cells.Add(new DataGridViewImageCell { Value = Image.FromFile(item.Key.HinhAnh) });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Value });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Key.DonGia });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Key.DonGia * item.Value });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TenMonAn });
+                row.Cells.Add(new DataGridViewImageCell { Value = Image.FromFile(item.HinhAnh) });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SoLuongDuTru });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.DonGia });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.DonGia * item.SoLuongDuTru });
 
                 dgv_gioHang.Rows.Add(row);
             }

@@ -127,6 +127,9 @@
   <data name="chagio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\chagio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DBMS_Main_BG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\DBMS_Main_BG.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="garan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\garan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

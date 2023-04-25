@@ -66,7 +66,6 @@ namespace QLCuaHangDoAnNhanhWP
                     daDonGX.Fill(dtDonGX);
                     dgvDonGX.DataSource = dtDonGX;
                     dgvDonGX.AutoResizeColumns();
-
                 }
             }
             catch
@@ -203,5 +202,9 @@ namespace QLCuaHangDoAnNhanhWP
             btnXacNhan.Enabled = true;
         }
 
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

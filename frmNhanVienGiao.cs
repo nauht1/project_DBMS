@@ -35,6 +35,20 @@ namespace QLCuaHangDoAnNhanhWP
                     dtNhanVienGiao = new DataTable();
                     dtNhanVienGiao.Clear();
                     daNhanVienGiao.Fill(dtNhanVienGiao);
+
+                    dtNhanVienGiao.Columns.Add("TrangThai");
+                    foreach (DataRow item in dtNhanVienGiao.Rows)
+                    {
+                        string maNhanVien = item[0].ToString();
+
+                        SqlCommand cmd = new SqlCommand("Select dbo.func_KiemTraTrangThaiNhanVienGiao(@maNhanVien)", conn);
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add("@maNhanVien", SqlDbType.VarChar, 10).Value = maNhanVien;
+
+                        item["TrangThai"] = cmd.ExecuteScalar().ToString();
+                    }
+
+
                     dgvNhanVienGiao.DataSource = dtNhanVienGiao;
                     dgvNhanVienGiao.AutoResizeColumns();
                 }

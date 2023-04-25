@@ -33,7 +33,13 @@
             this.btnXemDon = new System.Windows.Forms.Button();
             this.txtThanhToan = new System.Windows.Forms.TextBox();
             this.dgvDonGX = new System.Windows.Forms.DataGridView();
+            this.MaDonHangGX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNhanVienGiaoGX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThaiDonHangGX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDonDG = new System.Windows.Forms.DataGridView();
+            this.MaDonHangDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNhanVienGiaoDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThaiDonHangDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXemCTDH = new System.Windows.Forms.Button();
             this.txtNhanVien = new System.Windows.Forms.TextBox();
             this.btnChonNV = new System.Windows.Forms.Button();
@@ -44,6 +50,9 @@
             this.btnXacNhan = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvDonCXN = new System.Windows.Forms.DataGridView();
+            this.MaDonHangCXN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNhanVienGiaoCXN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThaiDonHangCXN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,15 +61,6 @@
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.MaDonHangCXN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNhanVienGiaoCXN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThaiDonHangCXN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDonHangDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNhanVienGiaoDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThaiDonHangDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaDonHangGX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNhanVienGiaoGX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThaiDonHangGX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonGX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonDG)).BeginInit();
@@ -143,6 +143,30 @@
             this.dgvDonGX.Size = new System.Drawing.Size(494, 183);
             this.dgvDonGX.TabIndex = 142;
             // 
+            // MaDonHangGX
+            // 
+            this.MaDonHangGX.DataPropertyName = "MaDonHang";
+            this.MaDonHangGX.HeaderText = "Mã đơn";
+            this.MaDonHangGX.Name = "MaDonHangGX";
+            this.MaDonHangGX.ReadOnly = true;
+            this.MaDonHangGX.Width = 120;
+            // 
+            // MaNhanVienGiaoGX
+            // 
+            this.MaNhanVienGiaoGX.DataPropertyName = "MaNhanVienGiao";
+            this.MaNhanVienGiaoGX.HeaderText = "Nhân viên giao";
+            this.MaNhanVienGiaoGX.Name = "MaNhanVienGiaoGX";
+            this.MaNhanVienGiaoGX.ReadOnly = true;
+            this.MaNhanVienGiaoGX.Width = 105;
+            // 
+            // TrangThaiDonHangGX
+            // 
+            this.TrangThaiDonHangGX.DataPropertyName = "TrangThaiDonHang";
+            this.TrangThaiDonHangGX.HeaderText = "Trạng thái";
+            this.TrangThaiDonHangGX.Name = "TrangThaiDonHangGX";
+            this.TrangThaiDonHangGX.ReadOnly = true;
+            this.TrangThaiDonHangGX.Width = 50;
+            // 
             // dgvDonDG
             // 
             this.dgvDonDG.AllowUserToAddRows = false;
@@ -160,6 +184,30 @@
             this.dgvDonDG.Size = new System.Drawing.Size(494, 170);
             this.dgvDonDG.TabIndex = 141;
             this.dgvDonDG.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDonDG_CellClick);
+            // 
+            // MaDonHangDG
+            // 
+            this.MaDonHangDG.DataPropertyName = "MaDonHang";
+            this.MaDonHangDG.HeaderText = "Mã đơn";
+            this.MaDonHangDG.Name = "MaDonHangDG";
+            this.MaDonHangDG.ReadOnly = true;
+            this.MaDonHangDG.Width = 120;
+            // 
+            // MaNhanVienGiaoDG
+            // 
+            this.MaNhanVienGiaoDG.DataPropertyName = "MaNhanVienGiao";
+            this.MaNhanVienGiaoDG.HeaderText = "Nhân viên giao";
+            this.MaNhanVienGiaoDG.Name = "MaNhanVienGiaoDG";
+            this.MaNhanVienGiaoDG.ReadOnly = true;
+            this.MaNhanVienGiaoDG.Width = 105;
+            // 
+            // TrangThaiDonHangDG
+            // 
+            this.TrangThaiDonHangDG.DataPropertyName = "TrangThaiDonHang";
+            this.TrangThaiDonHangDG.HeaderText = "Trạng thái";
+            this.TrangThaiDonHangDG.Name = "TrangThaiDonHangDG";
+            this.TrangThaiDonHangDG.ReadOnly = true;
+            this.TrangThaiDonHangDG.Width = 50;
             // 
             // btnXemCTDH
             // 
@@ -235,6 +283,7 @@
             this.btnThoat.TabIndex = 130;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnXacNhan
             // 
@@ -279,6 +328,30 @@
             this.dgvDonCXN.Size = new System.Drawing.Size(494, 198);
             this.dgvDonCXN.TabIndex = 128;
             this.dgvDonCXN.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDonCXN_CellClick);
+            // 
+            // MaDonHangCXN
+            // 
+            this.MaDonHangCXN.DataPropertyName = "MaDonHang";
+            this.MaDonHangCXN.HeaderText = "Mã đơn";
+            this.MaDonHangCXN.Name = "MaDonHangCXN";
+            this.MaDonHangCXN.ReadOnly = true;
+            this.MaDonHangCXN.Width = 120;
+            // 
+            // MaNhanVienGiaoCXN
+            // 
+            this.MaNhanVienGiaoCXN.DataPropertyName = "MaNhanVienGiao";
+            this.MaNhanVienGiaoCXN.HeaderText = "Nhân viên giao";
+            this.MaNhanVienGiaoCXN.Name = "MaNhanVienGiaoCXN";
+            this.MaNhanVienGiaoCXN.ReadOnly = true;
+            this.MaNhanVienGiaoCXN.Width = 105;
+            // 
+            // TrangThaiDonHangCXN
+            // 
+            this.TrangThaiDonHangCXN.DataPropertyName = "TrangThaiDonHang";
+            this.TrangThaiDonHangCXN.HeaderText = "Trạng thái";
+            this.TrangThaiDonHangCXN.Name = "TrangThaiDonHangCXN";
+            this.TrangThaiDonHangCXN.ReadOnly = true;
+            this.TrangThaiDonHangCXN.Width = 50;
             // 
             // label2
             // 
@@ -365,78 +438,6 @@
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(228, 28);
             this.txtHoTen.TabIndex = 84;
-            // 
-            // MaDonHangCXN
-            // 
-            this.MaDonHangCXN.DataPropertyName = "MaDonHang";
-            this.MaDonHangCXN.HeaderText = "Mã đơn";
-            this.MaDonHangCXN.Name = "MaDonHangCXN";
-            this.MaDonHangCXN.ReadOnly = true;
-            this.MaDonHangCXN.Width = 120;
-            // 
-            // MaNhanVienGiaoCXN
-            // 
-            this.MaNhanVienGiaoCXN.DataPropertyName = "MaNhanVienGiao";
-            this.MaNhanVienGiaoCXN.HeaderText = "Nhân viên giao";
-            this.MaNhanVienGiaoCXN.Name = "MaNhanVienGiaoCXN";
-            this.MaNhanVienGiaoCXN.ReadOnly = true;
-            this.MaNhanVienGiaoCXN.Width = 105;
-            // 
-            // TrangThaiDonHangCXN
-            // 
-            this.TrangThaiDonHangCXN.DataPropertyName = "TrangThaiDonHang";
-            this.TrangThaiDonHangCXN.HeaderText = "Trạng thái";
-            this.TrangThaiDonHangCXN.Name = "TrangThaiDonHangCXN";
-            this.TrangThaiDonHangCXN.ReadOnly = true;
-            this.TrangThaiDonHangCXN.Width = 50;
-            // 
-            // MaDonHangDG
-            // 
-            this.MaDonHangDG.DataPropertyName = "MaDonHang";
-            this.MaDonHangDG.HeaderText = "Mã đơn";
-            this.MaDonHangDG.Name = "MaDonHangDG";
-            this.MaDonHangDG.ReadOnly = true;
-            this.MaDonHangDG.Width = 120;
-            // 
-            // MaNhanVienGiaoDG
-            // 
-            this.MaNhanVienGiaoDG.DataPropertyName = "MaNhanVienGiao";
-            this.MaNhanVienGiaoDG.HeaderText = "Nhân viên giao";
-            this.MaNhanVienGiaoDG.Name = "MaNhanVienGiaoDG";
-            this.MaNhanVienGiaoDG.ReadOnly = true;
-            this.MaNhanVienGiaoDG.Width = 105;
-            // 
-            // TrangThaiDonHangDG
-            // 
-            this.TrangThaiDonHangDG.DataPropertyName = "TrangThaiDonHang";
-            this.TrangThaiDonHangDG.HeaderText = "Trạng thái";
-            this.TrangThaiDonHangDG.Name = "TrangThaiDonHangDG";
-            this.TrangThaiDonHangDG.ReadOnly = true;
-            this.TrangThaiDonHangDG.Width = 50;
-            // 
-            // MaDonHangGX
-            // 
-            this.MaDonHangGX.DataPropertyName = "MaDonHang";
-            this.MaDonHangGX.HeaderText = "Mã đơn";
-            this.MaDonHangGX.Name = "MaDonHangGX";
-            this.MaDonHangGX.ReadOnly = true;
-            this.MaDonHangGX.Width = 120;
-            // 
-            // MaNhanVienGiaoGX
-            // 
-            this.MaNhanVienGiaoGX.DataPropertyName = "MaNhanVienGiao";
-            this.MaNhanVienGiaoGX.HeaderText = "Nhân viên giao";
-            this.MaNhanVienGiaoGX.Name = "MaNhanVienGiaoGX";
-            this.MaNhanVienGiaoGX.ReadOnly = true;
-            this.MaNhanVienGiaoGX.Width = 105;
-            // 
-            // TrangThaiDonHangGX
-            // 
-            this.TrangThaiDonHangGX.DataPropertyName = "TrangThaiDonHang";
-            this.TrangThaiDonHangGX.HeaderText = "Trạng thái";
-            this.TrangThaiDonHangGX.Name = "TrangThaiDonHangGX";
-            this.TrangThaiDonHangGX.ReadOnly = true;
-            this.TrangThaiDonHangGX.Width = 50;
             // 
             // frmQLDHTrucTuyen
             // 

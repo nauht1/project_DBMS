@@ -26,39 +26,22 @@ namespace QLCuaHangDoAnNhanhWP
             dgvMonAn.Columns["SoLuong"].ReadOnly = false;
             dgvMonAn.Columns["DonGia"].ReadOnly = true;
 
-            dgvMonAn.Columns["MaMon"].Visible = true;
+            dgvMonAn.Columns["MaMon"].Visible = false;
             LoadGioHang();
             dgvMonAn.CellEndEdit += new DataGridViewCellEventHandler(dgvMonAn_CellEndEdit);
             tinhTongTien(dgvMonAn);
         }
         public void LoadGioHang()
         {
-            //List<MonAn> temp = new List<MonAn>();
-            //foreach (MonAn monAn in frmMonAn.gioHang)
-            //{
-            //    monAn.SoLuongDuTru = 1;
-            //    if (temp.Find(ma => ma.MaMonAn == monAn.MaMonAn) != null)
-            //    {
-            //        int sl = temp.Find(ma => ma.MaMonAn == monAn.MaMonAn).SoLuongDuTru;
-            //        sl += 1;
-            //        temp.Find(ma => ma.MaMonAn == monAn.MaMonAn).SoLuongDuTru = sl;
-            //    }
-            //    else
-            //    {
-            //        temp.Add(monAn);
-            //    }
-            //}
-
             foreach (MonAn monAn in frmMonAn.gioHang)
             {
-                MessageBox.Show(monAn.SoLuongDuTru.ToString());
                 DataGridViewRow row = new DataGridViewRow();
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = 1 });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.MaMonAn });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.TenMonAn });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.SoLuongDuTru });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.DonGia });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.DonGia * 1 });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = monAn.DonGia * monAn.SoLuongDuTru });
                 dgvMonAn.Rows.Add(row);
             }
         }

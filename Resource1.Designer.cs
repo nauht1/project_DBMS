@@ -93,6 +93,16 @@ namespace QLCuaHangDoAnNhanhWP {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DBMS_Main_BG {
+            get {
+                object obj = ResourceManager.GetObject("DBMS_Main_BG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap garan {
             get {
                 object obj = ResourceManager.GetObject("garan", resourceCulture);
