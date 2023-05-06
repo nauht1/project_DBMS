@@ -74,7 +74,7 @@
             this.dgvCTDH.ReadOnly = true;
             this.dgvCTDH.RowHeadersWidth = 43;
             this.dgvCTDH.RowTemplate.Height = 27;
-            this.dgvCTDH.Size = new System.Drawing.Size(479, 236);
+            this.dgvCTDH.Size = new System.Drawing.Size(479, 446);
             this.dgvCTDH.TabIndex = 143;
             // 
             // btnReload
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 298);
+            this.ClientSize = new System.Drawing.Size(520, 508);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.dgvCTDH);
             this.Controls.Add(this.btnTim);

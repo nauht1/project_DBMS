@@ -83,5 +83,17 @@ namespace QLCuaHangDoAnNhanhWP
                 Application.Restart();
             }
         }
+
+        private void xemĐơnHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmQLDH frm = new frmQLDH();
+            frm.ShowDialog();
+        }
+
+        private void xemChiTiếtĐơnHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCTDH frm = new frmCTDH();
+            frm.ShowDialog();
+        }
     }
 }
