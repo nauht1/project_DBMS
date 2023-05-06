@@ -34,12 +34,6 @@ namespace QLCuaHangDoAnNhanhWP
             frm.ShowDialog();
         }
 
-        private void kháchHangToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmQLKH frm = new frmQLKH();
-            frm.ShowDialog();
-        }
-
         private void mónĂnToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmQLMonAn frm = new frmQLMonAn();
@@ -58,10 +52,36 @@ namespace QLCuaHangDoAnNhanhWP
             frm.ShowDialog();
         }
 
-        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        private void xemKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMonAn frm = new frmMonAn();
+            frmQLKH frm = new frmQLKH();
             frm.ShowDialog();
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void tàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTaiKhoan frm = new frmTaiKhoan();
+            frm.ShowDialog();
+        }
+
+        private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmThongTinCaNhan frm = new frmThongTinCaNhan();
+            frm.ShowDialog();
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult traloi = MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (traloi == DialogResult.OK)
+            {
+                Application.Restart();
+            }
         }
     }
 }

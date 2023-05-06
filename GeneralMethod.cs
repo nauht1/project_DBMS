@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace QLCuaHangDoAnNhanhWP
 {
@@ -12,8 +13,9 @@ namespace QLCuaHangDoAnNhanhWP
     {
         public static string LayMaTuDong(string tableName, string idColumn)
         {
+            string strConn = ClassConnection.GetDefault_Connection();
             string newID = "";
-            using (SqlConnection conn = ClassConnection.Connection)
+            using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("sp_TuDongTangMaSo", conn);

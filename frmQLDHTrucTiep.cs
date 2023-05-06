@@ -143,7 +143,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     daMonAn = new SqlDataAdapter("SELECT * FROM view_DanhSachMonAnCon", conn);
@@ -159,7 +159,7 @@ namespace QLCuaHangDoAnNhanhWP
                     dgvMonAn.AllowUserToAddRows = false;
                 }
             }
-            catch (SqlException ex)
+            catch
             {
                 MessageBox.Show("Error");
             }
@@ -224,6 +224,7 @@ namespace QLCuaHangDoAnNhanhWP
             {
                 int selectedRowIndex = dgvGioHangTrucTiep.SelectedCells[0].OwningRow.Index;
                 dgvGioHangTrucTiep.Rows.RemoveAt(selectedRowIndex); // xóa dòng chứa cell được chọn
+                tinhTongTien(dgvGioHangTrucTiep);
             }
         }
         public bool TaoDonHangTrucTiep()
@@ -232,7 +233,7 @@ namespace QLCuaHangDoAnNhanhWP
             string maKhachHang = GeneralMethod.LayMaTuDong("KhachHang", "MaKhachhang");
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     SqlCommand cmd1 = new SqlCommand("sp_TaoDonHangTrucTiep", conn);
@@ -272,7 +273,7 @@ namespace QLCuaHangDoAnNhanhWP
         }
         public void TimKiemMonAnTheoTen()
         {
-            using (SqlConnection conn = ClassConnection.Connection)
+            using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("sp_TimKiemTheoTenMonAn", conn);

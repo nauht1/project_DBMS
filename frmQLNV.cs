@@ -30,7 +30,7 @@ namespace QLCuaHangDoAnNhanhWP
         {   
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     daNhanVien = new SqlDataAdapter("Select * from view_DanhSachNhanVien", conn);
@@ -49,12 +49,11 @@ namespace QLCuaHangDoAnNhanhWP
                     this.btnHuy.Enabled = false;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Không lấy được dữ liệu!!");
+                MessageBox.Show(ex.Message);
             }
         }
-
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -131,15 +130,21 @@ namespace QLCuaHangDoAnNhanhWP
         {
             if (them)
             {
-                ThemNhanVien();
-                LoadData();
-                MessageBox.Show("Đã thêm xong!");
+                bool check = ThemNhanVien();
+                if (check)
+                {
+                    MessageBox.Show("Đã thêm xong!");
+                    LoadData();
+                }
             }
             else
             {
-                CapNhatNhanVien();
-                LoadData();
-                MessageBox.Show("Cập nhật thành công!");
+                bool check = CapNhatNhanVien();
+                if (check)
+                {
+                    MessageBox.Show("Cập nhật thành công!");
+                    LoadData();
+                }
             }
             this.btnThoat.Enabled = true;
             this.btnThem.Enabled = true;
@@ -186,7 +191,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("sp_XoaNhanVien", conn);
@@ -199,13 +204,12 @@ namespace QLCuaHangDoAnNhanhWP
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
-        public void ThemNhanVien()
+        public bool ThemNhanVien()
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     DateTime date = DateTime.ParseExact(txtNgaySinh.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture);
@@ -221,18 +225,20 @@ namespace QLCuaHangDoAnNhanhWP
                     cmd.Parameters.Add("@chucVu", SqlDbType.NVarChar).Value = cboChucVu.SelectedItem.ToString();
                     cmd.Parameters.Add("@soDienThoai", SqlDbType.VarChar).Value = txtSoDienThoai.Text;
                     cmd.ExecuteNonQuery();
+                    return true;
                 }
             }
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
-        public void CapNhatNhanVien()
+        public bool CapNhatNhanVien()
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     DateTime date = DateTime.ParseExact(txtNgaySinh.Text, "dd-MM-yyyy", CultureInfo.InvariantCulture);
@@ -246,11 +252,13 @@ namespace QLCuaHangDoAnNhanhWP
                     cmd.Parameters.Add("@chucVu", SqlDbType.NVarChar).Value = cboChucVu.SelectedItem.ToString();
                     cmd.Parameters.Add("@soDienThoai", SqlDbType.VarChar).Value = txtSoDienThoai.Text;
                     cmd.ExecuteNonQuery();
+                    return true;
                 }
             }
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
             
         }

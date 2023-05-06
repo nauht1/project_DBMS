@@ -36,7 +36,8 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void frmMonAn_Load(object sender, EventArgs e)
         {
-            using (SqlConnection conn = ClassConnection.Connection)
+            string strConn = ClassConnection.GetKH_ConnectionString();
+            using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM view_DanhSachMonAnCon", conn);
@@ -182,6 +183,13 @@ namespace QLCuaHangDoAnNhanhWP
             dgv_gioHang.RowTemplate.Height = 50;
 
             frmGioHang.ShowDialog();
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            frmLogin frm = new frmLogin();
+            this.Hide();
+            frm.ShowDialog();
         }
     }
 }

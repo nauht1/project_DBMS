@@ -30,7 +30,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     daKhachHang = new SqlDataAdapter("Select * from view_DanhSachKhachHang", conn);
@@ -50,9 +50,9 @@ namespace QLCuaHangDoAnNhanhWP
                     txtSoDienThoai.Enabled = false;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Không lấy được dữ liệu!!");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -109,7 +109,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("sp_CapNhatKhachHang", conn);

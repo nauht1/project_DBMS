@@ -36,4 +36,12 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="E:\UTE\Docs\HQT-CSDL\QLCuaHangDoAnNhanhWP\.editorconfig" />
+  </ItemGroup>
+
 </Project>

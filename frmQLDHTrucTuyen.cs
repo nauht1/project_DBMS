@@ -43,7 +43,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     daDonCXN = new SqlDataAdapter("Select * from view_DanhSachDonChoXacNhan", conn);
@@ -82,8 +82,9 @@ namespace QLCuaHangDoAnNhanhWP
         {
             if (dgvDonCXN.SelectedCells.Count > 0)
             {
-                using (SqlConnection conn = ClassConnection.Connection)
-                {
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+                { 
+                    //Cập nhật đơn đang chờ xác nhận thành đơn đang giao
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("sp_CapNhatTrangThaiDonTrucTuyen", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -95,8 +96,9 @@ namespace QLCuaHangDoAnNhanhWP
             }
             else
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
+                    //Cập nhật đơn đang giao thành đơn đã giao
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("sp_CapNhatTrangThaiDonTrucTuyen", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -119,7 +121,7 @@ namespace QLCuaHangDoAnNhanhWP
             if (e.RowIndex >= 0)
             {
                 maDon = dgvDonCXN.Rows[e.RowIndex].Cells[0].Value.ToString();
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     string queryKhachHang = "SELECT * FROM KhachHang WHERE MaKhachHang IN (SELECT MaKhachHang FROM DonHang WHERE MaDonHang = @maDonHang)";
@@ -170,7 +172,7 @@ namespace QLCuaHangDoAnNhanhWP
             if (e.RowIndex >= 0)
             {
                 maDon = dgvDonDG.Rows[e.RowIndex].Cells[0].Value.ToString();
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     string queryKhachHang = "SELECT * FROM KhachHang WHERE MaKhachHang IN (SELECT MaKhachHang FROM DonHang WHERE MaDonHang = @maDonHang)";

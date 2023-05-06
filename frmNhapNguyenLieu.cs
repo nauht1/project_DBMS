@@ -69,7 +69,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     daKhoNL = new SqlDataAdapter("Select * from view_DanhSachNguyenLieu", conn);
@@ -80,9 +80,9 @@ namespace QLCuaHangDoAnNhanhWP
                     dgvKhoNguyenLieu.DataSource = dtKhoNL;
                 }
             }
-            catch 
+            catch (Exception ex)
             {
-                MessageBox.Show("Không lấy được dữ liệu!!!");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -118,7 +118,7 @@ namespace QLCuaHangDoAnNhanhWP
             string maPhieuNhap = "";
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     maPhieuNhap = GeneralMethod.LayMaTuDong("PhieuNhapHang", "MaPhieuNhap");
@@ -129,10 +129,7 @@ namespace QLCuaHangDoAnNhanhWP
                     cmd1.Parameters.Add("@maNguoiQuanLy", SqlDbType.VarChar).Value = "NV001";
                     cmd1.Parameters.Add("@tongTienNhapHang", SqlDbType.Real).Value = txtTongTien.Text;
                     cmd1.ExecuteNonQuery();
-                    //Nếu không lỗi thì thực hiện tiếp code bên dưới, có lỗi -> nhảy vào exception. Vì khi lỗi transaction 
-                    //sẽ rollback tự động bằng set xact_abort on nên nó sẽ ném ra ngoại lệ sqlexception!
-                    //Khi thủ tục bên dưới lỗi , rollback sẽ thực thi và HỦY BỎ TẤT CẢ các transaction ngay cả thủ tục bên
-                    //bên trên luôn, vì nó nằm chung phạm try catch - trích "chatgpt"
+
                     foreach (DataGridViewRow row in dgvGioNguyenLieu.Rows)
                     {
                         string maNguyenLieu = GeneralMethod.LayMaTuDong("KhoNguyenLieu", "MaNguyenLieu");

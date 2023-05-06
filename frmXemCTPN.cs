@@ -28,7 +28,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     daCTPN = new SqlDataAdapter("Select * from view_DanhSachChiTietPhieuNhap", conn);
@@ -40,9 +40,9 @@ namespace QLCuaHangDoAnNhanhWP
                     dgvChiTietPN.AllowUserToAddRows = false;
                 }
             }
-            catch
+            catch (Exception ex)    
             {
-                MessageBox.Show("Không lấy được dữ liệu!!");
+                MessageBox.Show(ex.Message);
             }
         }
     }

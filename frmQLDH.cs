@@ -28,7 +28,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     daDonHang = new SqlDataAdapter("Select * from view_DanhSachDonHang", conn);

@@ -1,24 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Sql;
+using System.Data;
 
 namespace QLCuaHangDoAnNhanhWP
 {
     public class ClassConnection
     {
-        private static string sqlStringConnection = "Data Source = DESKTOP-ACER\\NAUHTSQLSERVER; " +
-                "Initial Catalog = QLCuaHangDoAnNhanh; " +
-                "User ID = sa; Password = 281003";
-        public static SqlConnection Connection
+        //Connection string dành cho các form chỉ liên quan đến khách hàng: frmMonAn, frmDHTrucTuyen
+        //nó sẽ mở kết nối đến tài khoản mặc định dành cho tất cả các khách hàng khi vào hệ thống
+        public static string GetKH_ConnectionString() 
         {
-            get
-            {
-                return new SqlConnection(sqlStringConnection);
-            }
+            return "Data Source = .\\NAUHTSQLSERVER; Initial Catalog = QLCuaHangDoAnNhanh; " +
+                "User ID = Default_Account_KH; Password = 123456";
+        }
+        public static string GetConnectionString(string username, string password)
+        {
+            return $"Data Source = .\\NAUHTSQLSERVER; Initial Catalog = QLCuaHangDoAnNhanh; " +
+                $"User ID = {username}; Password = {password}";
+        }
+        public static string GetDefault_Connection()
+        {
+            return "Data Source= .\\NAUHTSQLSERVER;Initial Catalog=QLCuaHangDoAnNhanh;Integrated Security=True";
         }
     }
 }

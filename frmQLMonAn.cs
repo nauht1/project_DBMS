@@ -99,19 +99,26 @@ namespace QLCuaHangDoAnNhanhWP
             this.txtSoLuongDuTru.Enabled = false;
             this.pbMonAn.Enabled = false;
             this.btnUpload.Enabled = false;
-            using (SqlConnection conn = ClassConnection.Connection)
+            try
             {
-                conn.Open();
-                daMonAn = new SqlDataAdapter("SELECT * FROM view_DanhSachMonAnCon", conn);
-                dtMonAn = new DataTable();
-                dtMonAn.Clear();
-                daMonAn.Fill(dtMonAn);
-                dgvMonAn.CellFormatting += new DataGridViewCellFormattingEventHandler(dgvMonAn_CellFormatting);
-                dgvMonAn.DataSource = dtMonAn;
-                dgvMonAn.AllowUserToAddRows = false;
-                dgvMonAn.AutoResizeColumn(1);
-                dgvMonAn_CellClick(null, null);
-                dgvMonAn.AutoResizeColumn(6);
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+                {
+                    conn.Open();
+                    daMonAn = new SqlDataAdapter("SELECT * FROM view_QuanLyMonAn", conn);
+                    dtMonAn = new DataTable();
+                    dtMonAn.Clear();
+                    daMonAn.Fill(dtMonAn);
+                    dgvMonAn.CellFormatting += new DataGridViewCellFormattingEventHandler(dgvMonAn_CellFormatting);
+                    dgvMonAn.DataSource = dtMonAn;
+                    dgvMonAn.AllowUserToAddRows = false;
+                    dgvMonAn.AutoResizeColumn(1);
+                    dgvMonAn_CellClick(null, null);
+                    dgvMonAn.AutoResizeColumn(6);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
@@ -213,7 +220,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("sp_ThemMonAn", conn);
@@ -238,7 +245,7 @@ namespace QLCuaHangDoAnNhanhWP
         }
         public void XoaMonAn()
         {
-            using (SqlConnection conn = ClassConnection.Connection)
+            using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("sp_XoaMonAn", conn);
@@ -251,7 +258,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("sp_CapNhatMonAn", conn);

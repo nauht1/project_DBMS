@@ -28,7 +28,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     daNhanVienGiao = new SqlDataAdapter("Select * from view_DanhSachTatCaNhanVienGiaoHang", conn);
@@ -47,7 +47,6 @@ namespace QLCuaHangDoAnNhanhWP
 
                         item["TrangThai"] = cmd.ExecuteScalar().ToString();
                     }
-
 
                     dgvNhanVienGiao.DataSource = dtNhanVienGiao;
                     dgvNhanVienGiao.AutoResizeColumns();

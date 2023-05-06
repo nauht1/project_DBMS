@@ -26,7 +26,7 @@ namespace QLCuaHangDoAnNhanhWP
         }
         void LoadData()
         {
-            using (SqlConnection conn = ClassConnection.Connection)
+            using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
             {
                 conn.Open();
                 daMonAn = new SqlDataAdapter("SELECT * FROM view_DanhSachTatCaCacMonAn", conn);

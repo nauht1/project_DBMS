@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnUser = new System.Windows.Forms.TextBox();
-            this.btnPass = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbHienThi = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
@@ -63,49 +63,50 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Mật khẩu";
             // 
-            // btnUser
+            // txtUser
             // 
-            this.btnUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.btnUser.Location = new System.Drawing.Point(311, 37);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(146, 25);
-            this.btnUser.TabIndex = 1;
+            this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUser.Location = new System.Drawing.Point(311, 37);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(146, 25);
+            this.txtUser.TabIndex = 1;
             // 
-            // btnPass
+            // txtPass
             // 
-            this.btnPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.btnPass.Location = new System.Drawing.Point(311, 88);
-            this.btnPass.Name = "btnPass";
-            this.btnPass.PasswordChar = '*';
-            this.btnPass.Size = new System.Drawing.Size(146, 25);
-            this.btnPass.TabIndex = 1;
+            this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPass.Location = new System.Drawing.Point(311, 88);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
+            this.txtPass.Size = new System.Drawing.Size(146, 25);
+            this.txtPass.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.cbHienThi);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnDangNhap);
             this.panel1.Controls.Add(this.btnThoat);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.btnPass);
-            this.panel1.Controls.Add(this.btnUser);
+            this.panel1.Controls.Add(this.txtPass);
+            this.panel1.Controls.Add(this.txtUser);
             this.panel1.Location = new System.Drawing.Point(28, 26);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(482, 222);
             this.panel1.TabIndex = 2;
             // 
-            // checkBox1
+            // cbHienThi
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(311, 119);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(110, 21);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Hiện mật khẩu";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbHienThi.AutoSize = true;
+            this.cbHienThi.Location = new System.Drawing.Point(311, 119);
+            this.cbHienThi.Name = "cbHienThi";
+            this.cbHienThi.Size = new System.Drawing.Size(110, 21);
+            this.cbHienThi.TabIndex = 4;
+            this.cbHienThi.Text = "Hiện mật khẩu";
+            this.cbHienThi.UseVisualStyleBackColor = true;
+            this.cbHienThi.CheckedChanged += new System.EventHandler(this.cbHienThi_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -125,7 +126,7 @@
             this.btnDangNhap.Location = new System.Drawing.Point(335, 147);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(122, 37);
-            this.btnDangNhap.TabIndex = 2;
+            this.btnDangNhap.TabIndex = 3;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = false;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
@@ -138,7 +139,7 @@
             this.btnThoat.Location = new System.Drawing.Point(177, 147);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(128, 37);
-            this.btnThoat.TabIndex = 2;
+            this.btnThoat.TabIndex = 4;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
@@ -167,6 +168,7 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập hệ thống";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -180,13 +182,13 @@
 
         private Label label1;
         private Label label2;
-        private TextBox btnUser;
-        private TextBox btnPass;
         private Panel panel1;
-        private CheckBox checkBox1;
+        private CheckBox cbHienThi;
         private PictureBox pictureBox1;
         private Button btnDangNhap;
         private Button btnThoat;
         private Label label3;
+        public TextBox txtUser;
+        public TextBox txtPass;
     }
 }

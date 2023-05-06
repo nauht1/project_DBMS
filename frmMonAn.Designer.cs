@@ -28,22 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label9 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.flpMonAn = new System.Windows.Forms.FlowLayoutPanel();
             this.btnGioHang = new System.Windows.Forms.Button();
+            this.btnDangNhap = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.Color.Navy;
-            this.label9.Location = new System.Drawing.Point(12, 13);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(145, 21);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Danh Sách Món Ăn";
             // 
             // flpMonAn
             // 
@@ -55,25 +44,37 @@
             // 
             // btnGioHang
             // 
-            this.btnGioHang.BackColor = System.Drawing.Color.Transparent;
+            this.btnGioHang.BackColor = System.Drawing.Color.Salmon;
             this.btnGioHang.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnGioHang.Font = new System.Drawing.Font("Segoe UI", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnGioHang.Location = new System.Drawing.Point(945, 6);
+            this.btnGioHang.Location = new System.Drawing.Point(941, 6);
             this.btnGioHang.Name = "btnGioHang";
-            this.btnGioHang.Size = new System.Drawing.Size(83, 34);
+            this.btnGioHang.Size = new System.Drawing.Size(87, 34);
             this.btnGioHang.TabIndex = 6;
             this.btnGioHang.Text = "Giỏ hàng";
             this.btnGioHang.UseVisualStyleBackColor = false;
             this.btnGioHang.Click += new System.EventHandler(this.btnGioHang_Click);
+            // 
+            // btnDangNhap
+            // 
+            this.btnDangNhap.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.btnDangNhap.ForeColor = System.Drawing.Color.Navy;
+            this.btnDangNhap.Location = new System.Drawing.Point(12, 9);
+            this.btnDangNhap.Name = "btnDangNhap";
+            this.btnDangNhap.Size = new System.Drawing.Size(106, 31);
+            this.btnDangNhap.TabIndex = 7;
+            this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.UseVisualStyleBackColor = true;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // frmMonAn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 583);
+            this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.btnGioHang);
             this.Controls.Add(this.flpMonAn);
-            this.Controls.Add(this.label9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "frmMonAn";
@@ -81,14 +82,13 @@
             this.Text = "Danh sách món ăn";
             this.Load += new System.EventHandler(this.frmMonAn_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private Label label9;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private FlowLayoutPanel flpMonAn;
         private Button btnGioHang;
+        private Button btnDangNhap;
     }
 }

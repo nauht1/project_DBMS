@@ -88,7 +88,8 @@ namespace QLCuaHangDoAnNhanhWP
             string maDonHang = GeneralMethod.LayMaTuDong("DonHang", "MaDonHang");
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                string strConn = ClassConnection.GetKH_ConnectionString();
+                using (SqlConnection conn = new SqlConnection(strConn))
                 {
                     //mã nv để tạm, sẽ dùng hàm cập nhật để chọn nhân viên
                     conn.Open();

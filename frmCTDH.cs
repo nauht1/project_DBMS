@@ -29,7 +29,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = ClassConnection.Connection)
+                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
                 {
                     conn.Open();
                     daCTDH = new SqlDataAdapter("Select * from view_DanhSachChiTietDonHang", conn);
@@ -51,7 +51,7 @@ namespace QLCuaHangDoAnNhanhWP
         }
         public void TimKiemDonHangTheoMa()
         {
-            using (SqlConnection conn = ClassConnection.Connection)
+            using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("sp_TimKiemCTDHTheoMa", conn);
