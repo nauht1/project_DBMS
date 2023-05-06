@@ -78,7 +78,7 @@ namespace QLCuaHangDoAnNhanhWP
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult traloi = MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (traloi == DialogResult.OK)
+            if (traloi == DialogResult.Yes)
             {
                 Application.Restart();
             }
