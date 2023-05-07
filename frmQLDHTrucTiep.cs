@@ -16,6 +16,8 @@ namespace QLCuaHangDoAnNhanhWP
         SqlDataAdapter daMonAn = null;
         DataTable dtMonAn = null;
         DataView dtvMonAn = null;
+        private string strConn = frmLogin.strConn;
+        private string maNhanVien = frmLogin.username;
         public frmQLDHTrucTiep()
         {
             InitializeComponent();
@@ -143,7 +145,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+                using (SqlConnection conn = new SqlConnection(strConn))
                 {
                     conn.Open();
                     daMonAn = new SqlDataAdapter("SELECT * FROM view_DanhSachMonAnCon", conn);
@@ -231,20 +233,23 @@ namespace QLCuaHangDoAnNhanhWP
         {
             string maDonHang = GeneralMethod.LayMaTuDong("DonHang", "MaDonHang");
             string maKhachHang = GeneralMethod.LayMaTuDong("KhachHang", "MaKhachhang");
-            try
+            
+            using (SqlConnection conn = new SqlConnection(strConn))
             {
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+                conn.Open();
+                SqlTransaction tran = conn.BeginTransaction();
+                try
                 {
-                    conn.Open();
                     SqlCommand cmd1 = new SqlCommand("sp_TaoDonHangTrucTiep", conn);
                     cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Transaction = tran;
                     cmd1.Parameters.Add("@maKhachHang", SqlDbType.VarChar, 10).Value = maKhachHang;
                     cmd1.Parameters.Add("@hoTen", SqlDbType.NVarChar, 50).Value = txtHoTen.Text;
                     cmd1.Parameters.Add("@diaChi", SqlDbType.NVarChar, 200).Value = txtDiaChi.Text;
                     cmd1.Parameters.Add("@soDienThoai", SqlDbType.VarChar, 11).Value = txtSoDienThoai.Text;
                     cmd1.Parameters.Add("@maDonHang", SqlDbType.VarChar, 10).Value = maDonHang;
                     cmd1.Parameters.Add("@ngayTaoDon", SqlDbType.Date).Value = DateTime.Now.Date.ToString("yyyy-MM-dd");
-                    cmd1.Parameters.Add("maNhanVienBan", SqlDbType.VarChar).Value = "NV008";
+                    cmd1.Parameters.Add("maNhanVienBan", SqlDbType.VarChar).Value = maNhanVien.ToUpper();
                     cmd1.Parameters.Add("@hinhThucThanhToan", SqlDbType.NVarChar, 30).Value = cboThanhToan.SelectedItem.ToString();
                     cmd1.Parameters.Add("@tongTien", SqlDbType.Int).Value = Convert.ToInt32(txtTongTien.Text);
                     cmd1.Parameters.Add("@ghiChu", SqlDbType.NVarChar, 200).Value = txtGhiChu.Text;
@@ -256,19 +261,23 @@ namespace QLCuaHangDoAnNhanhWP
                         int soLuongMua = Convert.ToInt32(row.Cells["SoLuongGH"].Value);
 
                         SqlCommand cmd2 = new SqlCommand("sp_ThemChiTietDonHang", conn);
+                        cmd2.Transaction = tran;
                         cmd2.CommandType = CommandType.StoredProcedure;
                         cmd2.Parameters.Add("@maDonHang", SqlDbType.VarChar, 10).Value = maDonHang;
                         cmd2.Parameters.Add("@maMonAn", SqlDbType.VarChar, 10).Value = maMonAn;
                         cmd2.Parameters.Add("@soLuongMua", SqlDbType.Int).Value = soLuongMua;
                         cmd2.ExecuteNonQuery();
                     }
+
+                    tran.Commit();
                     return true;
                 }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
+                catch (SqlException ex)
+                {
+                    tran.Rollback();
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
             }
         }
         public void TimKiemMonAnTheoTen()

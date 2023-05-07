@@ -102,14 +102,14 @@
             this.panel3.Location = new System.Drawing.Point(25, 23);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(945, 587);
+            this.panel3.Size = new System.Drawing.Size(945, 601);
             this.panel3.TabIndex = 67;
             // 
             // btnXemDon
             // 
             this.btnXemDon.BackColor = System.Drawing.Color.MistyRose;
             this.btnXemDon.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnXemDon.Location = new System.Drawing.Point(566, 483);
+            this.btnXemDon.Location = new System.Drawing.Point(553, 494);
             this.btnXemDon.Name = "btnXemDon";
             this.btnXemDon.Size = new System.Drawing.Size(113, 43);
             this.btnXemDon.TabIndex = 144;
@@ -121,9 +121,10 @@
             // 
             this.txtThanhToan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtThanhToan.Enabled = false;
-            this.txtThanhToan.Location = new System.Drawing.Point(669, 256);
+            this.txtThanhToan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtThanhToan.Location = new System.Drawing.Point(682, 243);
             this.txtThanhToan.Name = "txtThanhToan";
-            this.txtThanhToan.Size = new System.Drawing.Size(191, 25);
+            this.txtThanhToan.Size = new System.Drawing.Size(191, 28);
             this.txtThanhToan.TabIndex = 143;
             // 
             // dgvDonGX
@@ -140,8 +141,9 @@
             this.dgvDonGX.ReadOnly = true;
             this.dgvDonGX.RowHeadersWidth = 43;
             this.dgvDonGX.RowTemplate.Height = 27;
-            this.dgvDonGX.Size = new System.Drawing.Size(494, 183);
+            this.dgvDonGX.Size = new System.Drawing.Size(494, 194);
             this.dgvDonGX.TabIndex = 142;
+            this.dgvDonGX.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDonGX_CellClick);
             // 
             // MaDonHangGX
             // 
@@ -184,6 +186,7 @@
             this.dgvDonDG.Size = new System.Drawing.Size(494, 170);
             this.dgvDonDG.TabIndex = 141;
             this.dgvDonDG.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDonDG_CellClick);
+            this.dgvDonDG.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDonDG_CellContentClick);
             // 
             // MaDonHangDG
             // 
@@ -213,7 +216,7 @@
             // 
             this.btnXemCTDH.BackColor = System.Drawing.Color.LightSalmon;
             this.btnXemCTDH.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnXemCTDH.Location = new System.Drawing.Point(566, 532);
+            this.btnXemCTDH.Location = new System.Drawing.Point(553, 543);
             this.btnXemCTDH.Name = "btnXemCTDH";
             this.btnXemCTDH.Size = new System.Drawing.Size(113, 41);
             this.btnXemCTDH.TabIndex = 140;
@@ -225,17 +228,18 @@
             // 
             this.txtNhanVien.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNhanVien.Enabled = false;
-            this.txtNhanVien.Location = new System.Drawing.Point(669, 324);
+            this.txtNhanVien.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtNhanVien.Location = new System.Drawing.Point(682, 311);
             this.txtNhanVien.Name = "txtNhanVien";
-            this.txtNhanVien.Size = new System.Drawing.Size(191, 25);
+            this.txtNhanVien.Size = new System.Drawing.Size(191, 28);
             this.txtNhanVien.TabIndex = 135;
             // 
             // btnChonNV
             // 
             this.btnChonNV.Enabled = false;
-            this.btnChonNV.Location = new System.Drawing.Point(866, 324);
+            this.btnChonNV.Location = new System.Drawing.Point(879, 311);
             this.btnChonNV.Name = "btnChonNV";
-            this.btnChonNV.Size = new System.Drawing.Size(31, 25);
+            this.btnChonNV.Size = new System.Drawing.Size(31, 28);
             this.btnChonNV.TabIndex = 134;
             this.btnChonNV.Text = "...";
             this.btnChonNV.UseVisualStyleBackColor = true;
@@ -245,7 +249,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(550, 324);
+            this.label7.Location = new System.Drawing.Point(563, 311);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(113, 21);
             this.label7.TabIndex = 133;
@@ -255,16 +259,17 @@
             // 
             this.txtTongTien.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTongTien.Enabled = false;
-            this.txtTongTien.Location = new System.Drawing.Point(669, 290);
+            this.txtTongTien.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtTongTien.Location = new System.Drawing.Point(682, 277);
             this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.Size = new System.Drawing.Size(191, 25);
+            this.txtTongTien.Size = new System.Drawing.Size(191, 28);
             this.txtTongTien.TabIndex = 131;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(550, 294);
+            this.label5.Location = new System.Drawing.Point(563, 281);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 21);
             this.label5.TabIndex = 124;
@@ -276,7 +281,7 @@
             this.btnThoat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnThoat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnThoat.Font = new System.Drawing.Font("Consolas", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnThoat.Location = new System.Drawing.Point(822, 532);
+            this.btnThoat.Location = new System.Drawing.Point(809, 543);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(112, 43);
@@ -292,7 +297,7 @@
             this.btnXacNhan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXacNhan.Enabled = false;
             this.btnXacNhan.Font = new System.Drawing.Font("Consolas", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnXacNhan.Location = new System.Drawing.Point(694, 532);
+            this.btnXacNhan.Location = new System.Drawing.Point(681, 543);
             this.btnXacNhan.Margin = new System.Windows.Forms.Padding(2);
             this.btnXacNhan.Name = "btnXacNhan";
             this.btnXacNhan.Size = new System.Drawing.Size(115, 43);
@@ -305,7 +310,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(550, 260);
+            this.label6.Location = new System.Drawing.Point(563, 247);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 21);
             this.label6.TabIndex = 124;
@@ -372,7 +377,6 @@
             this.panel1.Controls.Add(this.txtDienThoai);
             this.panel1.Controls.Add(this.txtDiaChi);
             this.panel1.Controls.Add(this.txtHoTen);
-            this.panel1.Enabled = false;
             this.panel1.Location = new System.Drawing.Point(550, 22);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(371, 200);
@@ -411,39 +415,42 @@
             // txtDienThoai
             // 
             this.txtDienThoai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDienThoai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDienThoai.Location = new System.Drawing.Point(118, 59);
+            this.txtDienThoai.Enabled = false;
+            this.txtDienThoai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtDienThoai.Location = new System.Drawing.Point(131, 59);
             this.txtDienThoai.Margin = new System.Windows.Forms.Padding(2);
             this.txtDienThoai.Name = "txtDienThoai";
-            this.txtDienThoai.Size = new System.Drawing.Size(228, 28);
+            this.txtDienThoai.Size = new System.Drawing.Size(215, 28);
             this.txtDienThoai.TabIndex = 84;
             // 
             // txtDiaChi
             // 
             this.txtDiaChi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDiaChi.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDiaChi.Location = new System.Drawing.Point(118, 97);
+            this.txtDiaChi.Enabled = false;
+            this.txtDiaChi.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtDiaChi.Location = new System.Drawing.Point(131, 97);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(228, 80);
+            this.txtDiaChi.Size = new System.Drawing.Size(215, 80);
             this.txtDiaChi.TabIndex = 84;
             // 
             // txtHoTen
             // 
             this.txtHoTen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHoTen.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtHoTen.Location = new System.Drawing.Point(118, 20);
+            this.txtHoTen.Enabled = false;
+            this.txtHoTen.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtHoTen.Location = new System.Drawing.Point(131, 20);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(228, 28);
+            this.txtHoTen.Size = new System.Drawing.Size(215, 28);
             this.txtHoTen.TabIndex = 84;
             // 
             // frmQLDHTrucTuyen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 621);
+            this.ClientSize = new System.Drawing.Size(987, 635);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -473,7 +480,6 @@
         private Button btnThoat;
         private Button btnXacNhan;
         private Label label6;
-        private DataGridView dgvDonCXN;
         private Label label2;
         private Panel panel1;
         private Label label4;
@@ -485,8 +491,6 @@
         private Button btnChonNV;
         private Label label7;
         private Button btnXemCTDH;
-        private DataGridView dgvDonGX;
-        private DataGridView dgvDonDG;
         private TextBox txtThanhToan;
         public TextBox txtNhanVien;
         private Button btnXemDon;
@@ -499,5 +503,8 @@
         private DataGridViewTextBoxColumn MaDonHangCXN;
         private DataGridViewTextBoxColumn MaNhanVienGiaoCXN;
         private DataGridViewTextBoxColumn TrangThaiDonHangCXN;
+        public DataGridView dgvDonCXN;
+        public DataGridView dgvDonGX;
+        public DataGridView dgvDonDG;
     }
 }

@@ -13,7 +13,7 @@ namespace QLCuaHangDoAnNhanhWP
     {
         public static string LayMaTuDong(string tableName, string idColumn)
         {
-            string strConn = ClassConnection.GetDefault_Connection();
+            string strConn = ClassConnection.GetDefault_ConnectionString();
             string newID = "";
             using (SqlConnection conn = new SqlConnection(strConn))
             {

@@ -15,6 +15,7 @@ namespace QLCuaHangDoAnNhanhWP
     {
         SqlDataAdapter daDonHang = null;
         DataTable dtDonHang = null;
+        string strConn = frmLogin.strConn;
         public frmQLDH()
         {
             InitializeComponent();
@@ -28,10 +29,61 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+                using (SqlConnection conn = new SqlConnection(strConn))
                 {
                     conn.Open();
                     daDonHang = new SqlDataAdapter("Select * from view_DanhSachDonHang", conn);
+                    dtDonHang = new DataTable();
+                    dtDonHang.Clear();
+                    daDonHang.Fill(dtDonHang);
+
+                    dgvDonHang.DataSource = dtDonHang;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không lấy được dữ liệu!!");
+            }
+        }
+
+        private void btnTrucTiep_Click(object sender, EventArgs e)
+        {
+            LoadDonHangTrucTiep();
+        }
+        void LoadDonHangTrucTiep()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(strConn))
+                {
+                    conn.Open();
+                    daDonHang = new SqlDataAdapter("Select * from view_DanhSachDonHangTrucTiep", conn);
+                    dtDonHang = new DataTable();
+                    dtDonHang.Clear();
+                    daDonHang.Fill(dtDonHang);
+
+                    dgvDonHang.DataSource = dtDonHang;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không lấy được dữ liệu!!");
+            }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void btnTrucTuyen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(strConn))
+                {
+                    conn.Open();
+                    daDonHang = new SqlDataAdapter("Select * from view_DanhSachDonHangTrucTuyen", conn);
                     dtDonHang = new DataTable();
                     dtDonHang.Clear();
                     daDonHang.Fill(dtDonHang);

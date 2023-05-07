@@ -58,7 +58,7 @@
             this.dgvMonAn.ReadOnly = true;
             this.dgvMonAn.RowHeadersWidth = 43;
             this.dgvMonAn.RowTemplate.Height = 50;
-            this.dgvMonAn.Size = new System.Drawing.Size(786, 405);
+            this.dgvMonAn.Size = new System.Drawing.Size(1037, 535);
             this.dgvMonAn.TabIndex = 0;
             this.dgvMonAn.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMonAn_CellFormatting);
             // 
@@ -145,7 +145,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 452);
+            this.ClientSize = new System.Drawing.Size(1061, 580);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvMonAn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

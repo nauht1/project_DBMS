@@ -101,7 +101,7 @@ namespace QLCuaHangDoAnNhanhWP
                     cmd1.Parameters.Add("@soDienThoai", SqlDbType.VarChar).Value = txtDienThoai.Text;
                     cmd1.Parameters.Add("@maDonHang", SqlDbType.VarChar).Value = maDonHang;
                     cmd1.Parameters.Add("@ngayTaoDon", SqlDbType.Date).Value = DateTime.Now.Date.ToString();
-                    cmd1.Parameters.Add("maNhanVienBan", SqlDbType.VarChar).Value = "NV008";
+                    cmd1.Parameters.Add("maNhanVienBan", SqlDbType.VarChar).Value = "NV001";
                     cmd1.Parameters.Add("@hinhThucThanhToan", SqlDbType.NVarChar).Value = cboThanhToan.SelectedItem.ToString();
                     cmd1.Parameters.Add("@tongTien", SqlDbType.Int).Value = Convert.ToInt32(txtTongTien.Text);
                     cmd1.Parameters.Add("maNhanVienGiao", SqlDbType.VarChar).Value = "NV001"; 

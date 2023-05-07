@@ -15,6 +15,7 @@ namespace QLCuaHangDoAnNhanhWP
     {
         SqlDataAdapter daNhanVienGiao = null;
         DataTable dtNhanVienGiao = null;
+        private string strConn = frmLogin.strConn;
         public frmNhanVienGiao()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+                using (SqlConnection conn = new SqlConnection(strConn))
                 {
                     conn.Open();
                     daNhanVienGiao = new SqlDataAdapter("Select * from view_DanhSachTatCaNhanVienGiaoHang", conn);
@@ -62,13 +63,13 @@ namespace QLCuaHangDoAnNhanhWP
         {
             if (dgvNhanVienGiao.SelectedCells.Count > 0) 
             {
-                int rowIndex = dgvNhanVienGiao.SelectedCells[0].RowIndex; // lấy chỉ số dòng của cell được chọn
-                DataGridViewRow selectedRow = dgvNhanVienGiao.Rows[rowIndex]; // lấy dòng được chọn
+                int rowIndex = dgvNhanVienGiao.SelectedCells[0].RowIndex; 
+                DataGridViewRow selectedRow = dgvNhanVienGiao.Rows[rowIndex]; 
 
-                string maNhanVien = selectedRow.Cells["MaNhanVien"].Value.ToString(); // lấy mã nhân viên từ cột "MaNhanVien" của dòng được chọn
-                frmQLDHTrucTuyen frm = (frmQLDHTrucTuyen)this.Owner; // lấy instance của frmQLDHTrucTuyen
+                string maNhanVien = selectedRow.Cells["MaNhanVien"].Value.ToString(); 
+                frmQLDHTrucTuyen frm = (frmQLDHTrucTuyen)this.Owner; 
                 frm.txtNhanVien.Text = maNhanVien;
-                this.Close(); // đóng form hiện tại
+                this.Close();
             }
             else
             {

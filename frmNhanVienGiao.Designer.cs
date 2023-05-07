@@ -35,9 +35,12 @@
             // 
             // dgvNhanVienGiao
             // 
+            this.dgvNhanVienGiao.AllowUserToAddRows = false;
+            this.dgvNhanVienGiao.AllowUserToDeleteRows = false;
             this.dgvNhanVienGiao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNhanVienGiao.Location = new System.Drawing.Point(12, 12);
             this.dgvNhanVienGiao.Name = "dgvNhanVienGiao";
+            this.dgvNhanVienGiao.ReadOnly = true;
             this.dgvNhanVienGiao.RowHeadersWidth = 43;
             this.dgvNhanVienGiao.RowTemplate.Height = 27;
             this.dgvNhanVienGiao.Size = new System.Drawing.Size(633, 318);
@@ -62,6 +65,8 @@
             this.ClientSize = new System.Drawing.Size(657, 376);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.dgvNhanVienGiao);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "frmNhanVienGiao";
             this.Text = "frmNhanVienGiao";
             this.Load += new System.EventHandler(this.frmNhanVienGiao_Load);

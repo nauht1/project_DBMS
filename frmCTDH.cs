@@ -16,6 +16,7 @@ namespace QLCuaHangDoAnNhanhWP
     {
         SqlDataAdapter daCTDH = null;
         DataTable dtCTDH = null;
+        string strConn = frmLogin.strConn;
         public frmCTDH()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+                using (SqlConnection conn = new SqlConnection(strConn))
                 {
                     conn.Open();
                     daCTDH = new SqlDataAdapter("Select * from view_DanhSachChiTietDonHang", conn);
@@ -51,7 +52,7 @@ namespace QLCuaHangDoAnNhanhWP
         }
         public void TimKiemDonHangTheoMa()
         {
-            using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+            using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("sp_TimKiemCTDHTheoMa", conn);
@@ -67,6 +68,56 @@ namespace QLCuaHangDoAnNhanhWP
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void btnTrucTiep_Click(object sender, EventArgs e)
+        {
+            LoadCTDHTrucTiep();
+        }
+
+        private void btnTrucTuyen_Click(object sender, EventArgs e)
+        {
+            LoadCTDHTrucTuyen();
+        }
+        void LoadCTDHTrucTiep()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(strConn))
+                {
+                    conn.Open();
+                    daCTDH = new SqlDataAdapter("Select * from view_DanhSachChiTietDonTrucTiep", conn);
+                    dtCTDH = new DataTable();
+                    dtCTDH.Clear();
+                    daCTDH.Fill(dtCTDH);
+                    dgvCTDH.DataSource = dtCTDH;
+                    dgvCTDH.AutoResizeColumns();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không lấy được dữ liệu!!");
+            }
+        }
+        void LoadCTDHTrucTuyen()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(strConn))
+                {
+                    conn.Open();
+                    daCTDH = new SqlDataAdapter("Select * from view_DanhSachChiTietDonTrucTuyen", conn);
+                    dtCTDH = new DataTable();
+                    dtCTDH.Clear();
+                    daCTDH.Fill(dtCTDH);
+                    dgvCTDH.DataSource = dtCTDH;
+                    dgvCTDH.AutoResizeColumns();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không lấy được dữ liệu!!");
+            }
         }
     }
 }

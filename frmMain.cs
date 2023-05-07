@@ -95,5 +95,22 @@ namespace QLCuaHangDoAnNhanhWP
             frmCTDH frm = new frmCTDH();
             frm.ShowDialog();
         }
+
+        private void quảnLýĐơnTrựcTuyếnToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmQLDHTrucTuyenChoNVG frm = new frmQLDHTrucTuyenChoNVG();
+            frm.ShowDialog();
+        }
+        public void customForNhanVienGiaoHang(frmQLDHTrucTuyen frm)
+        {
+            DataGridView dgv_DonDangGiao = frm.dgvDonDG;
+            DataGridView dgv_DonDaGiao = frm.dgvDonGX;
+            frm.dgvDonCXN.Hide();
+            dgv_DonDangGiao.Location = new Point(17, 12);
+            dgv_DonDangGiao.Height = 304;
+            dgv_DonDaGiao.Location = new Point(17, 330);
+            dgv_DonDaGiao.Height = 246;
+        }
+
     }
 }

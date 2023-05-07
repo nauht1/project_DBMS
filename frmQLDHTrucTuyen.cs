@@ -19,6 +19,8 @@ namespace QLCuaHangDoAnNhanhWP
         DataTable dtDonDG = null;
         SqlDataAdapter daDonGX = null;
         DataTable dtDonGX = null;
+        private string strConn = frmLogin.strConn;
+        private string maNhanVien = frmLogin.username;
         public frmQLDHTrucTuyen()
         {
             InitializeComponent();
@@ -28,12 +30,12 @@ namespace QLCuaHangDoAnNhanhWP
             InitializeComponent();
             txtNhanVien.Text = maNhanVien;
         }
-        public DataTable dtMonAn { get; set; }
-        public void LoadData(DataTable dt)
-        {
-            dtMonAn = dt;
-            dgvDonCXN.DataSource = dt;
-        }
+        //public DataTable dtMonAn { get; set; }
+        //public void LoadData(DataTable dt)
+        //{
+        //    dtMonAn = dt;
+        //    dgvDonCXN.DataSource = dt;
+        //}
 
         private void frmDHTrucTuyen_Load(object sender, EventArgs e)
         {
@@ -43,7 +45,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+                using (SqlConnection conn = new SqlConnection(strConn))
                 {
                     conn.Open();
                     daDonCXN = new SqlDataAdapter("Select * from view_DanhSachDonChoXacNhan", conn);
@@ -75,39 +77,43 @@ namespace QLCuaHangDoAnNhanhWP
         }
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            CapNhatDonHang();
-            LoadData();
-        }
-        public void CapNhatDonHang()
-        {
-            if (dgvDonCXN.SelectedCells.Count > 0)
+            if (txtNhanVien.Text != "NV001")
             {
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
-                { 
-                    //Cập nhật đơn đang chờ xác nhận thành đơn đang giao
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("sp_CapNhatTrangThaiDonTrucTuyen", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@maDonHang", SqlDbType.VarChar).Value = maDon;
-                    cmd.Parameters.Add("@maNhanVienGiao", SqlDbType.VarChar).Value = txtNhanVien.Text;
-                    cmd.Parameters.Add("@trangThaiDonHang", SqlDbType.NVarChar).Value = "Đang giao hàng";
-                    cmd.ExecuteNonQuery();
+                bool check = CapNhatDonHang();
+                if (check)
+                {
+                    MessageBox.Show("Xác nhận thành công!");
                 }
+                LoadData();
             }
             else
             {
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
-                {
-                    //Cập nhật đơn đang giao thành đơn đã giao
+                MessageBox.Show("Vui lòng chọn nhân viên giao hàng!");
+            }
+        }
+        public bool CapNhatDonHang()
+        {
+            if (dgvDonCXN.SelectedCells.Count > 0)
+            {
+                using (SqlConnection conn = new SqlConnection(strConn))
+                { 
+                    //Cập nhật đơn đang chờ xác nhận thành đơn đang giao
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("sp_CapNhatTrangThaiDonTrucTuyen", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@maDonHang", SqlDbType.VarChar).Value = maDon;
-                    cmd.Parameters.Add("@maNhanVienGiao", SqlDbType.VarChar).Value = txtNhanVien.Text;
-                    cmd.Parameters.Add("@trangThaiDonHang", SqlDbType.NVarChar).Value = "Đã giao hàng";
-                    cmd.ExecuteNonQuery();
+                    SqlCommand cmd1 = new SqlCommand("sp_CapNhatTrangThaiDonTrucTuyen", conn);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add("@maDonHang", SqlDbType.VarChar).Value = maDon;
+                    cmd1.Parameters.Add("@maNhanVienGiao", SqlDbType.VarChar).Value = txtNhanVien.Text;
+                    cmd1.Parameters.Add("@trangThaiDonHang", SqlDbType.NVarChar).Value = "Đang giao hàng";
+                    cmd1.ExecuteNonQuery();
+
+                    SqlCommand cmd2 = new SqlCommand($"Update DonHang " +
+                                                    $"Set MaNhanVienBan = UPPER('{maNhanVien}') " +
+                                                    $"Where MaDonHang = '{maDon}'", conn);
+                    cmd2.ExecuteNonQuery();
+                    return true;
                 }
             }
+            return false;
         }
 
         private void btnXemCTDH_Click(object sender, EventArgs e)
@@ -121,34 +127,7 @@ namespace QLCuaHangDoAnNhanhWP
             if (e.RowIndex >= 0)
             {
                 maDon = dgvDonCXN.Rows[e.RowIndex].Cells[0].Value.ToString();
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
-                {
-                    conn.Open();
-                    string queryKhachHang = "SELECT * FROM KhachHang WHERE MaKhachHang IN (SELECT MaKhachHang FROM DonHang WHERE MaDonHang = @maDonHang)";
-                    SqlCommand cmdKhachHang = new SqlCommand(queryKhachHang, conn);
-                    cmdKhachHang.Parameters.AddWithValue("@maDonHang", maDon);
-                    SqlDataReader readerKhachHang = cmdKhachHang.ExecuteReader();
-                    if (readerKhachHang.Read())
-                    {
-                        txtHoTen.Text = readerKhachHang["HoTen"].ToString();
-                        txtDiaChi.Text = readerKhachHang["DiaChi"].ToString();
-                        txtDienThoai.Text = readerKhachHang["SoDienThoai"].ToString();
-                    }
-                    readerKhachHang.Close();
-
-                    string queryDonHang = "SELECT * FROM DonHangTrucTuyen JOIN DonHang " +
-                                            "ON DonHangTrucTuyen.MaDonHang = @maDonHang";
-                    SqlCommand cmdDonHang = new SqlCommand(queryDonHang, conn);
-                    cmdDonHang.Parameters.AddWithValue("@maDonHang", maDon);
-                    SqlDataReader readerDonHang = cmdDonHang.ExecuteReader();
-                    if (readerDonHang.Read())
-                    {
-                        txtThanhToan.Text = readerDonHang["HinhThucThanhToan"].ToString();
-                        txtTongTien.Text = readerDonHang["TongTien"].ToString();
-                        txtNhanVien.Text = readerDonHang["MaNhanVienGiao"].ToString();
-                    }
-                    readerDonHang.Close();
-                }
+                LoadKhachHangVaDonHang(maDon);
             }
             btnXacNhan.Enabled = true;
             btnChonNV.Enabled = true;
@@ -172,41 +151,65 @@ namespace QLCuaHangDoAnNhanhWP
             if (e.RowIndex >= 0)
             {
                 maDon = dgvDonDG.Rows[e.RowIndex].Cells[0].Value.ToString();
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
-                {
-                    conn.Open();
-                    string queryKhachHang = "SELECT * FROM KhachHang WHERE MaKhachHang IN (SELECT MaKhachHang FROM DonHang WHERE MaDonHang = @maDonHang)";
-                    SqlCommand cmdKhachHang = new SqlCommand(queryKhachHang, conn);
-                    cmdKhachHang.Parameters.AddWithValue("@maDonHang", maDon);
-                    SqlDataReader readerKhachHang = cmdKhachHang.ExecuteReader();
-                    if (readerKhachHang.Read())
-                    {
-                        txtHoTen.Text = readerKhachHang["HoTen"].ToString();
-                        txtDiaChi.Text = readerKhachHang["DiaChi"].ToString();
-                        txtDienThoai.Text = readerKhachHang["SoDienThoai"].ToString();
-                    }
-                    readerKhachHang.Close();
-
-                    string queryDonHang = "SELECT * FROM DonHangTrucTuyen JOIN DonHang " +
-                                            "ON DonHangTrucTuyen.MaDonHang = @maDonHang";
-                    SqlCommand cmdDonHang = new SqlCommand(queryDonHang, conn);
-                    cmdDonHang.Parameters.AddWithValue("@maDonHang", maDon);
-                    SqlDataReader readerDonHang = cmdDonHang.ExecuteReader();
-                    if (readerDonHang.Read())
-                    {
-                        txtThanhToan.Text = readerDonHang["HinhThucThanhToan"].ToString();
-                        txtTongTien.Text = readerDonHang["TongTien"].ToString();
-                        txtNhanVien.Text = readerDonHang["MaNhanVienGiao"].ToString();
-                    }
-                    readerDonHang.Close();
-                }
+                LoadKhachHangVaDonHang(maDon);
             }
-            btnXacNhan.Enabled = true;
+            btnXacNhan.Enabled = false;
+            btnChonNV.Enabled = false;
+
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvDonGX_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                maDon = dgvDonGX.Rows[e.RowIndex].Cells[0].Value.ToString();
+                LoadKhachHangVaDonHang(maDon);
+            }
+            btnXacNhan.Enabled = false;
+            btnChonNV.Enabled = false;
+        }
+        public void LoadKhachHangVaDonHang(string maDon)
+        {
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                string queryKhachHang = "SELECT * FROM KhachHang WHERE MaKhachHang IN (SELECT MaKhachHang FROM DonHang WHERE MaDonHang = @maDonHang)";
+                SqlCommand cmdKhachHang = new SqlCommand(queryKhachHang, conn);
+                cmdKhachHang.Parameters.AddWithValue("@maDonHang", maDon);
+                SqlDataReader readerKhachHang = cmdKhachHang.ExecuteReader();
+                while (readerKhachHang.Read())
+                {
+                    txtHoTen.Text = readerKhachHang["HoTen"].ToString();
+                    txtDiaChi.Text = readerKhachHang["DiaChi"].ToString();
+                    txtDienThoai.Text = readerKhachHang["SoDienThoai"].ToString();
+                }
+                readerKhachHang.Close();
+
+                string queryDonHang = "SELECT * FROM DonHangTrucTuyen JOIN DonHang " +
+                                        "ON DonHangTrucTuyen.MaDonHang = DonHang.MaDonHang " +
+                                        "WHERE DonHang.MaDonHang = @maDonHang";
+                SqlCommand cmdDonHang = new SqlCommand(queryDonHang, conn);
+                cmdDonHang.Parameters.AddWithValue("@maDonHang", maDon);
+                SqlDataReader readerDonHang = cmdDonHang.ExecuteReader();
+                while (readerDonHang.Read())
+                {
+                    txtThanhToan.Text = readerDonHang["HinhThucThanhToan"].ToString();
+                    txtTongTien.Text = readerDonHang["TongTien"].ToString();
+                    txtNhanVien.Text = readerDonHang["MaNhanVienGiao"].ToString();
+                }
+                readerDonHang.Close();
+
+            }
+        }
+
+        private void dgvDonDG_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -39,6 +39,7 @@ namespace QLCuaHangDoAnNhanhWP
                 dgvMonAn.AutoResizeColumns();
                 dgvMonAn.Columns["CT_HinhAnh"].Width = 120;
                 dgvMonAn.Columns["CT_TrangThai"].DisplayIndex = 4;
+                dgvMonAn.Columns["CT_MoTa"].DisplayIndex = 7;
             }
         }
 

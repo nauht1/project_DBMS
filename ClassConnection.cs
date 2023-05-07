@@ -15,7 +15,7 @@ namespace QLCuaHangDoAnNhanhWP
     {
         //Connection string dành cho các form chỉ liên quan đến khách hàng: frmMonAn, frmDHTrucTuyen
         //nó sẽ mở kết nối đến tài khoản mặc định dành cho tất cả các khách hàng khi vào hệ thống
-        public static string GetKH_ConnectionString() 
+        public static string GetKH_ConnectionString()
         {
             return "Data Source = .\\NAUHTSQLSERVER; Initial Catalog = QLCuaHangDoAnNhanh; " +
                 "User ID = Default_Account_KH; Password = 123456";
@@ -25,9 +25,9 @@ namespace QLCuaHangDoAnNhanhWP
             return $"Data Source = .\\NAUHTSQLSERVER; Initial Catalog = QLCuaHangDoAnNhanh; " +
                 $"User ID = {username}; Password = {password}";
         }
-        public static string GetDefault_Connection()
+        public static string GetDefault_ConnectionString()
         {
-            return "Data Source= .\\NAUHTSQLSERVER;Initial Catalog=QLCuaHangDoAnNhanh;Integrated Security=True";
+            return "Data Source= .\\NAUHTSQLSERVER; Initial Catalog = QLCuaHangDoAnNhanh; Integrated Security=True";
         }
     }
 }

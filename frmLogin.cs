@@ -33,26 +33,52 @@ namespace QLCuaHangDoAnNhanhWP
         {
             username = txtUser.Text;
             string password = txtPass.Text;
+            int chucVu = KiemTraChucVu(username);
             bool check = KiemTraTaiKhoan(username, password);
             if (check)
             {
                 strConn = ClassConnection.GetConnectionString(username, password);
-                frmMain frm_Main = new frmMain();
-                this.Hide();
-                frm_Main.ShowDialog();
-                this.Close();
+                if (chucVu == 1)
+                {
+                    frmMain frm_Main = new frmMain();
+                    this.Hide();
+                    frm_Main.ShowDialog();
+                    this.Close();
+                }
+                else if (chucVu == 2) //Nếu là nhân viên thường (bán) thì disbale mục Nhân viên giao
+                {
+                    frmMain frm_Main = new frmMain();
+                    frm_Main.nhânViênGiaoHàngToolStripMenuItem.Enabled = false;
+                    this.Hide();
+                    frm_Main.ShowDialog();
+                    this.Close();
+                }
+                else if (chucVu == 3)  //Nếu là nhân viên giao hàng thì disable mục nhân viên thường
+                {
+                    frmMain frm_Main = new frmMain();
+                    frm_Main.nhânViênToolStripMenuItem1.Enabled = false;
+                    this.Hide();
+                    frm_Main.ShowDialog();
+                    this.Close();
+                }
             }
             else
             {
                 MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!!");
             }
         }
+        public void showForm()
+        {
+            frmMain frm_Main = new frmMain();
+            this.Hide();
+            frm_Main.ShowDialog();
+            this.Close();
+        }
         public bool KiemTraTaiKhoan(string username, string password)
         {
             try
             {
-                string strConnection = "Data Source= .\\NAUHTSQLSERVER;Initial Catalog=QLCuaHangDoAnNhanh;Integrated Security=True";
-                using (SqlConnection conn = new SqlConnection(strConnection))
+                using (SqlConnection conn = new SqlConnection(ClassConnection.GetDefault_ConnectionString()))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand($"Select Count(*) from TaiKhoanDangNhap Where TenDangNhap = '{username}' and MatKhau = '{password}'", conn);
@@ -66,6 +92,27 @@ namespace QLCuaHangDoAnNhanhWP
             {
                 MessageBox.Show("Tài khoản hoặc mật khẩu bị sai!!");
                 return false;
+            }
+        }
+        public int KiemTraChucVu(string maNhanVien)
+        {
+            try
+            {
+                string stringConnection = ClassConnection.GetDefault_ConnectionString();
+                using (SqlConnection conn = new SqlConnection(stringConnection))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("Select dbo.func_KiemTraChucVuNhanVien(@maNhanVien)", conn);
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add("@maNhanVien", SqlDbType.VarChar).Value = maNhanVien;
+                    int kq = (int)cmd.ExecuteScalar();
+                    return kq;
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return -1;
             }
         }
         private void frmLogin_Load(object sender, EventArgs e)
