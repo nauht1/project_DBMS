@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -95,6 +96,12 @@ namespace QLCuaHangDoAnNhanhWP
             cboChucVu.ResetText();
             txtSoDienThoai.ResetText();
 
+            txtHoTen.Enabled = true;
+            txtNgaySinh.Enabled = true;
+            cboGioiTinh.Enabled = true;
+            cboChucVu.Enabled = true;
+            txtSoDienThoai.Enabled = true;
+
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
             panel1.Enabled = true;
@@ -117,6 +124,12 @@ namespace QLCuaHangDoAnNhanhWP
             this.btnLuu.Enabled = true;
             this.btnHuy.Enabled = true;
             this.panel1.Enabled = true;
+
+            txtHoTen.Enabled = true;
+            txtNgaySinh.Enabled = true;
+            cboGioiTinh.Enabled = true;
+            cboChucVu.Enabled = true;
+            txtSoDienThoai.Enabled = true;
 
             this.btnThem.Enabled = false;
             this.btnSua.Enabled = false;
@@ -175,6 +188,12 @@ namespace QLCuaHangDoAnNhanhWP
             this.cboGioiTinh.ResetText();
             this.cboChucVu.ResetText();
             this.txtSoDienThoai.ResetText();
+
+            txtHoTen.Enabled = false;
+            txtNgaySinh.Enabled = false;
+            cboGioiTinh.Enabled = false;
+            cboChucVu.Enabled = false;
+            txtSoDienThoai.Enabled = false;
 
             this.btnThem.Enabled = true;
             this.btnSua.Enabled = true;

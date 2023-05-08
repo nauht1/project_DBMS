@@ -20,11 +20,13 @@ namespace QLCuaHangDoAnNhanhWP
             return "Data Source = .\\NAUHTSQLSERVER; Initial Catalog = QLCuaHangDoAnNhanh; " +
                 "User ID = Default_Account_KH; Password = 123456";
         }
+        //Connection string khi các nhân viên đăng nhập
         public static string GetConnectionString(string username, string password)
         {
             return $"Data Source = .\\NAUHTSQLSERVER; Initial Catalog = QLCuaHangDoAnNhanh; " +
                 $"User ID = {username}; Password = {password}";
         }
+        //Connection string để kiểm tra các tài khoản trước khi đăng nhập 
         public static string GetDefault_ConnectionString()
         {
             return "Data Source= .\\NAUHTSQLSERVER; Initial Catalog = QLCuaHangDoAnNhanh; Integrated Security=True";

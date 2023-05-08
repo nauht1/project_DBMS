@@ -36,26 +36,7 @@ namespace QLCuaHangDoAnNhanhWP
 
         private void frmMonAn_Load(object sender, EventArgs e)
         {
-            string strConn = ClassConnection.GetKH_ConnectionString();
-            using (SqlConnection conn = new SqlConnection(strConn))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM view_DanhSachMonAnCon", conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    MonAn monAn = new MonAn();
-                    monAn.MaMonAn = reader["MaMonAn"].ToString();
-                    monAn.MaNguoiTao = reader["MaNguoiTao"].ToString();
-                    monAn.TenMonAn = reader["TenMonAn"].ToString();
-                    monAn.MoTa = reader["MoTa"].ToString();
-                    monAn.DonGia = (float)reader["DonGia"];
-                    monAn.SoLuongDuTru = (int)reader["SoLuongDuTru"];
-                    monAn.HinhAnh = reader["HinhAnh"].ToString();
-                    danhSachMonAn.Add(monAn);
-                }
-                reader.Close();
-            }
+            LoadMonAn();
             int index = 0;
             foreach (MonAn monAn in danhSachMonAn)
             {
@@ -132,7 +113,29 @@ namespace QLCuaHangDoAnNhanhWP
                 index++;
             }
         }
-
+        public void LoadMonAn()
+        {
+            string strConn = ClassConnection.GetKH_ConnectionString();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM view_DanhSachMonAnCon", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    MonAn monAn = new MonAn();
+                    monAn.MaMonAn = reader["MaMonAn"].ToString();
+                    monAn.MaNguoiTao = reader["MaNguoiTao"].ToString();
+                    monAn.TenMonAn = reader["TenMonAn"].ToString();
+                    monAn.MoTa = reader["MoTa"].ToString();
+                    monAn.DonGia = (float)reader["DonGia"];
+                    monAn.SoLuongDuTru = (int)reader["SoLuongDuTru"];
+                    monAn.HinhAnh = reader["HinhAnh"].ToString();
+                    danhSachMonAn.Add(monAn);
+                }
+                reader.Close();
+            }
+        }
         private void BtnDatHang_Click(object? sender, EventArgs e)
         {
             Button btn = sender as Button;

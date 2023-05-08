@@ -50,6 +50,8 @@
             this.ChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtNgaySinh = new System.Windows.Forms.TextBox();
             this.cboChucVu = new System.Windows.Forms.ComboBox();
             this.btnThoat = new System.Windows.Forms.Button();
@@ -73,6 +75,7 @@
             // 
             // cboGioiTinh
             // 
+            this.cboGioiTinh.Enabled = false;
             this.cboGioiTinh.FormattingEnabled = true;
             this.cboGioiTinh.Items.AddRange(new object[] {
             "Nam",
@@ -85,6 +88,7 @@
             // txtSoDienThoai
             // 
             this.txtSoDienThoai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSoDienThoai.Enabled = false;
             this.txtSoDienThoai.Location = new System.Drawing.Point(500, 111);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(197, 25);
@@ -113,6 +117,7 @@
             // txtHoTen
             // 
             this.txtHoTen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHoTen.Enabled = false;
             this.txtHoTen.Location = new System.Drawing.Point(102, 64);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(193, 25);
@@ -170,7 +175,7 @@
             // btnHuy
             // 
             this.btnHuy.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnHuy.Location = new System.Drawing.Point(446, 482);
+            this.btnHuy.Location = new System.Drawing.Point(446, 500);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(79, 34);
             this.btnHuy.TabIndex = 1;
@@ -181,7 +186,7 @@
             // btnLuu
             // 
             this.btnLuu.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLuu.Location = new System.Drawing.Point(335, 482);
+            this.btnLuu.Location = new System.Drawing.Point(335, 500);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(79, 34);
             this.btnLuu.TabIndex = 1;
@@ -192,7 +197,7 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSua.Location = new System.Drawing.Point(227, 482);
+            this.btnSua.Location = new System.Drawing.Point(227, 500);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(79, 34);
             this.btnSua.TabIndex = 1;
@@ -210,7 +215,7 @@
             this.GioiTinh,
             this.ChucVu,
             this.SoDienThoai});
-            this.dgvNhanVien.Location = new System.Drawing.Point(13, 170);
+            this.dgvNhanVien.Location = new System.Drawing.Point(13, 208);
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.ReadOnly = true;
             this.dgvNhanVien.RowHeadersWidth = 43;
@@ -272,6 +277,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtNgaySinh);
             this.panel1.Controls.Add(this.cboChucVu);
             this.panel1.Controls.Add(this.cboGioiTinh);
@@ -294,12 +301,33 @@
             this.panel1.Controls.Add(this.dgvNhanVien);
             this.panel1.Location = new System.Drawing.Point(12, 22);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(746, 539);
+            this.panel1.Size = new System.Drawing.Size(746, 553);
             this.panel1.TabIndex = 2;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.267326F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(102, 155);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(98, 17);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "VD: 03-04-2003";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.267326F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(102, 138);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(167, 17);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Định dạng: ngày-tháng-năm";
             // 
             // txtNgaySinh
             // 
             this.txtNgaySinh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNgaySinh.Enabled = false;
             this.txtNgaySinh.Location = new System.Drawing.Point(102, 110);
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Size = new System.Drawing.Size(193, 25);
@@ -307,6 +335,7 @@
             // 
             // cboChucVu
             // 
+            this.cboChucVu.Enabled = false;
             this.cboChucVu.FormattingEnabled = true;
             this.cboChucVu.Items.AddRange(new object[] {
             "Quản lý",
@@ -320,7 +349,7 @@
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnThoat.Location = new System.Drawing.Point(654, 482);
+            this.btnThoat.Location = new System.Drawing.Point(654, 500);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(79, 34);
             this.btnThoat.TabIndex = 1;
@@ -331,7 +360,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnXoa.Location = new System.Drawing.Point(552, 482);
+            this.btnXoa.Location = new System.Drawing.Point(552, 500);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(79, 34);
             this.btnXoa.TabIndex = 1;
@@ -342,7 +371,7 @@
             // btnReload
             // 
             this.btnReload.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnReload.Location = new System.Drawing.Point(13, 482);
+            this.btnReload.Location = new System.Drawing.Point(13, 500);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(79, 34);
             this.btnReload.TabIndex = 1;
@@ -353,7 +382,7 @@
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnThem.Location = new System.Drawing.Point(119, 482);
+            this.btnThem.Location = new System.Drawing.Point(119, 500);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(79, 34);
             this.btnThem.TabIndex = 1;
@@ -365,7 +394,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 574);
+            this.ClientSize = new System.Drawing.Size(773, 587);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "frmQLNV";
@@ -410,5 +439,7 @@
         private DataGridViewTextBoxColumn ChucVu;
         private DataGridViewTextBoxColumn SoDienThoai;
         private TextBox txtNgaySinh;
+        private Label label9;
+        private Label label8;
     }
 }

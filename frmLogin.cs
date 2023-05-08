@@ -38,14 +38,7 @@ namespace QLCuaHangDoAnNhanhWP
             if (check)
             {
                 strConn = ClassConnection.GetConnectionString(username, password);
-                if (chucVu == 1)
-                {
-                    frmMain frm_Main = new frmMain();
-                    this.Hide();
-                    frm_Main.ShowDialog();
-                    this.Close();
-                }
-                else if (chucVu == 2) //Nếu là nhân viên thường (bán) thì disbale mục Nhân viên giao
+                if (chucVu == 1) //Nếu là quản lý thì disable mục nhân viên giao
                 {
                     frmMain frm_Main = new frmMain();
                     frm_Main.nhânViênGiaoHàngToolStripMenuItem.Enabled = false;
@@ -53,7 +46,15 @@ namespace QLCuaHangDoAnNhanhWP
                     frm_Main.ShowDialog();
                     this.Close();
                 }
-                else if (chucVu == 3)  //Nếu là nhân viên giao hàng thì disable mục nhân viên thường
+                else if (chucVu == 2) //Nếu là nhân viên thường (bán) thì disbale mục Nhân viên giao, quản lý
+                {
+                    frmMain frm_Main = new frmMain();
+                    frm_Main.nhânViênGiaoHàngToolStripMenuItem.Enabled = false;
+                    this.Hide();
+                    frm_Main.ShowDialog();
+                    this.Close();
+                }
+                else if (chucVu == 3)  //Nếu là nhân viên giao hàng thì disable mục nhân viên thường, quản lý
                 {
                     frmMain frm_Main = new frmMain();
                     frm_Main.nhânViênToolStripMenuItem1.Enabled = false;

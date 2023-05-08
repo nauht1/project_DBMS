@@ -39,7 +39,7 @@
             this.flpMonAn.AutoScroll = true;
             this.flpMonAn.Location = new System.Drawing.Point(12, 46);
             this.flpMonAn.Name = "flpMonAn";
-            this.flpMonAn.Size = new System.Drawing.Size(1050, 525);
+            this.flpMonAn.Size = new System.Drawing.Size(1050, 698);
             this.flpMonAn.TabIndex = 5;
             // 
             // btnGioHang
@@ -71,7 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 583);
+            this.ClientSize = new System.Drawing.Size(1074, 756);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.btnGioHang);
             this.Controls.Add(this.flpMonAn);

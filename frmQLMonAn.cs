@@ -19,6 +19,7 @@ namespace QLCuaHangDoAnNhanhWP
         SqlDataAdapter daMonAn = null;
         DataTable dtMonAn = null;
         bool them;
+        private string maNhanVien = frmLogin.username;
         public frmQLMonAn()
         {
             InitializeComponent();
@@ -227,7 +228,7 @@ namespace QLCuaHangDoAnNhanhWP
                     cmd.CommandType = CommandType.StoredProcedure;
                     string maMonAn = GeneralMethod.LayMaTuDong("MonAn", "MaMonAn");
                     cmd.Parameters.Add("@maMonAn", SqlDbType.VarChar).Value = maMonAn;
-                    cmd.Parameters.Add("@maNguoiTao", SqlDbType.VarChar).Value = "NV001";
+                    cmd.Parameters.Add("@maNguoiTao", SqlDbType.VarChar).Value = maNhanVien;
                     cmd.Parameters.Add("@tenMonAn", SqlDbType.NVarChar).Value = txtTenMon.Text;
                     cmd.Parameters.Add("@moTa", SqlDbType.NVarChar).Value = txtMoTa.Text;
                     cmd.Parameters.Add("@donGia", SqlDbType.Float).Value = float.Parse(txtDonGia.Text);
@@ -264,7 +265,7 @@ namespace QLCuaHangDoAnNhanhWP
                     SqlCommand cmd = new SqlCommand("sp_CapNhatMonAn", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@maMonAn", SqlDbType.VarChar).Value = txtMaMon.Text;
-                    cmd.Parameters.Add("@maNguoiTao", SqlDbType.VarChar).Value = "NV001";
+                    cmd.Parameters.Add("@maNguoiTao", SqlDbType.VarChar).Value = maNhanVien;
                     cmd.Parameters.Add("@tenMonAn", SqlDbType.NVarChar).Value = txtTenMon.Text;
                     cmd.Parameters.Add("@moTa", SqlDbType.NVarChar).Value = txtMoTa.Text;
                     cmd.Parameters.Add("@donGia", SqlDbType.Float).Value = float.Parse(txtDonGia.Text);

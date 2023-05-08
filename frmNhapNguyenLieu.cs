@@ -17,6 +17,8 @@ namespace QLCuaHangDoAnNhanhWP
         SqlDataAdapter daKhoNL = null;
         DataTable dtKhoNL = null;
         private bool sua;
+        private string strConn = frmLogin.strConn;
+        private string maNhanVien = frmLogin.username;
         public frmNhapNguyenLieu()
         {
             InitializeComponent();
@@ -69,7 +71,7 @@ namespace QLCuaHangDoAnNhanhWP
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+                using (SqlConnection conn = new SqlConnection(strConn))
                 {
                     conn.Open();
                     daKhoNL = new SqlDataAdapter("Select * from view_DanhSachNguyenLieu", conn);
@@ -118,7 +120,7 @@ namespace QLCuaHangDoAnNhanhWP
             string maPhieuNhap = "";
             try
             {
-                using (SqlConnection conn = new SqlConnection(frmLogin.strConn))
+                using (SqlConnection conn = new SqlConnection(strConn))
                 {
                     conn.Open();
                     maPhieuNhap = GeneralMethod.LayMaTuDong("PhieuNhapHang", "MaPhieuNhap");
@@ -126,7 +128,7 @@ namespace QLCuaHangDoAnNhanhWP
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add("@maPhieuNhap", SqlDbType.VarChar).Value = maPhieuNhap;
                     cmd1.Parameters.Add("@ngayNhap", SqlDbType.Date).Value = DateTime.Now.Date;
-                    cmd1.Parameters.Add("@maNguoiQuanLy", SqlDbType.VarChar).Value = "NV001";
+                    cmd1.Parameters.Add("@maNguoiQuanLy", SqlDbType.VarChar).Value = maNhanVien;
                     cmd1.Parameters.Add("@tongTienNhapHang", SqlDbType.Real).Value = txtTongTien.Text;
                     cmd1.ExecuteNonQuery();
 
@@ -141,7 +143,7 @@ namespace QLCuaHangDoAnNhanhWP
                         SqlCommand cmd2 = new SqlCommand("sp_TaoCacThongTinCuaPhieuNhap", conn);
                         cmd2.CommandType = CommandType.StoredProcedure;
                         cmd2.Parameters.Add("@maNguyenLieu", SqlDbType.VarChar).Value = maNguyenLieu;
-                        cmd2.Parameters.Add("@maNguoiQuanLy", SqlDbType.VarChar).Value = "NV001";
+                        cmd2.Parameters.Add("@maNguoiQuanLy", SqlDbType.VarChar).Value = maNhanVien;
                         cmd2.Parameters.Add("@tenNguyenLieu", SqlDbType.NVarChar).Value = tenNguyenLieu;
                         cmd2.Parameters.Add("@soLuong", SqlDbType.Int).Value = soLuong;
                         cmd2.Parameters.Add("@maPhieuNhap", SqlDbType.VarChar).Value = maPhieuNhap;

@@ -17,6 +17,7 @@ namespace QLCuaHangDoAnNhanhWP
         DataTable dtDonGX = null;
         private string maDon;
         string strConn = frmLogin.strConn;
+        string maNhanVien = frmLogin.username;
         public frmQLDHTrucTuyenChoNVG()
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace QLCuaHangDoAnNhanhWP
                     conn.Open();
                     SqlCommand cmd1 = new SqlCommand("Select * from func_DonHangCuaNhanVienGiao(@maNhanVien,@trangThaiDonHang)", conn);
                     cmd1.CommandType = CommandType.Text;
-                    cmd1.Parameters.Add("@maNhanVien", SqlDbType.VarChar).Value = frmLogin.username;
+                    cmd1.Parameters.Add("@maNhanVien", SqlDbType.VarChar).Value = maNhanVien;
                     cmd1.Parameters.Add("@trangThaiDonHang", SqlDbType.NVarChar).Value = "Đang giao hàng";
                     SqlDataReader reader1 = cmd1.ExecuteReader();
 
@@ -59,7 +60,7 @@ namespace QLCuaHangDoAnNhanhWP
 
                     SqlCommand cmd2 = new SqlCommand("Select * from func_DonHangCuaNhanVienGiao(@maNhanVien,@trangThaiDonHang)", conn);
                     cmd2.CommandType = CommandType.Text;
-                    cmd2.Parameters.Add("@maNhanVien", SqlDbType.VarChar).Value = frmLogin.username;
+                    cmd2.Parameters.Add("@maNhanVien", SqlDbType.VarChar).Value = maNhanVien;
                     cmd2.Parameters.Add("@trangThaiDonHang", SqlDbType.NVarChar).Value = "Đã giao hàng";
                     SqlDataReader reader2 = cmd2.ExecuteReader();
                     dtDonGX = new DataTable();
